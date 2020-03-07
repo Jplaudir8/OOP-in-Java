@@ -93,22 +93,18 @@ public class PerimeterAssignmentRunner {
         Shape s = new Shape(fr);
         
         double length = getPerimeter(s);
+        int numPoints = getNumPoints(s);
+        double average = getAverageLength(s);
+        double largestSide = getLargestSide(s);
+        double largestX = getLargestX(s);
+        
         System.out.println("perimeter = " + length);
-        
-        // int numPoints = getNumPoints(s);
-        // System.out.println("Number of Points: " + numPoints);
-        
-        // double average = getAverageLength(s);
-        // System.out.println("Average of Sides: " + average);
-        
-        // double largestSide = getLargestSide(s);
-        // System.out.println("Largest Side of Polygon: " + largestSide);
-        
-        // double largestX = getLargestX(s);
-        // System.out.println("Largest X Coordinate: " + largestX);
-        
-        // testPerimeterMultipleFiles();
-        // testFileWithLargestPerimeter();
+        System.out.println("Number of Points: " + numPoints);
+        System.out.println("Average of Sides: " + average);
+        System.out.println("Largest Side of Polygon: " + largestSide);
+        System.out.println("Largest X Coordinate: " + largestX);
+        testPerimeterMultipleFiles();
+        testFileWithLargestPerimeter();
     }
     
     public void testPerimeterMultipleFiles() {
