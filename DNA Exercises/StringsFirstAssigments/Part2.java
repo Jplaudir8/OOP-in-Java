@@ -13,8 +13,12 @@ public class Part2 {
         if(stopIndex == -1) return "";
         
         int strandLength = stopIndex - startIndex;
+        String strand = dna.substring(startIndex, stopIndex + 3);
         
-        if(strandLength % 3 == 0) return dna.substring(startIndex, stopIndex + 3);
+        if(strandLength % 3 == 0){
+            return strand.equals(strand.toUpperCase()) ? strand : strand.toLowerCase();
+        } 
+        
         return "";
     }
     
