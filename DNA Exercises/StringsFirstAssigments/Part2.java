@@ -49,9 +49,10 @@ public class Part2 {
         System.out.println("Gene is: " + gene);
         
         // DNA with ATG, TAA and the substring between them not multiple of 3
-        dna = "CGTGAATGCCGTGASTGTAA";
+        //dna = "CGTGAATGCCGTGASTGTAA";
+        dna = "cgtgaatgccgtgastgtaa";
         System.out.println("DNA strand is " + dna);
-        gene = findSimpleGene(dna, "ATG", "TAA");
+        gene = findSimpleGene(dna, "atg", "taa");
         System.out.println("Gene is: " + gene);
         
         System.out.println("------------------");
