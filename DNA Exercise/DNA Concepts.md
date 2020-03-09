@@ -21,3 +21,5 @@ __E.g.__
 > Conversely, The *"TAA"* Codon indicates the end of a gene, which is why it is called the __Stop Codon__.
 
 > Everything that is enclosed between (and including) the Start and Stop Codon is a gene.
+
+> Finding the start and stop codons is not enough to determine if a strand of characters is a gene, we also need to make sure that the number of nucleotides in this strand is a multiple of 3. Let's remember that a gene is composed of codons (which are each composed of 3 nucleotides).
