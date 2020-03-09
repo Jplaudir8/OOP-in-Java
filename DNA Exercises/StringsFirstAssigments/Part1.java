@@ -19,33 +19,32 @@ public class Part1 {
     }
     
     public void testSimpleGene() {
-        
+
         // DNA with no ATG
-        // DNA with no TAA
-        // DNA with no ATG or TAA
-        // DNA with ATG, TAA and the substring between them multiple of 3
-        // DNA with ATG, TAA and the substring between them not multiple of 3
-        
         String dna = "ATTGAAGGGTAGTAACGTAA";
         System.out.println("DNA strand is " + dna);
         String gene = findSimpleGene(dna);
         System.out.println("Gene is: " + gene);
-
+        
+        // DNA with no TAA
         dna = "ATGGACCGGTAGTCACGTAG";
         System.out.println("DNA strand is " + dna);
         gene = findSimpleGene(dna);
         System.out.println("Gene is: " + gene);
         
+        // DNA with no ATG or TAA
         dna = "ATCGACCGGTAGTCACGTAC";
         System.out.println("DNA strand is " + dna);
         gene = findSimpleGene(dna);
         System.out.println("Gene is: " + gene);
         
+        // DNA with ATG, TAA and the substring between them multiple of 3
         dna = "CGTGAAATGCGTASTGTTAA";
         System.out.println("DNA strand is " + dna);
         gene = findSimpleGene(dna);
         System.out.println("Gene is: " + gene);
         
+        // DNA with ATG, TAA and the substring between them not multiple of 3
         dna = "CGTGAATGCCGTGASTGTAA";
         System.out.println("DNA strand is " + dna);
         gene = findSimpleGene(dna);
