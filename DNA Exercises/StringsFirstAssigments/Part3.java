@@ -6,20 +6,14 @@
  */
 public class Part3 {
     public boolean twoOcurrences(String stringa, String stringb) {
-        int c = 0;
-        int startIndex = stringb.indexOf(stringa);
+        int c = 0, startIndex = stringb.indexOf(stringa);
 
         while(startIndex != -1){
             startIndex = stringb.indexOf(stringa, startIndex + stringa.length() + 1);
             c++;
         }
-        System.out.println("Counter: " + c);
-        if (c >= 2) {
-            return true;
-        } else {
-            return false;
-        }
-        //return c >= 2 ? true : false;
+        
+        return c >= 2 ? true : false;
     }
     
     public void test() {
