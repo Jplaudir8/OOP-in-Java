@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Part3
+comment0.text=\n\ Write\ a\ description\ of\ Part3\ here.\n\ \n\ @author\ Joan\ Perez\ Lozano\ \n
+comment1.params=stringa\ stringb
+comment1.target=boolean\ twoOcurrences(java.lang.String,\ java.lang.String)
+comment2.params=
+comment2.target=void\ test()
+numComments=3
