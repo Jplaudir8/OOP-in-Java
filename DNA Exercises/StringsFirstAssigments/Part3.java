@@ -19,12 +19,7 @@ public class Part3 {
     public String lastPart(String stringa, String stringb){
         int startIndex = stringb.indexOf(stringa);
         
-        if(startIndex != -1) {
-            return stringb.substring(startIndex + stringa.length());
-        } else {
-            return stringb;
-        }
-        
+        return startIndex != -1 ? stringb.substring(startIndex + stringa.length()) : stringb;
     }
     
     public void test() {
