@@ -16,6 +16,17 @@ public class Part3 {
         return c >= 2 ? true : false;
     }
     
+    public String lastPart(String stringa, String stringb){
+        int startIndex = stringb.indexOf(stringa);
+        
+        if(startIndex != -1) {
+            return stringb.substring(startIndex + stringa.length());
+        } else {
+            return stringb;
+        }
+        
+    }
+    
     public void test() {
         String stra = "by";
         String strb = "A story by Abby Long";
@@ -39,6 +50,24 @@ public class Part3 {
         System.out.println("String B: " + strb);
         result = twoOcurrences(stra, strb);
         System.out.println("Result: " + result);
+        System.out.println("");
+        
+        System.out.println("Last Part Method: ");
+        stra = "an";
+        strb = "banana";
+        String last = lastPart(stra, strb);
+        System.out.println("String A: " + stra);
+        System.out.println("String B: " + strb);
+        System.out.println("Last Part: " + last);
+        System.out.println("");
+        
+        stra = "zoo";
+        strb = "forest";
+        last = lastPart(stra, strb);
+        System.out.println("String A: " + stra);
+        System.out.println("String B: " + strb);
+        System.out.println("Last Part: " + last);
+        
         System.out.println("---------------------");
     }
 }
