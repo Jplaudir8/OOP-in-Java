@@ -25,7 +25,6 @@ public class Part3 {
         System.out.println("Result: " + result);
         System.out.println("");
         
-        
         stra = "a";
         strb = "banana";
         System.out.println("String A: " + stra);
