@@ -24,8 +24,6 @@ public class Part4 {
             }
             
         }
-        if (c == 0) {
-            System.out.println("There are no Youtube links in this site");
-        }
+        if (c == 0) System.out.println("There are no Youtube links in this site");
     }
 }
