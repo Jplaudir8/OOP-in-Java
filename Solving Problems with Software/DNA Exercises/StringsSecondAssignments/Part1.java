@@ -23,14 +23,38 @@ public class Part1 {
         String case2 = "ATGXXXYYZZZTGAXXXXTAA"; // Contains Gene at 2nd Iteration
         String case3 = "ATGXXXYYZZZTGAXXXXTTA"; // Does not contain any gene
         
-        findStopCodon(case1, 0, "TAA");
-        findStopCodon(case2, 0, "TAA");
-        findStopCodon(case3, 0, "TAA");
+        int result1 = findStopCodon(case1, 0, "TAA");
+        int result2 = findStopCodon(case2, 0, "TAA");
+        int result3 = findStopCodon(case3, 0, "TAA");
         
+        System.out.println("Strand: " + case1);
+        System.out.println(result1);
+        System.out.println("Strand: " + case2);
+        System.out.println(result2);
+        System.out.println("Strand: " + case3);
+        System.out.println(result3); 
     }
     
     public String findGene(String dna){
-        return "";
+        int startIndex = dna.indexOf("ATG");
+        if (startIndex == -1) return ""; // 1st occurence of ATG, if not then return ""
+        int taaIndex = findStopCodon(dna, startIndex, "TAA");
+        int tagIndex = findStopCodon(dna, startIndex, "TAG");
+        int tgaIndex = findStopCodon(dna, startIndex, "TGA");
+        int temp = Math.min(taaIndex, tagIndex);
+        int minIndex = Math.min(temp, tgaIndex);
+        
+        if(taaIndex == -1 || (tgaIndex != -1 && tgaIndex < taaIndex)){
+            minIndex = tgaIndex;
+        } else {
+            minIndex = taaIndex;
+        }
+        
+        if(minIndex == -1 || (tgaIndex != -1 && tagIndex < minIndex)) minIndex = tagIndex;
+        
+        if(minIndex == -1) return ""; // If there is no stopCodon return ""
+        
+        return dna.substring(startIndex, minIndex + 3); // Returning the gene formed
     }
     
     public void testFindGene(){
