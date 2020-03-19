@@ -35,9 +35,12 @@ public class Part1 {
         System.out.println(result3); 
     }
     
-    public String findGene(String dna){
-        int startIndex = dna.indexOf("ATG");
-        if (startIndex == -1) return ""; // 1st occurence of ATG, if not found then return ""
+    public String findGene(String dna, int where){
+        int startIndex = dna.indexOf("ATG", where);
+        
+        // 1st occurence of ATG, if not found then return ""
+        if (startIndex == -1) return ""; 
+        
         int taaIndex = findStopCodon(dna, startIndex, "TAA");
         int tagIndex = findStopCodon(dna, startIndex, "TAG");
         int tgaIndex = findStopCodon(dna, startIndex, "TGA");
@@ -52,13 +55,47 @@ public class Part1 {
         
         if(minIndex == -1 || (tgaIndex != -1 && tagIndex < minIndex)) minIndex = tagIndex;
         
-        if(minIndex == -1) return ""; // If there is no stopCodon return ""
+        // If there is no stopCodon return ""
+        if(minIndex == -1 || minIndex == dna.length()) return ""; 
         
         return dna.substring(startIndex, minIndex + 3); // Returning the gene formed
     }
     
     public void testFindGene(){
+        String case1 = "XXXYYYZZZTAA";
+        String result1 = findGene(case1, 0);
+        System.out.println("DNA Strand 1: " + case1);
+        System.out.println("Result: " + result1);
+        
+        case1 = "ATGXXXYYYZZZTAA";
+        result1 = findGene(case1, 0);
+        System.out.println("DNA Strand 2: " + case1);
+        System.out.println("Result: " + result1);
+        
+        case1 = "ATGXXXYYYZZZTGAXXXTAAYYYTAG";
+        result1 = findGene(case1, 0);
+        System.out.println("DNA Strand 3: " + case1);
+        System.out.println("Result: " + result1);
+        
+        case1 = "ATGXXXYYYZZZTAG";
+        result1 = findGene(case1, 0);
+        System.out.println("DNA Strand 4: " + case1);
+        System.out.println("Result: " + result1);
+        
+        case1 = "ATGXXXYYYZZZ";
+        result1 = findGene(case1, 0);
+        System.out.println("DNA Strand 5: " + case1);
+        System.out.println("Result: " + result1);
     }
     
-    public void printAllGenes(String dna){}
+    public void printAllGenes(String dna){
+        int startIndex = 0;
+        while(true){
+            String currentGene = findGene(dna, startIndex);
+            if(currentGene.isEmpty()) break;
+            
+            System.out.println(currentGene);
+            startIndex = dna.indexOf(currentGene, startIndex) + currentGene.length();
+        }
+    }
 }
