@@ -11,17 +11,19 @@ public class Deb_Part1 {
            if (index == -1 || index >= input.length() - 3){
                break;
            }
-           System.out.println("Index 1: " + index);
-           String found = input.substring(index+1, index+4);
+           //System.out.println("Index 1: " + index);
+           
+           String found = input.substring(index + 1, index + 4);
            System.out.println("Index 2: " + index);
            System.out.println(found);
-           index = input.indexOf("abc",index+3);
+           
+           index = input.indexOf("abc", index + 3);
            System.out.println("Index 3: " + index);
        }
    }
 
    public void test(){
        //findAbc("abcd");
-       findAbc("qwertyabcuioabcp");
+       findAbc("abcdkfjsksioehgjfhsdjfhksdfhuwabcabcajfieowj");
    }
 }
