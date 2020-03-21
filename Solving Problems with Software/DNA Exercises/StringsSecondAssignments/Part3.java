@@ -4,6 +4,9 @@
  * 
  * Joan Perez Lozano
  */
+
+import edu.duke.*;
+
 public class Part3 {
     public int findStopCodon(String dna, int startIndex, String stopCodon){
         int currIndex = dna.indexOf(stopCodon, startIndex + 3);
@@ -88,15 +91,31 @@ public class Part3 {
         // System.out.println("Result: " + result1);
     // }
     
-    public void printAllGenes(String dna){
+    public StorageResource getAllGenes(String dna){
+        StorageResource geneList = new StorageResource();
         int startIndex = 0;
         while(true){
             String currentGene = findGene(dna, startIndex);
             if(currentGene.isEmpty()) break;
             
-            System.out.println(currentGene);
+            geneList.add(currentGene);
             startIndex = dna.indexOf(currentGene, startIndex) + currentGene.length();
         }
+        return geneList;
+    }
+    
+    public void testOn(String dna) {
+        System.out.println("Testing getAllGenes on " + dna);
+        StorageResource genes = getAllGenes(dna);
+        
+        for(String s: genes.data()){
+            System.out.println(s);
+        }
+    }
+    
+    public void test(){
+        testOn("ATGATCTAATTTATGCTGCAACGGTGAAGA");
+        testOn("");
     }
     
     public int countGenes(String dna) {
