@@ -29,10 +29,22 @@ public class ParseExportData {
         }
     }
     
+    public int numberOfExporters(CSVParser parser, String exportItem){
+        int countExp = 0;
+        for(CSVRecord r: parser){
+            if(r.get("Exports").contains(exportItem)){
+                countExp++;
+            }
+        }
+        return countExp;
+    }
+    
     public void tester(){
         FileResource fr = new FileResource();
         CSVParser parser = fr.getCSVParser();
         //System.out.println(countryInfo(parser, "Germany"));
-        listExportersTwoProducts(parser, "gold", "diamonds");
+        //listExportersTwoProducts(parser, "gold", "diamonds");
+        int nExp = numberOfExporters(parser, "gold");
+        System.out.println("There are "+nExp+" exporters of gold");
     }
 }
