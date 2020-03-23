@@ -10,10 +10,15 @@ import org.apache.commons.csv.*;
 
 public class ParseExportData {
     
+    // Using variables since column names are prone to change
+    private String COUNTRY_COLUMN = "Country";
+    private String EXPORTS_COLUMN = "Exports";
+    private String VALUE_COLUMN = "Value (dollars)";
+
     public String countryInfo(CSVParser parser, String country){
         for(CSVRecord r: parser){
-            if(r.get("Country").contains(country)){
-                return r.get("Country") + ": " + r.get("Exports") + ": " +r.get("Value (dollars)");
+            if(r.get(COUNTRY_COLUMN).contains(country)){
+                return r.get(COUNTRY_COLUMN) + ": " + r.get(EXPORTS_COLUMN) + ": " +r.get(VALUE_COLUMN);
             } 
         }
         return "NOT FOUND";
@@ -23,8 +28,8 @@ public class ParseExportData {
                                          String exportItem1, 
                                          String exportItem2){
         for(CSVRecord r: parser){
-            if(r.get("Exports").contains(exportItem1) && r.get("Exports").contains(exportItem2)){
-                System.out.println(r.get("Country"));
+            if(r.get(EXPORTS_COLUMN).contains(exportItem1) && r.get(EXPORTS_COLUMN).contains(exportItem2)){
+                System.out.println(r.get(COUNTRY_COLUMN));
             }
         }
     }
@@ -32,7 +37,7 @@ public class ParseExportData {
     public int numberOfExporters(CSVParser parser, String exportItem){
         int countExp = 0;
         for(CSVRecord r: parser){
-            if(r.get("Exports").contains(exportItem)){
+            if(r.get(EXPORTS_COLUMN).contains(exportItem)){
                 countExp++;
             }
         }
@@ -41,8 +46,8 @@ public class ParseExportData {
     
     public void bigExporters(CSVParser parser, String amount){
         for(CSVRecord r: parser){
-            if(r.get("Value (dollars)").length() > amount.length()){
-                System.out.println(r.get("Country") + " " + r.get("Value (dollars)"));
+            if(r.get(VALUE_COLUMN).length() > amount.length()){
+                System.out.println(r.get(COUNTRY_COLUMN) + " " + r.get(VALUE_COLUMN));
             }
         }
     }
