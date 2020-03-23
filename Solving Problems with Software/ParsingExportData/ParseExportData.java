@@ -39,12 +39,24 @@ public class ParseExportData {
         return countExp;
     }
     
+    public void bigExporters(CSVParser parser, String amount){
+        for(CSVRecord r: parser){
+            if(r.get("Value (dollars)").length() > amount.length()){
+                System.out.println(r.get("Country") + " " + r.get("Value (dollars)"));
+            }
+        }
+    }
+    
     public void tester(){
         FileResource fr = new FileResource();
         CSVParser parser = fr.getCSVParser();
         //System.out.println(countryInfo(parser, "Germany"));
+        
         //listExportersTwoProducts(parser, "gold", "diamonds");
-        int nExp = numberOfExporters(parser, "gold");
-        System.out.println("There are "+nExp+" exporters of gold");
+        
+        //int nExp = numberOfExporters(parser, "gold");
+        //System.out.println("There are "+nExp+" exporters of gold");
+        
+        bigExporters(parser, "$999,999,999");
     }
 }
