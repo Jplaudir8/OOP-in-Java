@@ -55,13 +55,14 @@ public class ParseExportData {
     public void tester(){
         FileResource fr = new FileResource();
         CSVParser parser = fr.getCSVParser();
-        //System.out.println(countryInfo(parser, "Germany"));
+        //System.out.println(countryInfo(parser, "Nauru"));
         
-        //listExportersTwoProducts(parser, "gold", "diamonds");
+        //listExportersTwoProducts(parser, "fish", "nuts");
         
-        //int nExp = numberOfExporters(parser, "gold");
-        //System.out.println("There are "+nExp+" exporters of gold");
+        //String expName = "sugar";
+        //int nExp = numberOfExporters(parser, expName);
+        //System.out.println("There are "+nExp+" exporters of " + expName);
         
-        bigExporters(parser, "$999,999,999");
+        bigExporters(parser, "$999,999,999,999");
     }
 }
