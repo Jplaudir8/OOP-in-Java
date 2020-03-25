@@ -45,7 +45,7 @@ public class CVSMax {
     }
 
     public void testHottestDay() {
-        FileResource fr = new FileResource("data/2015/weather-2015-...");
+        FileResource fr = new FileResource("data/2015/weather-2015-01-01.csv");
         CSVParser parser = fr.getCSVParser();
         CSVRecord largest = hottestHourInFile(parser);
         System.out.println("hottest temperature was " + largest.get("TemperatureF") +
