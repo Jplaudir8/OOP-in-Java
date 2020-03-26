@@ -1,3 +1,33 @@
 #BlueJ package file
-#Wed Mar 25 15:52:42 PET 2020
+editor.fx.0.height=663
+editor.fx.0.width=748
+editor.fx.0.x=1044
+editor.fx.0.y=23
+objectbench.height=164
+objectbench.width=732
+package.divider.horizontal=0.6
+package.divider.vertical=0.6620553359683794
+package.editor.height=328
+package.editor.width=638
+package.editor.x=1021
+package.editor.y=467
+package.frame.height=564
+package.frame.width=756
+package.numDependencies=0
+package.numTargets=1
+package.showExtends=true
+package.showUses=true
 project.charset=UTF-8
+readme.height=58
+readme.name=@README
+readme.width=47
+readme.x=10
+readme.y=10
+target1.height=50
+target1.name=CSVColdest
+target1.showInterface=false
+target1.type=ClassTarget
+target1.typeParameters=
+target1.width=90
+target1.x=110
+target1.y=30

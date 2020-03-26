@@ -14,20 +14,15 @@ public class CSVColdest {
         CSVRecord lowestSoFar = null;
         for(CSVRecord currentRow: parser){
             if(Double.parseDouble(currentRow.get("TemperatureF")) != -9999 ){
-                lowestSoFar = getLowestOfTwo(currentRow, lowestSoFar);
-            }
-        }
-        return null;
-    }
-    
-    public CSVRecord getLowestOfTwo(CSVRecord currentRow, CSVRecord lowestSoFar) {
-        if(lowestSoFar == null){
-            lowestSoFar = currentRow;
-        } else {
-            double currentTemp = Double.parseDouble(currentRow.get("TemperatureF"));
-            double lowestTemp = Double.parseDouble(lowestSoFar.get("TemperatureF"));
-            if(currentTemp > lowestTemp){
-                lowestSoFar = currentRow;
+                if(lowestSoFar == null){
+                    lowestSoFar = currentRow;
+                } else {
+                    double currentTemp = Double.parseDouble(currentRow.get("TemperatureF"));
+                    double lowestTemp = Double.parseDouble(lowestSoFar.get("TemperatureF"));
+                    if(currentTemp < lowestTemp){
+                        lowestSoFar = currentRow;
+                    }
+                }
             }
         }
         return lowestSoFar;
@@ -36,16 +31,28 @@ public class CSVColdest {
     public String fileWithColdestTemperature() {
         DirectoryResource dr = new DirectoryResource();
         CSVRecord lowestSoFar = null;
+        String filename = "";
+        
         for(File f: dr.selectedFiles()){
             FileResource fr = new FileResource(f);
             CSVRecord currentRow = coldestHourInFile(fr.getCSVParser());
-            lowestSoFar = getLowestOfTwo(currentRow, lowestSoFar);
+
+            if(lowestSoFar == null){
+                lowestSoFar = currentRow;
+            } else {
+                double currentTemp = Double.parseDouble(currentRow.get("TemperatureF"));
+                double lowestTemp = Double.parseDouble(lowestSoFar.get("TemperatureF"));
+                if(currentTemp < lowestTemp){
+                    lowestSoFar = currentRow;
+                    filename = f.getName();
+                }
+            }
         }
-        
-        return "";
+        return filename;
     }
     
     public void testFileWithColdestTemperature() {
+        System.out.println("File with coldest temp is: " + fileWithColdestTemperature());
         // Use coldestHourInFile() after determining the file, to see the temp in that file.
     }
     
@@ -59,5 +66,3 @@ public class CSVColdest {
     
     
 }
-
-
