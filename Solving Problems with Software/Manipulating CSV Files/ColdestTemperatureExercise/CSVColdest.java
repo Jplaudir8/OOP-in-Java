@@ -52,15 +52,26 @@ public class CSVColdest {
     }
     
     public void testFileWithColdestTemperature() {
-        System.out.println("File with coldest temp is: " + fileWithColdestTemperature());
-        // Use coldestHourInFile() after determining the file, to see the temp in that file.
+        System.out.print("Coldest day was in file " + fileWithColdestTemperature() + ", ");
+        System.out.println("select this file for more info");
+        
+        FileResource fr = new FileResource();
+        CSVRecord coldest = coldestHourInFile(fr.getCSVParser());
+        System.out.print("Coldest temperature on that way was ");
+        System.out.println(coldest.get("TemperatureF"));
+        System.out.println("All the temperatures on the coldest day were:");
+        for (CSVRecord record:fr.getCSVParser()) {
+            System.out.print(record.get("DateUTC"));
+            System.out.print("  ");
+            System.out.println(record.get("TemperatureF"));
+        }
     }
     
     public void testColdestHourInFile() {
         FileResource fr = new FileResource();
         CSVParser parser = fr.getCSVParser();
         CSVRecord lowest = coldestHourInFile(parser);
-        System.out.println("hottest temperature was " + lowest.get("TemperatureF") +
+        System.out.println("coldest temperature was " + lowest.get("TemperatureF") +
                             " at " + lowest.get("TimeEST"));
     }
     
