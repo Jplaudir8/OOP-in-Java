@@ -51,6 +51,32 @@ public class CSVColdest {
         return filename;
     }
     
+    public CSVRecord lowestHumidityInFile(CSVParser parser) {
+        CSVRecord lowestSoFar = null;
+        for(CSVRecord currentRow: parser){
+            if(!currentRow.get("Humidity").equals("N/A")){
+                if(lowestSoFar == null){
+                    lowestSoFar = currentRow;
+                } else {
+                    double currentTemp = Double.parseDouble(currentRow.get("Humidity"));
+                    double lowestTemp = Double.parseDouble(lowestSoFar.get("Humidity"));
+                    if(currentTemp < lowestTemp){
+                        lowestSoFar = currentRow;
+                    }
+                }
+            }
+        }
+        return lowestSoFar;
+    }
+    
+    public void testLowestHumidityInFile() {
+        FileResource fr = new FileResource();
+        CSVRecord lowestHumidity = lowestHumidityInFile(fr.getCSVParser());
+        
+        System.out.println("Lowest Humidity was " + lowestHumidity.get("Humidity") + 
+                            " at " + lowestHumidity.get("DateUTC"));
+    }
+    
     public void testFileWithColdestTemperature() {
         System.out.print("Coldest day was in file " + fileWithColdestTemperature() + ", ");
         System.out.println("select this file for more info");
