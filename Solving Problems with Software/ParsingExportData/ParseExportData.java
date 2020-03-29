@@ -57,9 +57,9 @@ public class ParseExportData {
         CSVParser parser = fr.getCSVParser();
         //System.out.println(countryInfo(parser, "Nauru"));
         
-        //listExportersTwoProducts(parser, "fish", "nuts");
+        //listExportersTwoProducts(parser, "cotton", "flowers");
         
-        //String expName = "sugar";
+        //String expName = "cocoa";
         //int nExp = numberOfExporters(parser, expName);
         //System.out.println("There are "+nExp+" exporters of " + expName);
         
