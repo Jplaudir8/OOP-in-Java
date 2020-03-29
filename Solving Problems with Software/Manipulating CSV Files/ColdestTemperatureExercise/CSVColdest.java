@@ -82,8 +82,8 @@ public class CSVColdest {
                 if(lowestSoFar == null){
                     lowestSoFar = currentRow;
                 } else {
-                    double currentTemp = Double.parseDouble(currentRow.get("Humidity"));
-                    double lowestTemp = Double.parseDouble(lowestSoFar.get("Humidity"));
+                    int currentTemp = Integer.parseInt(currentRow.get("Humidity"));
+                    int lowestTemp = Integer.parseInt(lowestSoFar.get("Humidity"));
                     if(currentTemp < lowestTemp){
                         lowestSoFar = currentRow;
                     }
@@ -148,5 +148,30 @@ public class CSVColdest {
         
         System.out.println("Average temperature in file is " + averageTemperatureInFile(parser));
     }
+    
+    public double averageTemperatureWithHighHumidityInFile(CSVParser parser, int value) {
+        double sum = 0.0;
+        int count = 0;
+        
+        for(CSVRecord r: parser){
+            if(Double.parseDouble(r.get("TemperatureF")) != -9999 && !r.get("Humidity").equals("N/A") && Integer.parseInt(r.get("Humidity")) >= value){
+                sum += Double.parseDouble(r.get("TemperatureF"));
+                count++;
+            }
+        }
+        return sum/count;
+    }
+    
+    public void testaAverageTemperatureWithHighHumidityInFile() {
+        FileResource fr = new FileResource();
+        CSVParser parser = fr.getCSVParser();
+        
+        System.out.println("Average Temp when high Humidity is: " + 
+                            averageTemperatureWithHighHumidityInFile(parser, 80));
+    }
+    
+    
+    
+    
     
 }
