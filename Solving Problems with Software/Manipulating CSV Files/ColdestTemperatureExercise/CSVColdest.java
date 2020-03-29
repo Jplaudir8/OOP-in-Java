@@ -129,5 +129,24 @@ public class CSVColdest {
                             " at " + lowestH.get("DateUTC"));
     }
     
-
+    public double averageTemperatureInFile(CSVParser parser) {
+        double sum = 0.0;
+        int count = 0;
+        
+        for(CSVRecord r: parser){
+            if(Double.parseDouble(r.get("TemperatureF")) != -9999){
+                sum += Double.parseDouble(r.get("TemperatureF"));
+                count++;
+            }
+        }
+        return sum/count;
+    }
+    
+    public void testAverageTemperatureInFile() {
+        FileResource fr = new FileResource();
+        CSVParser parser = fr.getCSVParser();
+        
+        System.out.println("Average temperature in file is " + averageTemperatureInFile(parser));
+    }
+    
 }
