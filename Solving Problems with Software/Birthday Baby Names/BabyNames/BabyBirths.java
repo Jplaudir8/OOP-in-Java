@@ -93,6 +93,22 @@ public class BabyBirths {
         return "NO NAME";
     }
     
+    public void whatIsNameInYear(String name, int year, int newYear, String gender){
+        int rank = getRank(year, name, gender);
+        String nameFound = getName(newYear, rank, gender);
+        
+        System.out.println(name + " born in " + year + " would be " + 
+                            nameFound + " if she was born in " + newYear);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
