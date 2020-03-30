@@ -76,7 +76,22 @@ public class BabyBirths {
         return -1;
     }
     
-    
+    public String getName(int year, int rank, String gender) {
+        
+        FileResource fr = new FileResource("data/us_babynames_by_year/yob"+year+".csv");
+        CSVParser parser = fr.getCSVParser(false);
+        if(rank >= 1 ) {
+            for(CSVRecord r: parser) {
+                if(r.get(1).equals(gender)) {
+                    if(rank == 1) {
+                        return r.get(0);
+                    }
+                    rank--;
+                }
+            }
+        }
+        return "NO NAME";
+    }
     
     
     
