@@ -1,6 +1,7 @@
 
 import edu.duke.*;
 import org.apache.commons.csv.*;
+import java.io.*;
 
 /**
  * Write a description of BabyBirths here.
@@ -101,11 +102,35 @@ public class BabyBirths {
                             nameFound + " if she was born in " + newYear);
     }
     
-    
-    
-    
-    
-    
+    public int yearOfHighestRank(String name, String gender) {
+        int lowestRankSoFar = 0;
+        int bestYear = -1;
+        
+        DirectoryResource dr = new DirectoryResource();
+        
+        for (File f: dr.selectedFiles()) {
+            String filename = f.getName().toLowerCase();
+            int indexPos = filename.indexOf("yob");
+            String yearStr = "";
+            int year = 0;
+            // Here we obtain the year based on the filename
+            if(indexPos != -1 && indexPos+7 < filename.length()) {
+                yearStr = filename.substring(indexPos + 3, indexPos + 7);
+                year = Integer.parseInt(yearStr);
+            }
+            
+            int currentRank = getRank(year, name, gender);
+            System.out.println(year+" "+name+" "+gender);
+            if (currentRank != -1){
+                if(lowestRankSoFar == 0 || currentRank < lowestRankSoFar) {
+                    lowestRankSoFar = currentRank;
+                    bestYear = year;
+                }
+            }
+            
+        }
+        return bestYear;
+    }
     
     
     
