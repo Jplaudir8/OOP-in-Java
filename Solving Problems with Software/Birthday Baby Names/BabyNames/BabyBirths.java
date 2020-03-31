@@ -158,6 +158,30 @@ public class BabyBirths {
         }
         return (double)sumRanks/count;
     }
+    
+    public int getTotalBirthsRankedHigher (int year, String name, String gender) {
+        int sumBirths = 0;
+        int nameRank = getRank(year, name, gender);
+        FileResource fr = new FileResource("data/us_babynames_test/yob"+year+"short.csv");
+        CSVParser parser = fr.getCSVParser(false);
+
+        for(CSVRecord r: parser) {
+            int currentRank = getRank(year, r.get(0), r.get(1));
+            if(!r.get(0).equals(name) && r.get(1).equals(gender) && currentRank <= nameRank){
+                sumBirths += Integer.parseInt(r.get(2));
+            }
+        }
+        
+        return sumBirths;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
 }
     
     
