@@ -15,4 +15,6 @@ comment6.params=name\ year\ newYear\ gender
 comment6.target=void\ whatIsNameInYear(java.lang.String,\ int,\ int,\ java.lang.String)
 comment7.params=name\ gender
 comment7.target=int\ yearOfHighestRank(java.lang.String,\ java.lang.String)
-numComments=8
+comment8.params=name\ gender
+comment8.target=double\ getAverageRank(java.lang.String,\ java.lang.String)
+numComments=9

@@ -132,15 +132,35 @@ public class BabyBirths {
         return bestYear;
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    public double getAverageRank(String name, String gender) {
+        int count = 0;
+        int sumRanks = 0;
+        
+        DirectoryResource dr = new DirectoryResource();
+        
+        for (File f: dr.selectedFiles()) {
+            String filename = f.getName().toLowerCase();
+            int indexPos = filename.indexOf("yob");
+            String yearStr = "";
+            int year = 0;
+            // Here we obtain the year based on the filename
+            if(indexPos != -1 && indexPos+7 < filename.length()) {
+                yearStr = filename.substring(indexPos + 3, indexPos + 7);
+                year = Integer.parseInt(yearStr);
+            }
+            
+            int currentRank = getRank(year, name, gender);
+            
+            if (currentRank != -1){
+                sumRanks += currentRank;
+                count++;
+            }
+        }
+        return (double)sumRanks/count;
+    }
 }
+    
+    
+    
+    
+   
