@@ -1,3 +1,33 @@
 #BlueJ package file
-#Thu Apr 02 11:27:02 PET 2020
+editor.fx.0.height=1008
+editor.fx.0.width=749
+editor.fx.0.x=1043
+editor.fx.0.y=23
+objectbench.height=164
+objectbench.width=602
+package.divider.horizontal=0.6
+package.divider.vertical=0.6633858267716536
+package.editor.height=330
+package.editor.width=508
+package.editor.x=1166
+package.editor.y=465
+package.frame.height=566
+package.frame.width=626
+package.numDependencies=0
+package.numTargets=1
+package.showExtends=true
+package.showUses=true
 project.charset=UTF-8
+readme.height=58
+readme.name=@README
+readme.width=47
+readme.x=10
+readme.y=10
+target1.height=50
+target1.name=GrayScaleConverter
+target1.showInterface=false
+target1.type=ClassTarget
+target1.typeParameters=
+target1.width=140
+target1.x=90
+target1.y=20
