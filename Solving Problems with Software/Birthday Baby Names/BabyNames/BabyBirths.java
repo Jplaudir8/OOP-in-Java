@@ -56,7 +56,7 @@ public class BabyBirths {
     }
     
     public void testTotalBirths() {
-        FileResource fr = new FileResource("data/us_babynames_test/yob2012short.csv");
+        FileResource fr = new FileResource("data/us_babynames_by_year/yob2012short.csv");
         totalBirths(fr);
     }
     
@@ -162,7 +162,7 @@ public class BabyBirths {
     public int getTotalBirthsRankedHigher (int year, String name, String gender) {
         int sumBirths = 0;
         int nameRank = getRank(year, name, gender);
-        FileResource fr = new FileResource("data/us_babynames_test/yob"+year+"short.csv");
+        FileResource fr = new FileResource("data/us_babynames_by_year/yob"+year+"short.csv");
         CSVParser parser = fr.getCSVParser(false);
 
         for(CSVRecord r: parser) {
@@ -174,13 +174,6 @@ public class BabyBirths {
         
         return sumBirths;
     }
-    
-    
-    
-    
-    
-    
-    
     
 }
     
