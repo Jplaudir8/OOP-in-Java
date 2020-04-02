@@ -24,5 +24,21 @@ public class BatchInversions {
         return outImage;
     }
     
-    public
+    public void selectAndConvert() {
+        DirectoryResource dr = new DirectoryResource();
+        for(File f: dr.selectedFiles()) {
+            ImageResource inImage = new ImageResource(f);
+            ImageResource invertedImage = makeInversion(inImage);
+            String name = inImage.getFileName();
+            String newName = "inverted-" + name;
+            invertedImage.setFileName(newName);
+            invertedImage.save();
+        }
+        
+    }
+    
+    
+    
+    
+    
 }

@@ -3,4 +3,6 @@ comment0.target=BatchInversions
 comment0.text=\n\ Write\ a\ description\ of\ BatchInversions\ here.\n\ \n\ @author\ Joan\ Perez\ Lozano\n
 comment1.params=inImage
 comment1.target=edu.duke.ImageResource\ makeInversion(edu.duke.ImageResource)
-numComments=2
+comment2.params=
+comment2.target=void\ selectAndConvert()
+numComments=3
