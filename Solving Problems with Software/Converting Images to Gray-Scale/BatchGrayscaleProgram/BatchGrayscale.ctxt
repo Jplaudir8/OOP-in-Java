@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=BatchGrayscale
+comment0.text=\n\ Write\ a\ description\ of\ BatchGrayscale\ here.\n\ \n\ @author\ Joan\ Perez\ Lozano\n
+comment1.params=inImage
+comment1.target=edu.duke.ImageResource\ makeGray(edu.duke.ImageResource)
+comment2.params=
+comment2.target=void\ selectConvertAndSave()
+numComments=3
