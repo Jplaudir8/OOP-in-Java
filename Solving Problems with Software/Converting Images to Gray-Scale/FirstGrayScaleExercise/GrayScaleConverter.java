@@ -1,5 +1,5 @@
 import edu.duke.*;
-
+import java.io.*;
 /**
  * Write a description of GrayScaleConverter here.
  * 
@@ -19,5 +19,20 @@ public class GrayScaleConverter {
             
         }
         return outImage;
+    }
+    
+    public void testGray() {
+        ImageResource ir = new ImageResource();
+        ImageResource gray = makeGray(ir);
+        gray.draw();
+    }
+    
+    public void selectAndConvert() {
+        DirectoryResource dr = new DirectoryResource();
+        for(File f: dr.selectedFiles()) {
+            ImageResource inImage = new ImageResource(f);
+            ImageResource gray = makeGray(inImage);
+            gray.draw();
+        }
     }
 }
