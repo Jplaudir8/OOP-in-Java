@@ -13,13 +13,9 @@ public class BatchInversions {
         for(Pixel outPixel: outImage.pixels()) {
             Pixel inPixel = inImage.getPixel(outPixel.getX(), outPixel.getY());
             
-            int invertedRed = 255 - inPixel.getRed();
-            int invertedGreen = 255 - inPixel.getGreen();
-            int invertedBlue = 255 - inPixel.getBlue();
-            
-            outPixel.setRed(invertedRed);
-            outPixel.setGreen(invertedGreen);
-            outPixel.setBlue(invertedBlue);
+            outPixel.setRed(255 - inPixel.getRed());
+            outPixel.setGreen(255 - inPixel.getGreen());
+            outPixel.setBlue(255 - inPixel.getBlue());
         }
         return outImage;
     }
