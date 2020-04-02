@@ -10,16 +10,16 @@ import java.io.File;
 public class BatchInversions {
     public ImageResource makeInversion(ImageResource inImage) {
         ImageResource outImage = new ImageResource(inImage.getWidth(), inImage.getHeight());
-        for(Pixel pixel: outImage.pixels()) {
-            Pixel inPixel = inImage.getPixel(pixel.getX(), pixel.getY());
+        for(Pixel outPixel: outImage.pixels()) {
+            Pixel inPixel = inImage.getPixel(outPixel.getX(), outPixel.getY());
             
             int invertedRed = 255 - inPixel.getRed();
             int invertedGreen = 255 - inPixel.getGreen();
             int invertedBlue = 255 - inPixel.getBlue();
             
-            inPixel.setRed(invertedRed);
-            inPixel.setGreen(invertedGreen);
-            inPixel.setBlue(invertedBlue);
+            outPixel.setRed(invertedRed);
+            outPixel.setGreen(invertedGreen);
+            outPixel.setBlue(invertedBlue);
         }
         return outImage;
     }
