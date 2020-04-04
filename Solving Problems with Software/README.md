@@ -1,5 +1,15 @@
 # Description of the projects 🧰
 
+The following projects have been developed by addressing problems using a method called the seven-step approach. This sort of framework has the following steps:
+
+1. Work the example by hand.
+2. Write Down what you did.
+3. Find patterns.
+4. Check by hand.
+4. Translate to Code.
+5. Run Test Cases.
+5. Debug failed test cases.
+
 ## Perimeter of a Shape
 
 * This project can calculate the perimeter of a shape in the coordinate plane.
