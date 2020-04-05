@@ -2,7 +2,7 @@
 
 The following projects have been developed by addressing problems using a method called the seven-step approach. This sort of framework has the following steps:
 
-1. Work the example by hand.
+1. Work a small example.
 2. Write Down what you did.
 3. Find patterns.
 4. Check by hand.
