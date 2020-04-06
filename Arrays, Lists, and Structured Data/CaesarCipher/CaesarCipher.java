@@ -9,8 +9,9 @@ import edu.duke.*;
 public class CaesarCipher {
     
     public String encrypt(String input, int key) {
-        input = input.toUpperCase();
-        StringBuilder encrypted = new StringBuilder(input);
+        // Using the upper case version of the input to make the comparison of indexes.
+        String upperInput = input.toUpperCase();
+        StringBuilder encrypted = new StringBuilder(upperInput);
         String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         // Computing the shifted alphabet
         String shiftedAlphabet = alphabet.substring(key) + alphabet.substring(0, key);
@@ -26,7 +27,16 @@ public class CaesarCipher {
             // If currChar is in the alphabet
             if(idx != -1) {
                 char newChar = shiftedAlphabet.charAt(idx);
-                encrypted.setCharAt(i, newChar);
+                
+                // If the character of input is in upper case, we directly replace with an upper case character
+                // Otherwise, it should be an upper case version.
+                if(Character.isUpperCase(input.charAt(i))) {
+                    encrypted.setCharAt(i, newChar);
+                } else {
+                    newChar = Character.toLowerCase(newChar);
+                    encrypted.setCharAt(i, newChar);
+                }
+                
             }
         }
         
@@ -34,14 +44,19 @@ public class CaesarCipher {
     }
     
     public void testCaesar() {
+        // int key = 17;
+        // FileResource fr = new FileResource();
+        // String message = fr.asString();
         int key = 17;
-        FileResource fr = new FileResource();
-        String message = fr.asString();
+        String message = "First Legion";
+        System.out.println("key is " + key);
         
         String encrypted = encrypt(message, key);
-        System.out.print(encrypted);
+        System.out.println("Encrypted:");
+        System.out.println(encrypted);
         
-        String decrypted = encrypt(encrypted, 26 - key);
-        System.out.print(decrypted);
+        // System.out.println("Decrypted:");
+        // String decrypted = encrypt(encrypted, 26 - key);
+        // System.out.println(decrypted);
     }
 }
