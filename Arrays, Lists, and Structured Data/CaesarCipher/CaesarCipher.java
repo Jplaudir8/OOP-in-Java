@@ -9,6 +9,7 @@ import edu.duke.*;
 public class CaesarCipher {
     
     public String encrypt(String input, int key) {
+        input = input.toUpperCase();
         StringBuilder encrypted = new StringBuilder(input);
         String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         // Computing the shifted alphabet
@@ -18,9 +19,11 @@ public class CaesarCipher {
         // System.out.println(shiftedAlphabet);
         
         for (int i = 0; i < encrypted.length(); i++) {
+            // Look at the ith character of encrypted
             char currChar = encrypted.charAt(i);
+            // Find the index of currcChar in the alphabet
             int idx = alphabet.indexOf(currChar);
-            
+            // If currChar is in the alphabet
             if(idx != -1) {
                 char newChar = shiftedAlphabet.charAt(idx);
                 encrypted.setCharAt(i, newChar);
@@ -34,8 +37,10 @@ public class CaesarCipher {
         int key = 17;
         FileResource fr = new FileResource();
         String message = fr.asString();
+        
         String encrypted = encrypt(message, key);
         System.out.print(encrypted);
+        
         String decrypted = encrypt(encrypted, 26 - key);
         System.out.print(decrypted);
     }
