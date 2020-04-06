@@ -1,3 +1,4 @@
+import edu.duke.*;
 
 /**
  * Write a description of CaesarCipher here.
@@ -13,8 +14,8 @@ public class CaesarCipher {
         // Computing the shifted alphabet
         String shiftedAlphabet = alphabet.substring(key) + alphabet.substring(0, key);
         
-        System.out.println(alphabet);
-        System.out.println(shiftedAlphabet);
+        // System.out.println(alphabet);
+        // System.out.println(shiftedAlphabet);
         
         for (int i = 0; i < encrypted.length(); i++) {
             char currChar = encrypted.charAt(i);
@@ -29,5 +30,13 @@ public class CaesarCipher {
         return encrypted.toString();
     }
     
-    
+    public void testCaesar() {
+        int key = 17;
+        FileResource fr = new FileResource();
+        String message = fr.asString();
+        String encrypted = encrypt(message, key);
+        System.out.print(encrypted);
+        String decrypted = encrypt(encrypted, 26 - key);
+        System.out.print(decrypted);
+    }
 }
