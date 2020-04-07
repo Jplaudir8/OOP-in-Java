@@ -43,20 +43,45 @@ public class CaesarCipher {
         return encrypted.toString();
     }
     
-    public void testCaesar() {
+    public void testEncrypt() {
         // int key = 17;
         // FileResource fr = new FileResource();
         // String message = fr.asString();
         int key = 17;
         String message = "First Legion";
+        System.out.println("Message: " + message);
         System.out.println("key is " + key);
         
         String encrypted = encrypt(message, key);
-        System.out.println("Encrypted:");
-        System.out.println(encrypted);
+        System.out.println("Encrypted: \n" + encrypted);
         
         // System.out.println("Decrypted:");
         // String decrypted = encrypt(encrypted, 26 - key);
         // System.out.println(decrypted);
+    }
+        
+    public String encryptTwoKeys(String input, int key1, int key2) {
+        StringBuilder encrypted = new StringBuilder(input);
+        for(int i = 0; i < input.length(); i++) {
+            String ch = encrypted.charAt(i)+"";
+            if(i % 2 == 0) {
+                encrypted.setCharAt(i, encrypt(ch, key1).charAt(0));
+            } else {
+                encrypted.setCharAt(i, encrypt(ch, key2).charAt(0));
+            }
+        }
+        
+        return encrypted.toString();
+    }
+    
+    public void testEncryptTwoKeys() {
+        int key1 = 23;
+        int key2 = 17;
+        String message = "First Legion";
+        System.out.println("Message: " + message);
+        System.out.println("key1: " + key1 + "\nKey2: " + key2);
+        
+        String encrypted = encryptTwoKeys(message, key1, key2);
+        System.out.println("Encrypted: \n" + encrypted);
     }
 }
