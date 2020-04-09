@@ -2,4 +2,8 @@
 comment0.target=WordLengths
 comment1.params=resource\ counts
 comment1.target=void\ countWordLengths(edu.duke.FileResource,\ int[])
-numComments=2
+comment2.params=values
+comment2.target=int\ indexOfMax(int[])
+comment3.params=
+comment3.target=void\ testCountWordLengths()
+numComments=4
