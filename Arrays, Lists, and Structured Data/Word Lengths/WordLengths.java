@@ -58,17 +58,5 @@ public class WordLengths {
         }
         System.out.println("The greatest frequency is : " + mostFrequent);
     }
-    
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
