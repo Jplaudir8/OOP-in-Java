@@ -18,12 +18,27 @@ public class CaesarBreaker {
         return counts;
     }
     
-    public void maxIndex(){}
+    public int maxIndex(int[] values){
+        int maxIdx = 0;
+        for(int i = 0; i < values.length; i++){
+            if(values[i] > values[maxIdx]) {
+                maxIdx = i;
+            }
+        }
+        return maxIdx;
+    }
     
-    public void decrypt(String encrypted) {
-    
+    public String decrypt(String encrypted) {
+        
         CaesarCipher cc = new CaesarCipher();
         int[] freqs = countLetters(encrypted);
-    
+        int maxDex = maxIndex(freqs);
+        int dkey = maxDex - 4;
+        
+        if(maxDex < 4) {
+            dkey = 26 - (4 - maxDex);
+        }
+        
+        return cc.encrypt(encrypted, 26 - dkey);
     }
 }
