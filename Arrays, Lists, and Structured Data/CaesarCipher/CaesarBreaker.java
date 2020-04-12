@@ -4,6 +4,9 @@
  * 
  * @author Joan Perez Lozano
  */
+
+import edu.duke.*;
+
 public class CaesarBreaker {
     public int[] countLetters(String message) {
         String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -72,8 +75,28 @@ public class CaesarBreaker {
         return 26 - dkey;
     }
     
+    public String decryptTwoKeys(String encrypted) {
+        String firstHalf = halfOfString(encrypted, 0);
+        String secondHalf = halfOfString(encrypted, 1);
+        int key1 = getKey(firstHalf);
+        System.out.println("Keys used to encrypt the message");
+        System.out.println("key 1: " + (26 - key1));
+        int key2 = getKey(secondHalf);
+        System.out.println("key 2: " + (26 - key2));
+        CaesarCipher cc = new CaesarCipher();
+        
+        return cc.encryptTwoKeys(encrypted, key1, key2);
+    } 
     
+    public void testDecryptTwoKeys() {
+        FileResource fr = new FileResource();
+        String encrypted = fr.asString();
+        System.out.println("Encrypted message: " + encrypted);
+        System.out.println("Decrypted message:" + decryptTwoKeys(encrypted));
     
-    
+        // String encrypted = "Akag tjw Xibhr awoa aoee xakex znxag xwko";
+        // System.out.println("Encrypted message: " + encrypted);
+        // System.out.println("Decrypted message:" + decryptTwoKeys(encrypted));
+    }
     
 }
