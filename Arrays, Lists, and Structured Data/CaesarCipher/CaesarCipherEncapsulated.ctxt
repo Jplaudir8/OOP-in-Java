@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=CaesarCipherEncapsulated
+comment0.text=\n\ This\ class\ has\ the\ same\ functionality\ as\ the\ "CaesarCipher"\ class,\ \n\ but\ it\ takes\ a\ different\ approach\ by\ making\ use\ of\ encapsuation,\n\ giving\ a\ better\ implementation\ design.\n\ \n\ @author\ Joan\ Perez\ Lozano\n
+comment1.params=key
+comment1.target=CaesarCipherEncapsulated(int)
+comment1.text=\n\ Initialize\ the\ alphabet\ and\n\ shiftedAlphabet\ variables.\n\ \n\ @param\ key\ \ \ the\ encryption\ key\n
+comment2.params=input
+comment2.target=java.lang.String\ encrypt(java.lang.String)
+comment2.text=\n\ Encrypt\ the\ message\ using\ the\ initialized\ key.\ \n\ \n\ @param\ input\ \ \ message\ to\ be\ encrypted\n\ @return\ \ \ \ \ \ \ \ the\ encrypted\ message\n
+comment3.params=
+comment3.target=void\ testEncrypt()
+comment3.text=\n\ Test\ driver\ for\ encrypt\ method.\n
+comment4.params=input\ key1\ key2
+comment4.target=java.lang.String\ encryptTwoKeys(java.lang.String,\ int,\ int)
+comment4.text=\n\ Encrypt\ message\ using\ two\ keys,\ the\ first\ key\ used\ for\ every\ other\n\ character\ of\ the\ input\ starting\ from\ index\ 0,\ the\ second\ key\ for\n\ every\ other\ character\ of\ the\ input\ starting\ from\ index\ 1.\n\ \n\ @param\ \ input\ \ \ \ message\ to\ be\ encrypted.\n\ @param\ \ key1\ \ \ \ \ encryption\ key.\n\ @param\ \ key2\ \ \ \ \ encryption\ key.\n\ @return\ \ \ \ \ \ \ \ \ \ the\ encrypted\ message\n
+comment5.params=
+comment5.target=void\ testEncryptTwoKeys()
+comment5.text=\n\ Test\ driver\ for\ encryptTwoKeys\ method.\n
+numComments=6
