@@ -8,8 +8,9 @@
  */
 public class CaesarCipherEncapsulated {
     /**
-    * These variables will serve us to store the alphabet and a shifted 
-    * alphabet based upon the creation of the encryption key.
+    * These fields or instance variables will serve us to store the 
+    * alphabet and a shifted alphabet based upon the creation of the 
+    * encryption key.
     */
     private String alphabet;
     private String shiftedAlphabet;
