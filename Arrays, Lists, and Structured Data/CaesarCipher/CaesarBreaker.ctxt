@@ -11,4 +11,6 @@ comment4.params=
 comment4.target=void\ testDecrypt()
 comment5.params=message\ start
 comment5.target=java.lang.String\ halfOfString(java.lang.String,\ int)
-numComments=6
+comment6.params=s
+comment6.target=int\ getKey(java.lang.String)
+numComments=7

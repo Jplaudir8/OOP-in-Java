@@ -62,7 +62,15 @@ public class CaesarBreaker {
         return sb.toString();
     }
     
-    
+    public int getKey(String s) {
+        int[] freqs = countLetters(s);
+        int maxDex = maxIndex(freqs);
+        int dkey = maxDex - 4;
+        if (maxDex < 4) {
+            dkey = 26 - (4 - maxDex);
+        }
+        return 26 - dkey;
+    }
     
     
     
