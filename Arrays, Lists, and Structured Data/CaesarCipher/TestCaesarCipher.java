@@ -7,7 +7,7 @@
 import edu.duke.*;
 
 public class TestCaesarCipher {
-     public int[] countLetters(String message) {
+    public int[] countLetters(String message) {
         String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         int[] counts = new int[26];
         for(int i = 0; i < message.length(); i++){
@@ -19,7 +19,7 @@ public class TestCaesarCipher {
         }
         return counts;
     }
-    
+
     public int maxIndex(int[] values){
         int maxIdx = 0;
         for(int i = 0; i < values.length; i++){
@@ -29,7 +29,7 @@ public class TestCaesarCipher {
         }
         return maxIdx;
     }
-    
+
     public void simpleTests() {
         FileResource fr = new FileResource();
         String message = fr.asString();
@@ -38,5 +38,20 @@ public class TestCaesarCipher {
         System.out.println("The encrypted message is: " + encrypted);
         String decrypted = cc.decrypt(encrypted);
         System.out.println("The decrypted message is: " + decrypted);
+        
+        String breakDecrypted = breakCaesarCipher(encrypted);
+        System.out.println("Decrypted string using breakCaesarCipher():\n"+breakDecrypted);
+    }
+
+    public String breakCaesarCipher(String input) {
+        int[] freqs = countLetters(input); 
+        int maxDex = maxIndex(freqs);
+        int dkey = maxDex - 4;
+
+        if(maxDex < 4) {
+            dkey = 26 - (4 - maxDex);
+        }
+        CaesarCipherEncapsulated cc = new CaesarCipherEncapsulated(dkey);
+        return cc.decrypt(input);
     }
 }
