@@ -14,6 +14,7 @@ public class CaesarCipherEncapsulated {
     */
     private String alphabet;
     private String shiftedAlphabet;
+    private int mainKey;
     
     /**
      * Initialize the alphabet and
@@ -25,6 +26,7 @@ public class CaesarCipherEncapsulated {
         alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         // Computing the shifted alphabet
         shiftedAlphabet = alphabet.substring(key) + alphabet.substring(0, key);
+        mainKey = key;
     }
     
     /**
@@ -119,5 +121,15 @@ public class CaesarCipherEncapsulated {
         String encrypted = encryptTwoKeys(message, key1, key2);
         System.out.println("Encrypted: \n" + encrypted);
     }
-
+    
+    /**
+     * Decrypt message by using mainKey.
+     * 
+     * @param input     Message to be decrypted.
+     */
+    public String decrypt(String input) {
+        CaesarCipherEncapsulated cc = new CaesarCipherEncapsulated(26 - mainKey);
+        return cc.encrypt(input);
+    }
+    
 }
