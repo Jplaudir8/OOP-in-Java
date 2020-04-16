@@ -7,7 +7,10 @@
 import edu.duke.*;
 
 public class TestCaesarCipher {
-    public int[] countLetters(String message) {
+    /**
+     * helper function to breakCaesarCipher()
+     */
+    private int[] countLetters(String message) {
         String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         int[] counts = new int[26];
         for(int i = 0; i < message.length(); i++){
@@ -44,7 +47,9 @@ public class TestCaesarCipher {
     }
 
     public String breakCaesarCipher(String input) {
+        // Calculating the frequency of letters
         int[] freqs = countLetters(input); 
+        // Computing the index of the largest frequency
         int maxDex = maxIndex(freqs);
         int dkey = maxDex - 4;
 
