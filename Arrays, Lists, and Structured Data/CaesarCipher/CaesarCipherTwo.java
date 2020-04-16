@@ -33,7 +33,19 @@ public class CaesarCipherTwo {
                 encrypted.setCharAt(i, enc2.encrypt(ch).charAt(0));
             }
         }
-        
         return encrypted.toString();
     }
+    
+    public String decrypt(String input) {
+        CaesarCipherTwo cc = new CaesarCipherTwo(26 - mainKey1, 26 - mainKey2);
+        return cc.encrypt(input);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
 }

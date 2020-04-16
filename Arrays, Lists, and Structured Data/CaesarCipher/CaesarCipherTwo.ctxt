@@ -5,4 +5,6 @@ comment1.params=key1\ key2
 comment1.target=CaesarCipherTwo(int,\ int)
 comment2.params=input
 comment2.target=java.lang.String\ encrypt(java.lang.String)
-numComments=3
+comment3.params=input
+comment3.target=java.lang.String\ decrypt(java.lang.String)
+numComments=4
