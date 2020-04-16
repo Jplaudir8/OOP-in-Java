@@ -8,4 +8,6 @@ comment3.params=values
 comment3.target=int\ maxIndex(int[])
 comment4.params=
 comment4.target=void\ simpleTests()
-numComments=5
+comment5.params=input
+comment5.target=java.lang.String\ breakCaesarCipher(java.lang.String)
+numComments=6

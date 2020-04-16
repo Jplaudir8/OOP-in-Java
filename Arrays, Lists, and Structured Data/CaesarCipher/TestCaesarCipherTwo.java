@@ -48,9 +48,22 @@ public class TestCaesarCipherTwo {
         System.out.println("Encrypted message: " + encrypted);
         String decrypted = cct.decrypt(encrypted);
         System.out.println("Decrypted message: " + decrypted);
+        
+        String breakCC = breakCaesarCipher(encrypted);
+        System.out.println("Decrypted with breakCaesarCipher: " + breakCC);
     }
     
-    
-    
-    
+    public String breakCaesarCipher(String input) {
+        // Extracting every other characters
+        String message1 = halfOfString(input,0);
+        String message2 = halfOfString(input,1);
+        // Determining keys
+        CaesarBreaker cb = new CaesarBreaker();
+        int key1 = cb.getKey(message1);
+        int key2 = cb.getKey(message2);
+        // Initializing found keys
+        CaesarCipherTwo cct = new CaesarCipherTwo(key1, key2);
+        return cct.decrypt(input);
+    }
+
 }
