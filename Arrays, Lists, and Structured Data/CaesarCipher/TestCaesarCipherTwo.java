@@ -40,10 +40,10 @@ public class TestCaesarCipherTwo {
     }
     
     public void simpleTests() {
-        FileResource fr = new FileResource();
-        String message = fr.asString();
+        // FileResource fr = new FileResource();
+        String message = "Hfs cpwewloj loks cd Hoto kyg Cyy.";
         // Hardcoding encryption keys
-        CaesarCipherTwo cct = new CaesarCipherTwo(17, 3);
+        CaesarCipherTwo cct = new CaesarCipherTwo(21, 8);
         String encrypted = cct.encrypt(message);
         System.out.println("Encrypted message: " + encrypted);
         String decrypted = cct.decrypt(encrypted);

@@ -72,7 +72,7 @@ public class CaesarCipherEncapsulated {
         // FileResource fr = new FileResource();
         // String message = fr.asString();
         int key = 15;
-        String message = "At noon be in the conference room with your hat on for a surprise party. YELL LOUD!";
+        String message = "Can you imagine life WITHOUT the internet AND computers in your pocket?";
         System.out.println("Message: " + message);
         System.out.println("key is " + key);
 
@@ -112,9 +112,9 @@ public class CaesarCipherEncapsulated {
      * Test driver for encryptTwoKeys method.
      */
     public void testEncryptTwoKeys() {
-        int key1 = 8;
-        int key2 = 21;
-        String message = "At noon be in the conference room with your hat on for a surprise party. YELL LOUD!";
+        int key1 = 21;
+        int key2 = 8;
+        String message = "Can you imagine life WITHOUT the internet AND computers in your pocket?";
         System.out.println("Message: " + message);
         System.out.println("key1: " + key1 + "\nKey2: " + key2);
 
