@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=CharactersInPlay
+comment1.params=
+comment1.target=CharactersInPlay()
+comment1.text=\n\ Initialize\ instance\ variables.\n
+comment2.params=person
+comment2.target=void\ update(java.lang.String)
+comment2.text=\n\ Update\ both\ instance\ variables\ according\ to\ the\ counting\ of\ \n\ character\ names.\n\ \n\ @param\ \ \ person\ \ name\ of\ the\ character.\n
+comment3.params=
+comment3.target=void\ findAllCharacters()
+comment3.text=\n\ Look\ up\ for\ the\ possible\ characters\ names\n
+comment4.params=
+comment4.target=void\ tester()
+comment5.params=num1\ num2
+comment5.target=void\ charactersWithNumParts(int,\ int)
+numComments=6
