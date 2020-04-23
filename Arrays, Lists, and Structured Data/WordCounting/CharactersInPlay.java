@@ -32,16 +32,16 @@ public class CharactersInPlay {
      */
     public void update(String person) {
         person = person.toLowerCase();
-        for(int i = 0; i < characters.size(); i++){
-            int index = characters.indexOf(person);
-            if (index == -1){
-                characters.add(person);
-                characterFreqs.add(1);
-            } else {
-                int freq = characterFreqs.get(index);
-                characterFreqs.set(index, freq + 1);
-            }
+        int index = characters.indexOf(person);
+
+        if (index == -1){
+            characters.add(person);
+            characterFreqs.add(1);
+        } else {
+            int freq = characterFreqs.get(index);
+            characterFreqs.set(index, freq + 1);
         }
+        
     }
     
     /**
@@ -52,22 +52,36 @@ public class CharactersInPlay {
         characterFreqs.clear();
         FileResource resource = new FileResource();
         
-        for(String s: resource.words()) {
-            int idx = s.indexOf(".");
+        for(String line: resource.lines()) {
+            int idx = line.indexOf(".");
             // If there is a period found, Update with the strand of 
             // characters before the period.
             if(idx != -1) {
-                update(s.substring(0, idx));
+                update(line.substring(0, idx).trim());
             }  
         }
     }
     
+    /**
+     * Test driver for findAllCharacters method
+     */
     public void tester() { 
- 
+        findAllCharacters();
+        for(int i = 0; i < characters.size(); i++) {
+            if(characterFreqs.get(i) > 1) {
+                System.out.println(characters.get(i) + "\t" + characterFreqs.get(i));
+            }
+        }
+        System.out.print("Testing range filtering");
+        charactersWithNumParts(40, 60);
     }
     
     public void charactersWithNumParts(int num1, int num2) {
-    
+        for (int i = 0; i < characterFreqs.size(); i++) {
+            if (characterFreqs.get(i) >= num1 && characterFreqs.get(i) <= num2) {
+                System.out.println(characters.get(i) + "\t" + characterFreqs.get(i));
+            }
+        }
     }
     
     

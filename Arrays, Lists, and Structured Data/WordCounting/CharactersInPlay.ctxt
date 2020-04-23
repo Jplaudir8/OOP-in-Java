@@ -11,6 +11,7 @@ comment3.target=void\ findAllCharacters()
 comment3.text=\n\ Look\ up\ for\ the\ possible\ characters\ names\n
 comment4.params=
 comment4.target=void\ tester()
+comment4.text=\n\ Test\ driver\ for\ findAllCharacters\ method\n
 comment5.params=num1\ num2
 comment5.target=void\ charactersWithNumParts(int,\ int)
 numComments=6
