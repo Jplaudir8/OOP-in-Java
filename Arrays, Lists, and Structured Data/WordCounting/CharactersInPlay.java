@@ -72,8 +72,8 @@ public class CharactersInPlay {
                 System.out.println(characters.get(i) + "\t" + characterFreqs.get(i));
             }
         }
-        System.out.print("Testing range filtering");
-        charactersWithNumParts(40, 60);
+        System.out.println("Testing charactersWithNumParts method");
+        charactersWithNumParts(10, 15);
     }
     
     public void charactersWithNumParts(int num1, int num2) {
