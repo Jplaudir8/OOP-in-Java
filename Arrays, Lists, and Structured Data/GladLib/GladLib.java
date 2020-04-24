@@ -10,6 +10,7 @@ public class GladLib {
     private ArrayList<String> animalList;
     private ArrayList<String> timeList;
     private ArrayList<String> verbList;
+    private ArrayList<String> fruitList;
     private Random myRandom;
 
     private static String dataSourceURL = "http://dukelearntoprogram.com/course3/data";
@@ -34,6 +35,7 @@ public class GladLib {
         animalList = readIt(source+"/animal.txt");
         timeList = readIt(source+"/timeframe.txt");
         verbList = readIt(source+"/verb.txt");
+        fruitList = readIt(source+"/fruit.txt");
     }
 
     private String randomFrom(ArrayList<String> source){
@@ -65,6 +67,9 @@ public class GladLib {
         }
         if (label.equals("verb")){
             return randomFrom(verbList);
+        }
+        if (label.equals("fruit")){
+            return randomFrom(fruitList);
         }
         if (label.equals("number")){
             return ""+myRandom.nextInt(50)+5;
@@ -137,6 +142,6 @@ public class GladLib {
         String story = fromTemplate("data/madtemplate2.txt");
         printOut(story, 60);
     }
-
-
+    
+    
 }
