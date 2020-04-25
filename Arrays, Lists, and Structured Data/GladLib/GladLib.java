@@ -12,13 +12,15 @@ public class GladLib {
     private ArrayList<String> verbList;
     private ArrayList<String> fruitList;
     private Random myRandom;
-
+    private ArrayList<String> alreadyPickedList;
+    
     private static String dataSourceURL = "http://dukelearntoprogram.com/course3/data";
     private static String dataSourceDirectory = "data";
 
     public GladLib(){
         initializeFromSource(dataSourceDirectory);
         myRandom = new Random();
+        alreadyPickedList = new ArrayList<String>();
     }
 
     public GladLib(String source){
@@ -86,10 +88,17 @@ public class GladLib {
         String prefix = w.substring(0,first);
         String suffix = w.substring(last+1);
         String sub = getSubstitute(w.substring(first+1,last));
+        int idx = alreadyPickedList.indexOf(sub);
+        if(idx == -1) {
+            alreadyPickedList.add(sub);
+        } else {
+            sub = getSubstitute(w.substring(first+1,last));
+        }
         return prefix+sub+suffix;
     }
 
     private void printOut(String s, int lineWidth){
+        
         int charsWritten = 0;
         
         for(String w : s.split("\\s+")){
@@ -138,9 +147,11 @@ public class GladLib {
     }
 
     public void makeStory(){
+        alreadyPickedList.clear();
         System.out.println("\n");
         String story = fromTemplate("data/madtemplate2.txt");
         printOut(story, 60);
+        System.out.println("\n" + "Number of words replaced: " + alreadyPickedList.size());
     }
     
     
