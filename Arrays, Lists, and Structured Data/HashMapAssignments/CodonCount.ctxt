@@ -2,6 +2,11 @@
 comment0.target=CodonCount
 comment1.params=
 comment1.target=CodonCount()
+comment1.text=\n\ Initialize\ codonMap\n
 comment2.params=start\ dna
 comment2.target=void\ buildCodonMap(int,\ java.lang.String)
-numComments=3
+comment2.text=\n\ Register\ all\ codons\ found\ and\ their\ ocurrences\ in\ the\ HashMap.\n\ \n\ @param\ \ start\ \ \ \ the\ index\ at\ which\ the\ function\ starts\ reading\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for\ the\ codons.\n\ @param\ \ dna\ \ \ \ \ \ the\ strand\ of\ DNA\ that\ will\ be\ read.\n
+comment3.params=
+comment3.target=java.lang.String\ getMostCommonCodon()
+comment3.text=\n\ Compute\ the\ codon\ that\ has\ the\ most\ ocurrences\ and\ return\ it.\ \n\ If\ more\ than\ one\ has\ the\ same\ ocurrences,\ return\ any.\n\ \n\ @return\ \ the\ codon\ found.\n
+numComments=4
