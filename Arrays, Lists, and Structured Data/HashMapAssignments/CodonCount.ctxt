@@ -9,4 +9,6 @@ comment2.text=\n\ Register\ all\ codons\ found\ and\ their\ ocurrences\ in\ the\
 comment3.params=
 comment3.target=java.lang.String\ getMostCommonCodon()
 comment3.text=\n\ Compute\ the\ codon\ that\ has\ the\ most\ ocurrences\ and\ return\ it.\ \n\ If\ more\ than\ one\ has\ the\ same\ ocurrences,\ return\ any.\n\ \n\ @return\ \ the\ codon\ found.\n
-numComments=4
+comment4.params=start\ end
+comment4.target=void\ printCodonCounts(int,\ int)
+numComments=5

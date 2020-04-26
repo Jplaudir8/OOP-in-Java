@@ -30,6 +30,7 @@ public class CodonCount {
      */
     public void buildCodonMap(int start, String dna){
         codonMap.clear();
+        dna = dna.toUpperCase();
         int codons = (dna.length()-start)/3;
         String currentCodon;
         for (int i = 0; i <= codons-1; i++) {
@@ -40,11 +41,6 @@ public class CodonCount {
                 codonMap.put(currentCodon, codonMap.get(currentCodon) + 1);
             }
         }
-        // System.out.println("Codons in list");
-        // for(String s : map.keySet()){
-            // System.out.println(s + " " + map.get(s));
-        // }
-        // System.out.println(map.size());
     }
     
     /**
@@ -70,7 +66,15 @@ public class CodonCount {
         return mostCodon;
     }
     
-    
+    public void printCodonCounts(int start, int end) {
+        System.out.println("Codons which ocurrences are between " + start + " and " + end + " inclusive:");
+        for(String s : codonMap.keySet()){
+            if(codonMap.get(s) >= start && codonMap.get(s) <= end) {
+                System.out.println(s + " " + codonMap.get(s));
+            }
+        }
+        System.out.println(codonMap.size());
+    }
     
     
     
