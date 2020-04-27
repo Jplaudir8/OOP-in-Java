@@ -14,12 +14,14 @@ public class WordsInFiles {
     
     public WordsInFiles() {
         wordsMap = new HashMap <String, ArrayList<String>>();
-        
     }
     
+    /**
+     * OK
+     */
     private void addWordsFromFile(File file) {
-        FileResource fr = new FileResource(file);
         String filename = file.getName();
+        FileResource fr = new FileResource(file);
         
         for(String word : fr.words()) {
             if(!wordsMap.containsKey(word)){
@@ -35,21 +37,20 @@ public class WordsInFiles {
         }
     }
     
+    /**
+     * OK
+     */
     public void buildWordFileMap() {
         wordsMap.clear();
         DirectoryResource dr = new DirectoryResource();
         for(File f : dr.selectedFiles()) {
             addWordsFromFile(f);
         }
-        
-        for(String key : wordsMap.keySet()){
-            System.out.println("key: " + key);
-            for(String value : wordsMap.get(key)) {
-                System.out.println();
-            }
-        }
     }
     
+    /**
+     * OK
+     */
     public int maxNumber() {
         int max = 0;
         for(ArrayList list : wordsMap.values()){
@@ -60,7 +61,10 @@ public class WordsInFiles {
         return max;
     }
     
-    public ArrayList<String> wordsInNumFiles(int number) {
+    /**
+     * OK
+     */
+    private ArrayList<String> wordsInNumFiles(int number) {
         ArrayList<String> words = new ArrayList<String>();
         for(String word : wordsMap.keySet()) {
             // If the size of the arrayList linked to 's' is equals
@@ -76,40 +80,37 @@ public class WordsInFiles {
         if(!wordsMap.containsKey(word)){
             System.out.println("This word does not exist");
         } else {
-            System.out.println(word + " appears in the files: ");
             for(String s : wordsMap.get(word)) {
-                System.out.println(s);
+                System.out.println("\t" + s);
             }
         }
     }
     
     public void tester() {
         buildWordFileMap();
-        System.out.println("The maximum number of files any word is in: " + maxNumber()); 
+        
+        System.out.println("****************************");
+        System.out.println("Printing complete HashMap: ");
+        System.out.println("****************************");
+        // Printing the whole array
+        for(String key : wordsMap.keySet()){
+            System.out.println("key: " + key);
+            System.out.println("\tin Filenames: ");
+            for(String value : wordsMap.get(key)) {
+                System.out.println("\t"+value);
+            }
+        }
+        
+        System.out.println("The maximum number of files any word is in: " 
+                                                        + maxNumber()); 
         
         ArrayList<String> maxWords = wordsInNumFiles(maxNumber());
         System.out.println("Words in the maximum number of files: ");
         for(String s : maxWords){
             System.out.println(s);
-            System.out.println("\tLocated in files: ");
-            printFilesLn("\t "+s);
-        }
-        
-        System.out.println("****************************");
-        System.out.println("Printing complete HashMap: ");
-        System.out.println("****************************");
-        for(String s : wordsMap.keySet()){
-            System.out.println("key: " + s);
-            System.out.println("\tArrayList of " + s);
-            for(String word : wordsMap.get(s)) {
-                printFilesLn("\t" + word);
-            }
+            System.out.println("\tIn file(s): ");
+            printFilesLn(s);
         }
     }
-    
-    
-    
-    
-    
-    
+
 }
