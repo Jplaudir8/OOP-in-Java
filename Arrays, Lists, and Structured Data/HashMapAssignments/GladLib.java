@@ -14,16 +14,16 @@ public class GladLib {
     private ArrayList<String> alreadyPickedList;
     
     private static String dataSourceURL = "http://dukelearntoprogram.com/course3/data";
-    private static String dataSourceDirectory = "data";
+    private static String dataSourceDirectory = "data_GladLib";
     
     /**
      * OK
      */
     public GladLib(){
-        initializeFromSource(dataSourceDirectory);
         myRandom = new Random();
         alreadyPickedList = new ArrayList<String>();
         myMap = new HashMap<String, ArrayList<String>>();
+        initializeFromSource(dataSourceDirectory);
     }
     
     /**
@@ -137,7 +137,7 @@ public class GladLib {
     public void makeStory(){
         alreadyPickedList.clear();
         System.out.println("\n");
-        String story = fromTemplate("data/madtemplate2.txt");
+        String story = fromTemplate("data_GladLib/madtemplate2.txt");
         printOut(story, 60);
         System.out.println("\n" + "Number of words replaced: " + alreadyPickedList.size());
     }
