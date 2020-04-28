@@ -9,6 +9,14 @@ import edu.duke.*;
 import java.util.*;
 
 public class GladLib {
+    /**
+     * These fields or instance variables will be used to store 
+     * a HashMap(myMap) with all the categories mapped to their
+     * respective list of words; hold a variable of type Random 
+     * to help generate random numbers; and an ArrayList(already
+     * pickedList) to store all the words that have already been 
+     * picked from 'myMap'.
+     */
     private HashMap<String, ArrayList<String>> myMap;
     private Random myRandom;
     private ArrayList<String> alreadyPickedList;
@@ -17,7 +25,7 @@ public class GladLib {
     private static String dataSourceDirectory = "data_GladLib";
     
     /**
-     * OK
+     * Initialize instance variables.
      */
     public GladLib(){
         myRandom = new Random();
@@ -27,7 +35,9 @@ public class GladLib {
     }
     
     /**
-     * OK
+     * Initialize instance variables
+     * 
+     * @param  source   filepath or url of the source to be used.
      */
     public GladLib(String source){
         initializeFromSource(source);
@@ -36,7 +46,8 @@ public class GladLib {
     }
     
     /**
-     * OK
+     * Helper method to initialize the lists with their respective
+     * categories and lists.
      */
     private void initializeFromSource(String source) {
         String[] labels = {"adjective", "noun", "color", 
@@ -50,7 +61,7 @@ public class GladLib {
     }
     
     /**
-     * OK
+     * Helper method to generate a random item.
      */
     private String randomFrom(ArrayList<String> source){
         int index = myRandom.nextInt(source.size());
@@ -58,7 +69,10 @@ public class GladLib {
     }
     
     /**
-     * OK
+     * Compute the substitute word based on the lists.
+     * 
+     * @param   label    name of the label. e.g. verb
+     * @return           the new word calculated randomly.
      */
     private String getSubstitute(String label) {
         if (label.equals("number")){
@@ -67,6 +81,12 @@ public class GladLib {
         return randomFrom(myMap.get(label));
     }
 
+    /**
+     * Substitute the label by a word from the list of words.
+     * 
+     * @param  w    label.
+     * @return      the replacing word.
+     */
     private String processWord(String w){
         int first = w.indexOf("<");
         int last = w.indexOf(">",first);
@@ -84,7 +104,11 @@ public class GladLib {
         }
         return prefix+sub+suffix;
     }
-
+    
+    /**
+     * Helper method to print out the story in a more effective way
+     * for the reader.
+     */
     private void printOut(String s, int lineWidth){
         
         int charsWritten = 0;
@@ -99,7 +123,13 @@ public class GladLib {
             charsWritten += w.length() + 1;
         }
     }
-
+    
+    /**
+     * Create story based on template provided
+     * 
+     * @return  strand of characters that conform the whole story with
+     * labels replaced.
+     */
     private String fromTemplate(String source){
         String story = "";
         if (source.startsWith("http")) {
@@ -116,7 +146,13 @@ public class GladLib {
         }
         return story;
     }
-
+    
+    /**
+     * Read the source provided by iterating over every line of the file.
+     * 
+     * @param  source   filepath or url of the source to access the files.
+     * @return          ArrayList of words that have been found.
+     */
     private ArrayList<String> readIt(String source){
         ArrayList<String> list = new ArrayList<String>();
         if (source.startsWith("http")) {
@@ -133,7 +169,42 @@ public class GladLib {
         }
         return list;
     }
-
+    
+    /**
+     * Print out the total number of words that were possible 
+     * to pick from.
+     * 
+     * @return  total number of words in the HashMap.
+     */
+    private int totalWordsInMap() {
+        int counter = 0;
+        for(ArrayList<String> s : myMap.values()){
+            counter += s.size();
+        }
+        return counter;
+    }
+    
+    /**
+     * Compute the total number of words in the ArrayLists of the 
+     * categories that were used for a particular GladLib.
+     *
+     * @return  the total number of words from these categories
+     */
+    public int totalWordsConsidered() { 
+        int sum = 0;
+        for(String category : myMap.keySet()){
+            for (String word : myMap.get(category)){
+                if(alreadyPickedList.contains(word)) {
+                    sum += myMap.get(category).size();
+                }
+            }
+        }
+        return sum;
+    }
+    
+    /**
+     * Create story based on template provided.
+     */
     public void makeStory(){
         alreadyPickedList.clear();
         System.out.println("\n");
@@ -141,6 +212,4 @@ public class GladLib {
         printOut(story, 60);
         System.out.println("\n" + "Number of words replaced: " + alreadyPickedList.size());
     }
-    
-    
 }
