@@ -105,12 +105,30 @@ public class WordsInFiles {
                                                         + maxNumber()); 
         
         ArrayList<String> maxWords = wordsInNumFiles(maxNumber());
-        System.out.println("Words in the maximum number of files: ");
-        for(String s : maxWords){
-            System.out.println(s);
-            System.out.println("\tIn file(s): ");
-            printFilesLn(s);
-        }
+        
+        System.out.println("Number of words that occur in 7 files: " + wordsInNumFiles(7).size());
+        
+        System.out.println("Number of words that occur in 5 files: " + wordsInNumFiles(5).size()); 
+        
+        System.out.println("Number of words that occur in 4 files: " + wordsInNumFiles(4).size()); 
+        
+        System.out.println("The word \"tree\" appears in files: ");
+        printFilesLn("tree");
+        
+        System.out.println("The word \"laid\" appears in files: ");
+        printFilesLn("laid");
+        
+        System.out.println("The word \"sad\" appears in files: ");
+        printFilesLn("sad");
+        
+        System.out.println("The word \"red\" appears in files: ");
+        printFilesLn("red");
+        // System.out.println("Words in the maximum number of files: ");
+        // for(String s : maxWords){
+            // System.out.println(s);
+            // System.out.println("\tIn file(s): ");
+            // printFilesLn(s);
+        // }
     }
 
 }

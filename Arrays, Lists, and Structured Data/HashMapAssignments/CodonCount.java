@@ -82,14 +82,14 @@ public class CodonCount {
     }
     
     public void tester() {
-        FileResource dna = new FileResource("data/smalldna.txt");
+        FileResource dna = new FileResource("dnaMystery2.txt");
         // We trimmed dna.asString as the convention for text files is
         // to end with a line break, hence our computation may interpret
         // our string variable with an extra space.
         String dnaString = dna.asString().trim();
         // Codon limits for printing out
         int start = 1;
-        int end = 5;
+        int end = 8;
         for(int i = 0; i <= 2; i++) {
             buildCodonMap(i, dnaString);
             System.out.println("Reading frame starting with " +i+" results in " + codonMap.size() +" unique codons");
@@ -98,10 +98,5 @@ public class CodonCount {
             printCodonCounts(start, end);
         }
     }
-    
-    
-    
-    
-    
-    
+
 }
