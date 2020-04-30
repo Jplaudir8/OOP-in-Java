@@ -1,4 +1,4 @@
-# Web Server Log Concepts
+# Web Server Log Concepts 💻
 
 The Java programs in this folder, will be able to:
 
