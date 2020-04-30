@@ -1,8 +1,8 @@
 #BlueJ package file
-editor.fx.0.height=1008
-editor.fx.0.width=700
-editor.fx.0.x=1092
-editor.fx.0.y=23
+editor.fx.0.height=0
+editor.fx.0.width=0
+editor.fx.0.x=0
+editor.fx.0.y=0
 objectbench.height=164
 objectbench.width=523
 package.divider.horizontal=0.6
@@ -28,7 +28,7 @@ target1.name=GladLib
 target1.showInterface=false
 target1.type=ClassTarget
 target1.typeParameters=
-target1.width=100
+target1.width=80
 target1.x=80
 target1.y=160
 target2.height=50
