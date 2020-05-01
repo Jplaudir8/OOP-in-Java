@@ -2,13 +2,12 @@
 /**
  * Write a description of class LogRecord here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Joan Perez Lozano
  */
 
 import  java.util.*;
-public class LogEntry
-{
+public class LogEntry {
+    
      private String ipAddress;
      private Date accessTime;
      private String request;
