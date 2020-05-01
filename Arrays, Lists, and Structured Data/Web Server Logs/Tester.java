@@ -17,10 +17,17 @@ public class Tester {
     
     public void testLogAnalyzer() {
         LogAnalyzer la = new LogAnalyzer();
-        la.readFile("short-test_log");
+        la.readFile("weblog-short_log"); // Reading file
         la.printAll();
+        
         int statusCodeCutoff = 200;
         System.out.println("Printing log entries that have status code greater than " + statusCodeCutoff);
         la.printAllHigherThanNum(statusCodeCutoff);
+        
+        String date = "Sep 14";
+        System.out.println("Printing log entries that have date: " + date);
+        for(String le : la.uniqueIPVisitsOnDay(date)) {
+            System.out.println(le);
+        }
     }
 }

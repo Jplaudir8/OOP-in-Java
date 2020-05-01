@@ -13,6 +13,9 @@ public class LogAnalyzer {
      */
     private ArrayList<LogEntry> records;
     
+    /**
+     * Initialize records ArrayList.
+     */
     public LogAnalyzer() {
         records = new ArrayList<LogEntry>();
     }
@@ -43,6 +46,24 @@ public class LogAnalyzer {
             }
         }
         return uniqueIPs.size();
+    }
+    
+    /**
+     * Compute ArrayList of Strings of unique IP addresses that had access on the given day, using the param 'someday'.
+     *
+     * @param   someday     Date that will be used to look up for the IP addresses. 
+     *                      Example of format to be received in the param: "Sep 14", "Sep 30".
+     * @return              ArrayList of IP addresses that accessed the site on that day.
+     */
+    public ArrayList<String> uniqueIPVisitsOnDay(String someday) {
+        ArrayList<String> ipsInDay = new ArrayList<String>();
+        for(LogEntry le : records) {
+            String dateStr = le.getAccessTime().toString();
+            if(dateStr.indexOf(someday) != -1 && !ipsInDay.contains(le.getIpAddress())) {
+                ipsInDay.add(le.getIpAddress());
+            }
+        }
+        return ipsInDay;
     }
     
     /**
