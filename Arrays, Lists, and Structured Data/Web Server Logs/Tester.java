@@ -17,7 +17,7 @@ public class Tester {
     
     public void testLogAnalyzer() {
         LogAnalyzer la = new LogAnalyzer();
-        la.readFile("weblog-short_log"); // Reading file
+        la.readFile("short-test_log"); // Reading file
         la.printAll();
         
         int statusCodeCutoff = 200;
@@ -29,5 +29,10 @@ public class Tester {
         for(String le : la.uniqueIPVisitsOnDay(date)) {
             System.out.println(le);
         }
+        
+        int low = 300;
+        int high = 399;
+        System.out.println("Unique IPs in the range: " + low + " and " + high + " inclusive:");
+        System.out.println(la.countUniqueIPsInRange(low, high));
     }
 }

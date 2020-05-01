@@ -67,6 +67,27 @@ public class LogAnalyzer {
     }
     
     /**
+     * Compute the number of unique IP addresses in records that have a status 
+     * code in the range from low to high, inclusive.
+     * 
+     * @param   low     cutoff
+     * @param   high    cutoff
+     * 
+     * @return          number of IPs that have status code in the range provided.
+     */
+    public int countUniqueIPsInRange(int low, int high) {
+        ArrayList<String> ipsInRange = new ArrayList<String>();
+        for(LogEntry le : records) {
+            String ipAddress = le.getIpAddress();
+            int statusCode = le.getStatusCode();
+            if(!ipsInRange.contains(ipAddress) && statusCode >= low && statusCode <= high) {
+                ipsInRange.add(ipAddress);
+            }
+        }
+        return ipsInRange.size();
+    }
+    
+    /**
      * Print all log entries that have a status code greater than 'num' param.
      * 
      * @param   num     the cutoff number that will be used to print.
