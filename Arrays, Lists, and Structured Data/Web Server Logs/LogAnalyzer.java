@@ -17,9 +17,20 @@ public class LogAnalyzer {
     public void readFile(String filename) {
         FileResource fr = new FileResource("data/" + filename);
         for(String line : fr.lines()){
-            records.add(WebLogParser.parseEntry(line));
+            LogEntry le = WebLogParser.parseEntry(line);
+            records.add(le);
         }
-        
+    }
+    
+    public int countUniqueIPs() {
+        ArrayList<String> uniqueIPs = new ArrayList<String>();
+        for(LogEntry le : records) {
+            String ipAddr = le.getIpAddress();
+            if(!uniqueIPs.contains(ipAddr)) {
+                uniqueIPs.add(ipAddr);
+            }
+        }
+        return uniqueIPs.size();
     }
     
     public void printAll() {
