@@ -19,5 +19,8 @@ public class Tester {
         LogAnalyzer la = new LogAnalyzer();
         la.readFile("short-test_log");
         la.printAll();
+        int statusCodeCutoff = 200;
+        System.out.println("Printing log entries that have status code greater than " + statusCodeCutoff);
+        la.printAllHigherThanNum(statusCodeCutoff);
     }
 }
