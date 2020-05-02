@@ -2,7 +2,7 @@
 /**
  * Write a description of class Tester here.
  * 
- * @author (your name) 
+ * Joan Perez Lozano
  */
 
 import java.util.*;
@@ -17,8 +17,8 @@ public class Tester {
     
     public void testLogAnalyzer() {
         LogAnalyzer la = new LogAnalyzer();
-        la.readFile("weblog1_log"); // Reading file
-        la.printAll();
+        la.readFile("weblog3-short_log"); // Reading file
+        //la.printAll();
         
         // int statusCodeCutoff = 400;
         // System.out.println("Printing log entries that have status code greater than " + statusCodeCutoff);
@@ -31,9 +31,14 @@ public class Tester {
             // System.out.println(le);
         // }
         
-        int low = 200;
-        int high = 299;
-        System.out.println("Unique IPs in the range: " + low + " and " + high + " inclusive:");
-        System.out.println(la.countUniqueIPsInRange(low, high));
+        // int low = 200;
+        // int high = 299;
+        // System.out.println("Unique IPs in the range: " + low + " and " + high + " inclusive:");
+        // System.out.println(la.countUniqueIPsInRange(low, high));
+        
+        HashMap<String, Integer> map = la.countVisitsPerIP();
+        System.out.println("Most number of visits found by a single IP Address: " + la.mostNumberVisitsByIP(map));
+        
+        
     }
 }

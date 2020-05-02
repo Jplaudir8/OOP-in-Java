@@ -119,6 +119,24 @@ public class LogAnalyzer {
         }
     }
     
+    /**
+     * Calculate the maximum number of visits to a website by a single IP
+     * 
+     * @param   map     HashMap that contains a map of an IP address to the 
+     *                  number of visits of an IP address to a site.
+     *                  
+     * @return          maximum number encountered.
+     */
+    public int mostNumberVisitsByIP(HashMap<String, Integer> map) {
+        int max = 0;
+        for(Integer n : map.values()) {
+            if(n > max) {
+                max = n;
+            }
+        }
+        return max;
+    }
+    
     public void printAll() {
         for(LogEntry le : records) {
             System.out.println(le); // Automatically calls toString(function)
