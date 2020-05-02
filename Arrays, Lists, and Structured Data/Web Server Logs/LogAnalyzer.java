@@ -92,7 +92,7 @@ public class LogAnalyzer {
      * 
      * @return      a HashMap which stored the number of ocurrences.
      */
-    public HashMap<String, Integer> countVisitsPerIP (){
+    public HashMap<String, Integer> countVisitsPerIP(){
         HashMap<String, Integer> counts = new HashMap<String, Integer>();
         for(LogEntry le : records){
             String ip = le.getIpAddress();
