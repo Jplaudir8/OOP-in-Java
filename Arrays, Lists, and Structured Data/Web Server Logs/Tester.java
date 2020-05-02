@@ -17,21 +17,22 @@ public class Tester {
     
     public void testLogAnalyzer() {
         LogAnalyzer la = new LogAnalyzer();
-        la.readFile("short-test_log"); // Reading file
+        la.readFile("weblog1_log"); // Reading file
         la.printAll();
         
-        int statusCodeCutoff = 200;
-        System.out.println("Printing log entries that have status code greater than " + statusCodeCutoff);
-        la.printAllHigherThanNum(statusCodeCutoff);
+        // int statusCodeCutoff = 400;
+        // System.out.println("Printing log entries that have status code greater than " + statusCodeCutoff);
+        // la.printAllHigherThanNum(statusCodeCutoff);
         
-        String date = "Sep 14";
-        System.out.println("Printing log entries that have date: " + date);
-        for(String le : la.uniqueIPVisitsOnDay(date)) {
-            System.out.println(le);
-        }
+        // String date = "Mar 17";
+        // System.out.println("Printing log entries that have date: " + date);
+        // System.out.println("There are " + la.uniqueIPVisitsOnDay(date).size() + " entries for this date");
+        // for(String le : la.uniqueIPVisitsOnDay(date)) {
+            // System.out.println(le);
+        // }
         
-        int low = 300;
-        int high = 399;
+        int low = 200;
+        int high = 299;
         System.out.println("Unique IPs in the range: " + low + " and " + high + " inclusive:");
         System.out.println(la.countUniqueIPsInRange(low, high));
     }

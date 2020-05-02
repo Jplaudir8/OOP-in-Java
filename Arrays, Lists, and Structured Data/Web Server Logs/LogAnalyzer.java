@@ -88,6 +88,24 @@ public class LogAnalyzer {
     }
     
     /**
+     * Compute the number of visits per Ip address to a website.
+     * 
+     * @return      a HashMap which stored the number of ocurrences.
+     */
+    public HashMap<String, Integer> countVisitsPerIP (){
+        HashMap<String, Integer> counts = new HashMap<String, Integer>();
+        for(LogEntry le : records){
+            String ip = le.getIpAddress();
+            if(!counts.containsKey(ip)) {
+                counts.put(ip, 1);
+            } else {
+                counts.put(ip, counts.get(ip) + 1);
+            }
+        }
+        return counts;
+    }
+    
+    /**
      * Print all log entries that have a status code greater than 'num' param.
      * 
      * @param   num     the cutoff number that will be used to print.
