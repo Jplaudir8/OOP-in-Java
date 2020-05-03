@@ -36,10 +36,22 @@ public class Tester {
         // System.out.println("Unique IPs in the range: " + low + " and " + high + " inclusive:");
         // System.out.println(la.countUniqueIPsInRange(low, high));
         
-        HashMap<String, Integer> map = la.countVisitsPerIP();
-        System.out.println("Most number of visits found by a single IP Address: " + la.mostNumberVisitsByIP(map));
+        // HashMap<String, Integer> map = la.countVisitsPerIP();
+        // System.out.println("Most number of visits found by a single IP Address: " + la.mostNumberVisitsByIP(map));
         
-        System.out.println("IP addresses with maximum number of occurrences: ");
-        System.out.println(la.iPsMostVisits(map));
+        // System.out.println("IP addresses with maximum number of occurrences: ");
+        // System.out.println(la.iPsMostVisits(map));
+        
+        System.out.println("IP addresses per day: ");
+        HashMap<String, ArrayList<String>> ipsPerDay = la.ipsForDays();
+        for(String day : ipsPerDay.keySet()) {
+            System.out.println(day + ":");
+            for(String ips : ipsPerDay.get(day)) {
+                System.out.println("\t" + ips);
+            }
+        }
+
+        String dayMost = la.dayWithMostIPVisits(ipsPerDay);
+        System.out.println("Day with the most number of visits: " + dayMost);
     }
 }

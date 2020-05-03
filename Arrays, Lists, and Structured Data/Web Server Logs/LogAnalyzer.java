@@ -156,20 +156,48 @@ public class LogAnalyzer {
         return ipsMax;
     }
     
+    /**
+     * Creates a HashMap that maps days to an ArrayList of IP's that visited
+     * the website in their respective days. Repeated IP addresses are allowed.
+     * 
+     * @return  HashMap of days to their IP addresses.
+     */
     public HashMap<String, ArrayList<String>> ipsForDays() {
        HashMap<String, ArrayList<String>> ipsDay = new HashMap<String, ArrayList<String>>();
        for(LogEntry le : records) {
-           if(ipsDay.containsKey(le.getAccessTime())){
-               ArrayList<String> ips = ipsDay.get(le.getAccessTime());
+           // Trimming date to the format needed.
+           String dateFmt = le.getAccessTime().toString().substring(4, 10);
+           if(ipsDay.containsKey(dateFmt)){
+               ArrayList<String> ips = ipsDay.get(dateFmt);
                ips.add(le.getIpAddress());
-               ipsDay.put(le.getAccessTime().toString(), ips);
-           }else{
+               ipsDay.put(dateFmt, ips);
+           } else {
                ArrayList<String> ips = new ArrayList<String>();
                ips.add(le.getIpAddress());
-               ipsDay.put(le.getAccessTime().toString(), ips);
+               ipsDay.put(dateFmt, ips);
            }
        }
        return ipsDay;
+    }
+    
+    /**
+     * Find the day with the most number of visits, if there is a tie,
+     * return any of the days found.
+     * 
+     * @param   map     HashMap that has Days mapped to an array of ips.
+     * @return          day found.
+     */
+    public String dayWithMostIPVisits(HashMap<String, ArrayList<String>> map) {
+        String maxDay = "";
+        int numIPs = 0;
+        for(String day : map.keySet()) {
+            int ipsMap = map.get(day).size();
+            if(ipsMap > numIPs) {
+                numIPs = ipsMap;
+                maxDay = day;
+            }
+        }
+        return maxDay;
     }
     
     public void printAll() {
