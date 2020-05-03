@@ -156,7 +156,21 @@ public class LogAnalyzer {
         return ipsMax;
     }
     
-    
+    public HashMap<String, ArrayList<String>> ipsForDays() {
+       HashMap<String, ArrayList<String>> ipsDay = new HashMap<String, ArrayList<String>>();
+       for(LogEntry le : records) {
+           if(ipsDay.containsKey(le.getAccessTime())){
+               ArrayList<String> ips = ipsDay.get(le.getAccessTime());
+               ips.add(le.getIpAddress());
+               ipsDay.put(le.getAccessTime().toString(), ips);
+           }else{
+               ArrayList<String> ips = new ArrayList<String>();
+               ips.add(le.getIpAddress());
+               ipsDay.put(le.getAccessTime().toString(), ips);
+           }
+       }
+       return ipsDay;
+    }
     
     public void printAll() {
         for(LogEntry le : records) {
