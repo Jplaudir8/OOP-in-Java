@@ -53,5 +53,13 @@ public class Tester {
 
         String dayMost = la.dayWithMostIPVisits(ipsPerDay);
         System.out.println("Day with the most number of visits: " + dayMost);
+        
+        String someday = "Sep 30";
+        System.out.println("IP's with most visits on " + someday + ":");
+        ArrayList<String> ips = la.iPsWithMostVisitsOnDay(la.ipsForDays(), someday);
+        for(String ip : ips) {
+            System.out.println(ip);
+        }
+        
     }
 }

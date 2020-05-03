@@ -187,17 +187,37 @@ public class LogAnalyzer {
      * @param   map     HashMap that has Days mapped to an array of ips.
      * @return          day found.
      */
-    public String dayWithMostIPVisits(HashMap<String, ArrayList<String>> map) {
+    public String dayWithMostIPVisits(HashMap<String, ArrayList<String>> ipsDay) {
         String maxDay = "";
         int numIPs = 0;
-        for(String day : map.keySet()) {
-            int ipsMap = map.get(day).size();
+        for(String day : ipsDay.keySet()) {
+            int ipsMap = ipsDay.get(day).size();
             if(ipsMap > numIPs) {
                 numIPs = ipsMap;
                 maxDay = day;
             }
         }
         return maxDay;
+    }
+    
+    /**
+     * 
+     */
+    public ArrayList<String> iPsWithMostVisitsOnDay(HashMap<String, 
+                                        ArrayList<String>> ipsDay, String day) {
+        // Creates ArayList of IP's for that day
+        ArrayList<String> allIpsOnDay = ipsDay.get(day);
+        // Maps IP's to Ocurrences
+        HashMap<String, Integer> counts = new HashMap<String, Integer>();
+        for(String ip : allIpsOnDay){
+            if(!counts.containsKey(ip)) {
+                counts.put(ip, 1);
+            } else {
+                counts.put(ip, counts.get(ip) + 1);
+            }
+        }
+        ArrayList<String> ipsMostOnDay = iPsMostVisits(counts);
+        return ipsMostOnDay;
     }
     
     public void printAll() {
