@@ -39,6 +39,7 @@ public class Tester {
         HashMap<String, Integer> map = la.countVisitsPerIP();
         System.out.println("Most number of visits found by a single IP Address: " + la.mostNumberVisitsByIP(map));
         
-        
+        System.out.println("IP addresses with maximum number of occurrences: ");
+        System.out.println(la.iPsMostVisits(map));
     }
 }

@@ -137,6 +137,25 @@ public class LogAnalyzer {
         return max;
     }
     
+    /**
+     * Calculate ArrayList of Strings of IP addresses that all have the 
+     * maximum number of visits to this website.
+     * 
+     * @param   map     HashMap that contains a map of an IP address to the 
+     *                  number of visits of an IP address to a site.
+     * @return          ArrayList of String with the IP addresses found.
+     */
+    public ArrayList<String> iPsMostVisits(HashMap<String, Integer> map) {
+        int max = mostNumberVisitsByIP(map);
+        ArrayList<String> ipsMax = new ArrayList<String>();
+        for(String s : map.keySet()) {
+            if(map.get(s) == max) {
+                ipsMax.add(s);
+            }
+        }
+        return ipsMax;
+    }
+    
     public void printAll() {
         for(LogEntry le : records) {
             System.out.println(le); // Automatically calls toString(function)
