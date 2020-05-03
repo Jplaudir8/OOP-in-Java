@@ -143,7 +143,7 @@ public class LogAnalyzer {
      * 
      * @param   map     HashMap that contains a map of an IP address to the 
      *                  number of visits of an IP address to a site.
-     * @return          ArrayList of String with the IP addresses found.
+     * @return          ArrayList of Strings with the IP addresses found.
      */
     public ArrayList<String> iPsMostVisits(HashMap<String, Integer> map) {
         int max = mostNumberVisitsByIP(map);
@@ -155,6 +155,8 @@ public class LogAnalyzer {
         }
         return ipsMax;
     }
+    
+    
     
     public void printAll() {
         for(LogEntry le : records) {
