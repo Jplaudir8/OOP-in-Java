@@ -14,6 +14,7 @@ comment12.target=java.util.ArrayList\ iPsWithMostVisitsOnDay(java.util.HashMap,\
 comment12.text=\n\ \n
 comment13.params=
 comment13.target=void\ printAll()
+comment13.text=\n\ \n
 comment2.params=filename
 comment2.target=void\ readFile(java.lang.String)
 comment2.text=\n\ Read\ log\ file\ and\ add\ each\ line\ to\ 'records'.\n

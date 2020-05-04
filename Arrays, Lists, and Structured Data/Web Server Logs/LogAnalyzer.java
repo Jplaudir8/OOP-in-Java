@@ -205,21 +205,29 @@ public class LogAnalyzer {
      */
     public ArrayList<String> iPsWithMostVisitsOnDay(HashMap<String, 
                                         ArrayList<String>> ipsDay, String day) {
-        // Creates ArayList of IP's for that day
-        ArrayList<String> allIpsOnDay = ipsDay.get(day);
-        // Maps IP's to Ocurrences
-        HashMap<String, Integer> counts = new HashMap<String, Integer>();
-        for(String ip : allIpsOnDay){
-            if(!counts.containsKey(ip)) {
-                counts.put(ip, 1);
-            } else {
-                counts.put(ip, counts.get(ip) + 1);
+        if(ipsDay.containsKey(day)) {
+            // If 'day' exists in 'ipsDay', creates ArayList of IP's for that day
+            ArrayList<String> allIpsOnDay = ipsDay.get(day);
+            // Maps IP's to Ocurrences
+            HashMap<String, Integer> counts = new HashMap<String, Integer>();
+            for(String ip : allIpsOnDay){
+                if(!counts.containsKey(ip)) {
+                    counts.put(ip, 1);
+                } else {
+                    counts.put(ip, counts.get(ip) + 1);
+                }
             }
+            ArrayList<String> ipsMostOnDay = iPsMostVisits(counts);
+            return ipsMostOnDay;
+        } else {
+            System.out.println("The entered day("+ day + ") does not exist in the HashMap provided.");
+            return null;
         }
-        ArrayList<String> ipsMostOnDay = iPsMostVisits(counts);
-        return ipsMostOnDay;
     }
     
+    /**
+     * 
+     */
     public void printAll() {
         for(LogEntry le : records) {
             System.out.println(le); // Automatically calls toString(function)
