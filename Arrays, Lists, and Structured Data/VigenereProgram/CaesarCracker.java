@@ -32,7 +32,7 @@ public class CaesarCracker {
         }
         return maxDex;
     }
-
+    
     public int getKey(String encrypted){
         int[] freqs = countLetters(encrypted);
         int maxDex = maxIndex(freqs);
