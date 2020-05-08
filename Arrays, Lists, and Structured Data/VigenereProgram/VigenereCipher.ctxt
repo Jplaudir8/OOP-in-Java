@@ -2,6 +2,7 @@
 comment0.target=VigenereCipher
 comment1.params=key
 comment1.target=VigenereCipher(int[])
+comment1.text=\n\ Take\ a\ key,\ which\ is\ an\ array\ of\ integers\ and\ initialize\ the\ field\ \n\ ciphers,\ which\ is\ an\ array\ of\ CaesarCipher\ objects.\n
 comment2.params=input
 comment2.target=java.lang.String\ encrypt(java.lang.String)
 comment3.params=input

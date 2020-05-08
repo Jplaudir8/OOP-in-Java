@@ -22,6 +22,7 @@ public class Tester {
         System.out.println("Message encrypted: \n" + encrypted);
         System.out.println("Message decrypted: \n" + decrypted);
         
+        System.out.println("**********************");
         //Testing with letter
         char letter = 'h';
         char letter2 = 'a';
@@ -40,7 +41,7 @@ public class Tester {
         // method that uses the default most common word 'e' since this is the 
         // most common word in english language.
         String filename = "titus-small_key5.txt";
-        System.out.println("Filename used: " + filename);
+        System.out.println("File used: " + filename);
         FileResource message = new FileResource("data/" + filename);
         String messageStr = message.asString();
 
@@ -51,10 +52,11 @@ public class Tester {
         String decrypted = ccrack.decrypt(messageStr);
         System.out.println("The decrypted message is: \n" + decrypted);
         
+        System.out.println("**********************");
         // Testing file in portuguese. Therefore, with parameter in constructor 
         // method 'a' since this is the most common word in portuguese language.
         filename = "oslusiadas_key17.txt";
-        System.out.println("Filename used: " + filename);
+        System.out.println("File used: " + filename);
         message = new FileResource("data/" + filename);
         messageStr = message.asString();
         
@@ -64,4 +66,38 @@ public class Tester {
         decrypted = ccrack.decrypt(messageStr);
         System.out.println("The decrypted message is: \n" + decrypted);
     }
+    
+    public void testVigenereCipher() {
+        // Testing with file
+        String filename = "titus-small.txt";
+        System.out.println("File used: " + filename);
+        FileResource message = new FileResource("data/" + filename);
+        String messageStr = message.asString();
+        
+        int[] keys = {20, 14, 12, 4};
+        VigenereCipher vc = new VigenereCipher(keys);
+        String encrypted = vc.encrypt(messageStr);
+        String decrypted = vc.decrypt(encrypted);
+        System.out.println("Encrypted Message: \n" + encrypted);
+        System.out.println("Decrypted Message: \n" + decrypted);
+        
+        System.out.println("**********************");
+        // Testing with word
+        
+        VigenereCipher vc2 = new VigenereCipher(keys);
+        String word = "rome";
+        encrypted = vc2.encrypt(word);
+        decrypted = vc2.decrypt(encrypted);
+        
+        System.out.println("Encrypted word: " + encrypted);
+        System.out.println("Decrypted word: " + decrypted);
+        
+        
+    }
+    
+    
+    
+    
+    
+    
 }
