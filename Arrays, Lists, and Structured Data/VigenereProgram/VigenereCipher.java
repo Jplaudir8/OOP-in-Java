@@ -4,7 +4,7 @@ import java.util.*;
 public class VigenereCipher {
     
     CaesarCipher[] ciphers;
-    
+
     /**
      * Take a key, which is an array of integers and initialize the field 
      * ciphers, which is an array of CaesarCipher objects.
@@ -43,28 +43,4 @@ public class VigenereCipher {
     public String toString() {
         return Arrays.toString(ciphers);
     }
-    
-    public String sliceString(String message, int whichSlice, int totalSlices) {
-        StringBuilder slicedString = new StringBuilder();
-        for(int i = whichSlice; i < message.length(); i+=totalSlices) {
-            slicedString.append(message.substring(i, i + 1));
-        }
-        
-        return slicedString.toString();
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

@@ -4,6 +4,7 @@ comment1.params=message\ whichSlice\ totalSlices
 comment1.target=java.lang.String\ sliceString(java.lang.String,\ int,\ int)
 comment2.params=encrypted\ klength\ mostCommon
 comment2.target=int[]\ tryKeyLength(java.lang.String,\ int,\ char)
+comment2.text=\n\ \ Find\ the\ shift\ for\ each\ index\ in\ the\ key.\n
 comment3.params=
 comment3.target=void\ breakVigenere()
 numComments=4

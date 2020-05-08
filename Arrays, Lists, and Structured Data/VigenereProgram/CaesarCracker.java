@@ -48,7 +48,6 @@ public class CaesarCracker {
         int key = getKey(encrypted);
         CaesarCipher cc = new CaesarCipher(key);
         return cc.decrypt(encrypted);
-        
     }
    
 }
