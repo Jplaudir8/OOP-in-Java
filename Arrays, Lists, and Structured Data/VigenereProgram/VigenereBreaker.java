@@ -28,9 +28,13 @@ public class VigenereBreaker {
     public void breakVigenere () {
         FileResource encrypted = new FileResource();
         String encryptedStr = encrypted.asString();
-        int[] keys = tryKeyLength(encryptedStr, 5, 'e');
+        int[] keys = tryKeyLength(encryptedStr, 4, 'e');
         VigenereCipher vc = new VigenereCipher(keys);
+        
         String decryptedMsg = vc.decrypt(encryptedStr);
-        System.out.println(decryptedMsg);
+        System.out.println("Array of Keys: ");
+        for(int key : keys) System.out.println(key);
+        System.out.println("Decrypted Message: \n" + decryptedMsg);
+        
     }
 }
