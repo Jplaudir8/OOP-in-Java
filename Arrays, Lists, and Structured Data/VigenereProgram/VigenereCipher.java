@@ -44,4 +44,27 @@ public class VigenereCipher {
         return Arrays.toString(ciphers);
     }
     
+    public String sliceString(String message, int whichSlice, int totalSlices) {
+        StringBuilder slicedString = new StringBuilder();
+        for(int i = whichSlice; i < message.length(); i+=totalSlices) {
+            slicedString.append(message.substring(i, i + 1));
+        }
+        
+        return slicedString.toString();
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

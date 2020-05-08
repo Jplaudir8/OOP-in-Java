@@ -92,12 +92,13 @@ public class Tester {
         System.out.println("Encrypted word: " + encrypted);
         System.out.println("Decrypted word: " + decrypted);
         
-        
+        System.out.println("**********************");
+        //Testing sliceString
+        VigenereCipher vc3 = new VigenereCipher(keys);
+        String stringLine = "abcdefghijklm";
+        String slice = vc3.sliceString(stringLine, 0, 3);
+        System.out.println("Complete String: " + stringLine);
+        System.out.println("Returning Slice: " + slice);
     }
-    
-    
-    
-    
-    
     
 }

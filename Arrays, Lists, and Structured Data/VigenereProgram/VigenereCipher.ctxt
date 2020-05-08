@@ -9,4 +9,6 @@ comment3.params=input
 comment3.target=java.lang.String\ decrypt(java.lang.String)
 comment4.params=
 comment4.target=java.lang.String\ toString()
-numComments=5
+comment5.params=message\ whichSlice\ totalSlices
+comment5.target=java.lang.String\ sliceString(java.lang.String,\ int,\ int)
+numComments=6
