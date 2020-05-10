@@ -95,30 +95,30 @@ public class Tester {
     }
     
     public void testVigenereBreaker() {
-        System.out.println("**********************");
-        //Testing sliceString()
-        VigenereBreaker vb1 = new VigenereBreaker();
-        String stringLine = "abcdefghijklm";
-        String slice = vb1.sliceString(stringLine, 0, 3);
-        System.out.println("Complete String: " + stringLine);
-        System.out.println("Returning Slice: " + slice);
+        // System.out.println("**********************");
+        // //Testing sliceString()
+        // VigenereBreaker vb1 = new VigenereBreaker();
+        // String stringLine = "abcdefghijklm";
+        // String slice = vb1.sliceString(stringLine, 0, 3);
+        // System.out.println("Complete String: " + stringLine);
+        // System.out.println("Returning Slice: " + slice);
         
-        System.out.println("**********************");
-        //Testing tryKeyLength()
-        String filename2 = "athens_keyflute.txt";
-        System.out.println("File used: " + filename2);
-        FileResource message2 = new FileResource("data/" + filename2);
-        String messageStr2 = message2.asString();
+        // System.out.println("**********************");
+        // //Testing tryKeyLength()
+        // String filename2 = "athens_keyflute.txt";
+        // System.out.println("File used: " + filename2);
+        // FileResource message2 = new FileResource("data/" + filename2);
+        // String messageStr2 = message2.asString();
         
-        VigenereBreaker vb2 = new VigenereBreaker();
+        // VigenereBreaker vb2 = new VigenereBreaker();
         
-        int[] keysFound = vb2.tryKeyLength(messageStr2, 5, 'e');
-        for (int key : keysFound) System.out.println(key);
+        // int[] keysFound = vb2.tryKeyLength(messageStr2, 5, 'e');
+        // for (int key : keysFound) System.out.println(key);
         
-        System.out.println("**********************");
-        //Testing breakVigenere()
-        VigenereBreaker vb3 = new VigenereBreaker();
-        vb3.breakVigenere();
+        // System.out.println("**********************");
+        // //Testing breakVigenere()
+        // VigenereBreaker vb3 = new VigenereBreaker();
+        // vb3.breakVigenere();
         
         System.out.println("****** Testing breakForLanguage() ***********");
         //Testing breakForLanguage()
@@ -131,6 +131,7 @@ public class Tester {
         String encryptedStr = encrypted.asString();
         String decrypted = vb4.breakForLanguage(encryptedStr, dictSet);
         System.out.println("Decrypted Message: \n" + decrypted);
+        
     }
     
     

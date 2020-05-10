@@ -6,7 +6,7 @@ public class VigenereBreaker {
     public String sliceString(String message, int whichSlice, int totalSlices) {
         StringBuilder slicedString = new StringBuilder();
         for(int i = whichSlice; i < message.length(); i+=totalSlices) {
-            slicedString.append(message.substring(i, i + 1));
+            slicedString.append(message.charAt(i));
         }
         return slicedString.toString();
     }
@@ -63,7 +63,7 @@ public class VigenereBreaker {
         String[] words = message.split("\\W");
 
         for(String word : words){
-            if(dictionary.contains(word)) {
+            if(dictionary.contains(word.toLowerCase())) {
                 count++;
             }
         }
@@ -74,10 +74,10 @@ public class VigenereBreaker {
         String decrypted = "";
         int maxOcurrences = 0;
         int legitKeyLength = 0;
-        int[] currentKeys = null;
         
         for (int i = 1; i < 100; i++) {
-            currentKeys = tryKeyLength(encrypted, i, 'e');
+            char commonChar = mostCommonCharIn(dictionary);
+            int[] currentKeys = tryKeyLength(encrypted, i, commonChar);
             VigenereCipher vc = new VigenereCipher(currentKeys);
             String message = vc.decrypt(encrypted);
             int currentWordCount = countWords(message, dictionary);
@@ -89,13 +89,33 @@ public class VigenereBreaker {
             }
         }
         
-        System.out.println("Key Length: " + currentKeys.length);
-        System.out.println("Keys Used to decrypt message: \n");
-        
-        // Printing Keys Found
-        for(int key : currentKeys) System.out.println(key);
-        
+        System.out.println("Key Length: " + legitKeyLength);
+        System.out.println("Number of valid words: "+ maxOcurrences);
+
         return decrypted;
+    }
+    
+    public char mostCommonCharIn(HashSet<String> dictionary) {
+        HashMap<Character,Integer> characterCounter = new HashMap<Character,Integer>();
+        for (String word : dictionary) {
+            char[] letters = word.toCharArray();
+            for (int i=0 ; i < letters.length; i++) {
+                if (!characterCounter.containsKey(letters[i])) {
+                    characterCounter.put(letters[i],1);
+                } else {
+                    characterCounter.replace(letters[i], characterCounter.get(letters[i]) + 1);
+                }
+            }
+        }
+        int highestCount = 0;
+        char mostUsedChar = '\0';
+        for (Character character : characterCounter.keySet()) {
+            if (characterCounter.get(character) > highestCount) {
+                highestCount = characterCounter.get(character);
+                mostUsedChar = character;
+            }
+        }
+        return mostUsedChar;
     }
     
     

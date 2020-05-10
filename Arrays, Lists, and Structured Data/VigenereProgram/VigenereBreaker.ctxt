@@ -15,4 +15,6 @@ comment5.target=int\ countWords(java.lang.String,\ java.util.HashSet)
 comment5.text=\n\ Count\ how\ many\ of\ these\ possible\ words\ are\ contained\ in\ the\ dictionary.\n\ \n\ @param\ \ \ message\n
 comment6.params=encrypted\ dictionary
 comment6.target=java.lang.String\ breakForLanguage(java.lang.String,\ java.util.HashSet)
-numComments=7
+comment7.params=dictionary
+comment7.target=char\ mostCommonCharIn(java.util.HashSet)
+numComments=8
