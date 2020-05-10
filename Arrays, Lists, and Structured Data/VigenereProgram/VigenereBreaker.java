@@ -108,7 +108,7 @@ public class VigenereBreaker {
             }
         }
         int highestCount = 0;
-        char mostUsedChar = '\0';
+        char mostUsedChar = ' ';
         for (Character character : characterCounter.keySet()) {
             if (characterCounter.get(character) > highestCount) {
                 highestCount = characterCounter.get(character);
