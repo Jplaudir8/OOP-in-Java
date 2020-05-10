@@ -71,38 +71,34 @@ public class VigenereBreaker {
     }
 
     public String breakForLanguage(String encrypted, HashSet<String> dictionary) {
-        // Here we are just testing a range from 1 to 100 as possible values
-        // for the keyLength. There is nothing special about 100, we could
-        // also iterate until encrypted.length()
-        HashMap<int[], Integer> mapKeysOcurrences = new HashMap<int[], Integer>();
-        
-        for(int i = 1; i <= 100; i++) {
-            int[] keys = tryKeyLength(encrypted, i, 'e');
-            VigenereCipher vc = new VigenereCipher(keys);
-            String decrypted = vc.decrypt(encrypted);
-            FileResource dictionaryFile = new FileResource("dictionaries/english");
-            HashSet<String> dictionarySet = readDictionary(dictionaryFile);
-            int ocurrencesKey = countWords(decrypted, dictionarySet);
-            mapKeysOcurrences.put(keys, ocurrencesKey);
-        }
-        
+        String decrypted = "";
         int maxOcurrences = 0;
-        int[] decisiveKeys = null;
+        int legitKeyLength = 0;
+        int[] currentKeys = null;
         
-        for(int[] keys : mapKeysOcurrences.keySet()) {
-            if(mapKeysOcurrences.get(keys) > maxOcurrences) {
-                maxOcurrences = mapKeysOcurrences.get(keys);
-                decisiveKeys = keys;
+        for (int i = 1; i < 100; i++) {
+            currentKeys = tryKeyLength(encrypted, i, 'e');
+            VigenereCipher vc = new VigenereCipher(currentKeys);
+            String message = vc.decrypt(encrypted);
+            int currentWordCount = countWords(message, dictionary);
+            
+            if (currentWordCount > maxOcurrences) {
+                maxOcurrences = currentWordCount;
+                legitKeyLength = i;
+                decrypted = message;
             }
         }
         
-        VigenereCipher vc = new VigenereCipher(decisiveKeys);
-        String decrypted = vc.decrypt(encrypted);
+        System.out.println("Key Length: " + currentKeys.length);
+        System.out.println("Keys Used to decrypt message: \n");
+        
+        // Printing Keys Found
+        for(int key : currentKeys) System.out.println(key);
         
         return decrypted;
-    }    
+    }
     
-
+    
 
 
 

@@ -5,6 +5,7 @@
  * @author Joan Perez Lozano
  */
 import edu.duke.*;
+import java.util.*;
 
 public class Tester {
     
@@ -119,6 +120,17 @@ public class Tester {
         VigenereBreaker vb3 = new VigenereBreaker();
         vb3.breakVigenere();
         
+        System.out.println("****** Testing breakForLanguage() ***********");
+        //Testing breakForLanguage()
+        VigenereBreaker vb4 = new VigenereBreaker();
+        System.out.println("Choose dictionary");
+        FileResource dictionary = new FileResource();
+        HashSet<String> dictSet = vb4.readDictionary(dictionary);
+        System.out.println("Choose encrypted file");
+        FileResource encrypted = new FileResource();
+        String encryptedStr = encrypted.asString();
+        String decrypted = vb4.breakForLanguage(encryptedStr, dictSet);
+        System.out.println("Decrypted Message: \n" + decrypted);
     }
     
     
