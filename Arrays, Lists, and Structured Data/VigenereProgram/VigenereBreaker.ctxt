@@ -17,4 +17,6 @@ comment6.params=encrypted\ dictionary
 comment6.target=java.lang.String\ breakForLanguage(java.lang.String,\ java.util.HashSet)
 comment7.params=dictionary
 comment7.target=char\ mostCommonCharIn(java.util.HashSet)
-numComments=8
+comment8.params=encrypted\ languages
+comment8.target=void\ breakForAllLangs(java.lang.String,\ java.util.HashMap)
+numComments=9

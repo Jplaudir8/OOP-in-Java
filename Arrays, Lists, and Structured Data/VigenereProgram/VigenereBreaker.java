@@ -1,5 +1,6 @@
 import java.util.*;
 import edu.duke.*;
+import java.io.*;
 
 public class VigenereBreaker {
     
@@ -26,15 +27,29 @@ public class VigenereBreaker {
     }
     
     public void breakVigenere () {
-        FileResource encrypted = new FileResource();
-        String encryptedStr = encrypted.asString();
-        int[] keys = tryKeyLength(encryptedStr, 4, 'e');
-        VigenereCipher vc = new VigenereCipher(keys);
+        // FileResource encrypted = new FileResource();
+        // String encryptedStr = encrypted.asString();
+        // int[] keys = tryKeyLength(encryptedStr, 4, 'e');
+        // VigenereCipher vc = new VigenereCipher(keys);
         
-        String decryptedMsg = vc.decrypt(encryptedStr);
-        System.out.println("Array of Keys: ");
-        for(int key : keys) System.out.println(key);
-        System.out.println("Decrypted Message: \n" + decryptedMsg);
+        // String decryptedMsg = vc.decrypt(encryptedStr);
+        // System.out.println("Array of Keys: ");
+        // for(int key : keys) System.out.println(key);
+        // System.out.println("Decrypted Message: \n" + decryptedMsg);
+        
+       HashMap<String, HashSet<String>> dictionaries = new HashMap<String, HashSet<String>>();
+       File folder = new File("dictionaries/");
+       File[] fileList = folder.listFiles();
+       for (int i = 0; i < fileList.length; i++) {
+           if (fileList[i].isFile()) {
+               FileResource dictionaryFile = new FileResource(fileList[i]);
+               HashSet<String> dictionary = readDictionary(dictionaryFile);
+               dictionaries.put(fileList[i].getName(), dictionary);
+               System.out.println("Reading in " + fileList[i] + " dictionary...");
+           }
+       }
+       FileResource encryptedFile = new FileResource();
+       breakForAllLangs(encryptedFile.asString(),dictionaries);
     }
     
     /**
@@ -99,7 +114,7 @@ public class VigenereBreaker {
         HashMap<Character,Integer> characterCounter = new HashMap<Character,Integer>();
         for (String word : dictionary) {
             char[] letters = word.toCharArray();
-            for (int i=0 ; i < letters.length; i++) {
+            for (int i = 0 ; i < letters.length; i++) {
                 if (!characterCounter.containsKey(letters[i])) {
                     characterCounter.put(letters[i],1);
                 } else {
@@ -118,7 +133,22 @@ public class VigenereBreaker {
         return mostUsedChar;
     }
     
-    
+    public void breakForAllLangs(String encrypted, HashMap<String, HashSet<String>> languages) {
+        int currentHigh = 0;
+        String decryptedMessage = "";
+        String usedLanguage = "";
+        for (String language : languages.keySet()) {
+            String message = breakForLanguage(encrypted, languages.get(language));
+            int currentWordCount = countWords(message, languages.get(language));
+            if (currentWordCount > currentHigh) {
+                currentHigh = currentWordCount;
+                decryptedMessage = message;
+                usedLanguage = language;
+            }
+        }
+        System.out.println(decryptedMessage);
+        System.out.println("Language Used: " + usedLanguage);
+    }
 
 
 
