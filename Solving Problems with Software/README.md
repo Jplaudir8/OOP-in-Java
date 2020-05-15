@@ -1,4 +1,4 @@
-# Description of the projects 🧰
+# Description of projects 🧰
 
 The following projects have been developed by addressing problems using a method called the seven-step approach. This sort of framework has the following steps:
 
