@@ -33,7 +33,7 @@ public class EarthquakeCityMap extends PApplet {
 	private static final long serialVersionUID = 1L;
 
 	// IF YOU ARE WORKING OFFLINE, change the value of this variable to true
-	private static final boolean offline = false;
+	private static final boolean offline = true;
 	
 	// Less than this threshold is a light earthquake
 	public static final float THRESHOLD_MODERATE = 5;
@@ -64,11 +64,15 @@ public class EarthquakeCityMap extends PApplet {
 		}
 		
 	    map.zoomToLevel(2);
-	    MapUtils.createDefaultEventDispatcher(this, map);	
-			
+	    MapUtils.createDefaultEventDispatcher(this, map);
+	    
+	    List<PointFeature> bigEqs = new ArrayList<PointFeature>();
 	    // The List you will populate with new SimplePointMarkers
 	    List<Marker> markers = new ArrayList<Marker>();
-
+	    for(PointFeature eq: bigEqs) {
+			markers.add(new SimplePointMarker(eq.getLocation(), eq.getProperties()));
+		}
+	    
 	    //Use provided parser to collect properties for each earthquake
 	    //PointFeatures have a getLocation method
 	    List<PointFeature> earthquakes = ParseFeed.parseEarthquake(this, earthquakesURL);
