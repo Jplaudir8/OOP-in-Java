@@ -81,7 +81,10 @@ public class EarthquakeCityMap extends PApplet {
 	    // to create a new SimplePointMarker for each PointFeature in 
 	    // earthquakes.  Then add each new SimplePointMarker to the 
 	    // List markers (so that it will be added to the map in the line below)
-	    
+	    for(PointFeature earthquake: earthquakes) {
+	    	SimplePointMarker marker = createMarker(earthquake);
+	    	markers.add(marker);
+	    }
 	    
 	    // Add the markers to the map so that they are displayed
 	    map.addMarkers(markers);
@@ -91,7 +94,7 @@ public class EarthquakeCityMap extends PApplet {
 	 * feature and returns a SimplePointMarker for that earthquake
 	 * 
 	 * In step 3 You can use this method as-is.  Call it from a loop in the 
-	 * setp method.  
+	 * step method.  
 	 * 
 	 * TODO (Step 4): Add code to this method so that it adds the proper 
 	 * styling to each marker based on the magnitude of the earthquake.  
@@ -101,7 +104,7 @@ public class EarthquakeCityMap extends PApplet {
 		// To print all of the features in a PointFeature (so you can see what they are)
 		// uncomment the line below.  Note this will only print if you call createMarker 
 		// from setup
-		//System.out.println(feature.getProperties());
+		System.out.println(feature.getProperties());
 		
 		// Create a new SimplePointMarker at the location given by the PointFeature
 		SimplePointMarker marker = new SimplePointMarker(feature.getLocation());
@@ -109,20 +112,21 @@ public class EarthquakeCityMap extends PApplet {
 		Object magObj = feature.getProperty("magnitude");
 		float mag = Float.parseFloat(magObj.toString());
 		
-		// Here is an example of how to use Processing's color method to generate 
-	    // an int that represents the color yellow.  
-	    int yellow = color(255, 255, 0);
-		
-		// TODO (Step 4): Add code below to style the marker's size and color 
-	    // according to the magnitude of the earthquake.  
-	    // Don't forget about the constants THRESHOLD_MODERATE and 
-	    // THRESHOLD_LIGHT, which are declared above.
-	    // Rather than comparing the magnitude to a number directly, compare 
-	    // the magnitude to these variables (and change their value in the code 
-	    // above if you want to change what you mean by "moderate" and "light")
-	    
-	    
-	    // Finally return the marker
+		// Styling marker according to magnitude of earthquakes.
+	    if (mag < THRESHOLD_LIGHT) {
+	    	// Blue and Small.
+	    	marker.setColor(color(0, 0, 255));
+	    	marker.setRadius(5);
+	    } else if (mag >= THRESHOLD_LIGHT && mag < THRESHOLD_MODERATE ){
+	    	// Yellow and Medium.
+	    	marker.setColor(color(255, 255, 0));
+	    	marker.setRadius(10);
+	    } else {
+	    	// mag >= THRESHOLD_MODERATE
+	    	// Red and Large
+	    	marker.setColor(color(255, 0, 0));
+	    	marker.setRadius(20);
+	    }
 	    return marker;
 	}
 	
