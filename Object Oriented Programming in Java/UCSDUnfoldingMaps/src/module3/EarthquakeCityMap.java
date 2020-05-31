@@ -77,10 +77,9 @@ public class EarthquakeCityMap extends PApplet {
 	    //PointFeatures have a getLocation method
 	    List<PointFeature> earthquakes = ParseFeed.parseEarthquake(this, earthquakesURL);
 	    
-	    //TODO (Step 3): Add a loop here that calls createMarker (see below) 
-	    // to create a new SimplePointMarker for each PointFeature in 
+	    // Creating a new SimplePointMarker for each PointFeature in 
 	    // earthquakes.  Then add each new SimplePointMarker to the 
-	    // List markers (so that it will be added to the map in the line below)
+	    // List markers
 	    for(PointFeature earthquake: earthquakes) {
 	    	SimplePointMarker marker = createMarker(earthquake);
 	    	markers.add(marker);
@@ -90,15 +89,12 @@ public class EarthquakeCityMap extends PApplet {
 	    map.addMarkers(markers);
 	}
 		
-	/* createMarker: A suggested helper method that takes in an earthquake 
+	/** createMarker: A suggested helper method that takes in an earthquake 
 	 * feature and returns a SimplePointMarker for that earthquake
 	 * 
-	 * In step 3 You can use this method as-is.  Call it from a loop in the 
-	 * step method.  
-	 * 
-	 * TODO (Step 4): Add code to this method so that it adds the proper 
-	 * styling to each marker based on the magnitude of the earthquake.  
-	*/
+	 * @param feature	PointFeature object. e.g. could be an earthquake PointFeature.
+	 * @return
+	 */
 	private SimplePointMarker createMarker(PointFeature feature)
 	{  
 		// To print all of the features in a PointFeature (so you can see what they are)
@@ -135,13 +131,45 @@ public class EarthquakeCityMap extends PApplet {
 	    map.draw();
 	    addKey();
 	}
-
-
-	// helper method to draw key in GUI
-	// TODO: Implement this method to draw the key
-	private void addKey() 
-	{	
-		// Remember you can use Processing's graphics methods here
 	
+	// helper method to draw key table in GUI
+	private void addKey() {	
+		// Drawing Table at coordinate position (10, 50)
+		fill(255, 250, 240);
+		int xbase = 10;
+		int ybase = 50;
+		rect(xbase, ybase, 180, 200);
+		
+		//Title of Key table
+		fill(0);
+		textAlign(LEFT, CENTER);
+		textSize(12);
+		text("Earthquake Key", xbase+40, ybase+20);
+		
+		// Keys
+		//Red Marker
+		fill(255, 0, 0);
+		ellipse(xbase + 40, ybase + 60, 20, 20);
+		// Text
+		fill(0);
+		textAlign(LEFT);
+		text("5.0 + Magnitude",xbase + 70, ybase + 63);
+		
+		// Yellow Marker
+		fill(255, 255, 0);
+		ellipse(xbase + 40, ybase + 100, 10, 10);
+		// Text
+		fill(0);
+		textAlign(LEFT);
+		text("4.0 + Magnitude", xbase + 70, ybase + 104);
+		
+		// Blue Marker
+		fill(0, 0, 255);
+	    ellipse(xbase + 40, ybase + 140, 5, 5);
+	    // Text
+	    fill(0);
+	    textAlign(LEFT);
+	 	text("Below 4.0", xbase + 70, ybase + 145);
+		
 	}
 }
