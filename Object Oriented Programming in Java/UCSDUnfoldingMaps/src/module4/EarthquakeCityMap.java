@@ -154,8 +154,6 @@ public class EarthquakeCityMap extends PApplet {
 		text("Below 4.0", 75, 225);
 	}
 
-	
-	
 	// Checks whether this quake occurred on land.  If it did, it sets the 
 	// "country" property of its PointFeature to the country where it occurred
 	// and returns true.  Notice that the helper method isInCountry will
@@ -177,13 +175,30 @@ public class EarthquakeCityMap extends PApplet {
 	 * ...
 	 * OCEAN QUAKES: numOceanQuakes
 	 * */
-	private void printQuakes() 
-	{
-		// TODO: Implement this method
-		// One (inefficient but correct) approach is to:
-		//   Loop over all of the countries, e.g. using 
-		//        for (Marker cm : countryMarkers) { ... }
-		//        
+	private void printQuakes() {
+		
+		int oceanQuakes = 0;
+		
+		for (Marker cm : countryMarkers) {
+			int quakeCounter = 0;
+			// Getting name of country marker
+			String countryName = (String)cm.getProperty("name");
+			for (Marker marker : quakeMarkers) {
+				EarthquakeMarker eqMarker = (EarthquakeMarker)marker;
+				if(eqMarker.isOnLand()) {
+					if (countryName.equals(eqMarker.getStringProperty("country"))) {
+						quakeCounter++;
+					}
+				}
+			}
+			//Calculating Ocean Quakes
+			if (quakeCounter > 0) {
+				oceanQuakes -= quakeCounter;
+				System.out.println(countryName + ": " + quakeCounter);
+			}
+			System.out.println(countryName + ": " + oceanQuakes);
+		}
+		
 		//      Inside the loop, first initialize a quake counter.
 		//      Then loop through all of the earthquake
 		//      markers and check to see whether (1) that marker is on land
