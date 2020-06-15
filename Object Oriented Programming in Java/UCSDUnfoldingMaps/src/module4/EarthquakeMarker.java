@@ -81,8 +81,25 @@ public abstract class EarthquakeMarker extends SimplePointMarker
 	// You might find the getters below helpful.
 	private void colorDetermine(PGraphics pg) {
 		//TODO: Implement this method
+		
 	}
 	
+	private void markDuration(PGraphics pg, float x, float y){
+		int black = pg.color(0, 0, 0);
+		
+		String age = getAge();
+		float radius = getMagnitude();
+		
+		pg.fill(black);
+		pg.stroke(black);
+		
+		if (age.equals("Past Hour")){
+			// Draw an X by using lines
+			// "/" line
+			pg.line(x + radius, y - radius, x - radius, y + radius);
+			pg.line(x - radius, y - radius, x + radius, y + radius);
+		}
+	}
 	
 	/*
 	 * getters for earthquake properties
@@ -110,5 +127,8 @@ public abstract class EarthquakeMarker extends SimplePointMarker
 		return isOnLand;
 	}
 	
+	public String getAge() {
+		return (getProperty("age").toString());
+	}
 	
 }
