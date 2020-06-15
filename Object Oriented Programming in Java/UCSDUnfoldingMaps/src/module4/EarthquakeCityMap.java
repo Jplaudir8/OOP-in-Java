@@ -34,13 +34,10 @@ public class EarthquakeCityMap extends PApplet {
 	// You can ignore this.  It's to get rid of eclipse warnings
 	private static final long serialVersionUID = 1L;
 
-	// IF YOU ARE WORKING OFFILINE, change the value of this variable to true
 	private static final boolean offline = true;
 	
 	/** This is where to find the local tiles, for working without an Internet connection */
 	public static String mbTilesString = "blankLight-1-3.mbtiles";
-	
-	
 
 	//feed with magnitude 2.5+ Earthquakes
 	private String earthquakesURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.atom";
@@ -141,17 +138,35 @@ public class EarthquakeCityMap extends PApplet {
 		textSize(12);
 		text("Earthquake Key", 50, 75);
 		
-		fill(color(255, 0, 0));
-		ellipse(50, 125, 15, 15);
-		fill(color(255, 255, 0));
-		ellipse(50, 175, 10, 10);
-		fill(color(0, 0, 255));
-		ellipse(50, 225, 5, 5);
+		// Triangle and Label
+		fill(color(210, 105, 30));
+		triangle(55,120, 50,130, 60,130);
 		
 		fill(0, 0, 0);
-		text("5.0+ Magnitude", 75, 125);
-		text("4.0+ Magnitude", 75, 175);
-		text("Below 4.0", 75, 225);
+		text("City Marker", 75, 125);
+		
+		
+		// Circle and Label
+		fill(color(255, 255, 255));
+		ellipse(55, 150, 8, 8);
+		
+		fill(0, 0, 0);
+		text("Land Quake", 75, 150);
+		
+		
+		// Square and Label
+		fill(color(255, 255, 255));
+		rect(52, 175, 8, 8);
+		
+		fill(0, 0, 0);
+		text("Ocean Quake", 75, 175);
+		
+		
+		// Label
+		fill(0);
+		textAlign(LEFT, CENTER);
+		textSize(12);
+		text("Size ~ Magnitude", 50, 200);
 	}
 
 	// Checks whether this quake occurred on land.  If it did, it sets the 
@@ -226,7 +241,7 @@ public class EarthquakeCityMap extends PApplet {
 				}
 			}
 		}
-			
+		
 		// check if inside country represented by SimplePolygonMarker
 		else if(((AbstractShapeMarker)country).isInsideByLocation(checkLoc)) {
 			earthquake.addProperty("country", country.getProperty("name"));
