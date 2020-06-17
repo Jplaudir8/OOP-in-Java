@@ -1,7 +1,10 @@
 package module5;
 
+import java.util.*;
+
 import de.fhpotsdam.unfolding.data.PointFeature;
 import processing.core.PGraphics;
+import de.fhpotsdam.unfolding.marker.Marker;
 
 /** Implements a visual marker for earthquakes on an earthquake map
  * 
@@ -35,8 +38,10 @@ public abstract class EarthquakeMarker extends CommonMarker
 	/** Greater than or equal to this threshold is a deep depth */
 	public static final float THRESHOLD_DEEP = 300;
 
+	List<Marker> threatenedCityMarkers;
+	
 	// ADD constants for colors if you want
-
+	
 	
 	// abstract method implemented in derived classes
 	public abstract void drawEarthquake(PGraphics pg, float x, float y);
@@ -136,6 +141,57 @@ public abstract class EarthquakeMarker extends CommonMarker
 			pg.fill(255, 0, 0);
 		}
 	}
+	
+	@Override
+	public void showThreat(List<Marker> quakeMarkers, List<Marker> cityMarkers){
+		hideOtherQuakes(quakeMarkers);
+		showAndAddThreatenedCities(cityMarkers);
+	}
+	
+	// hides all other quakeMarkers
+		private void hideOtherQuakes(List<Marker> quakeMarkers){
+			for (Marker marker: quakeMarkers){
+				if (marker != this){
+					marker.setHidden(true);
+				}
+			}
+		}
+		
+		
+		/*
+		 * hiding the cities which are not threatened
+		 * if the city is threatened
+		 * adds the threatened city
+		 */
+		private void showAndAddThreatenedCities(List<Marker> cityMarkers){
+			if (threatenedCityMarkers == null){
+				threatenedCityMarkers = new ArrayList<Marker>();	
+			}
+			
+			// threat circle in km
+			double threat = threatCircle();
+			
+			// Looping over all the cityMarker
+			// Adding the cities which are threatened by the earthquake
+			for (Marker marker: cityMarkers){
+				if ((marker).getDistanceTo(this.location) > threat){
+					marker.setHidden(true);
+				}
+				else {
+					// Not hiding marker means threatenedCities are already displayed
+					
+					addThreatenedCity(marker);
+				}
+			}
+		}
+		
+		// Adds the the threatened City if not in the list already
+		private void addThreatenedCity(Marker cityMarker){
+			System.out.println(cityMarker.getProperties().toString());
+			if (threatenedCityMarkers.indexOf(cityMarker) == -1) {
+				threatenedCityMarkers.add(cityMarker);	
+			}
+		}
 	
 	
 	/*

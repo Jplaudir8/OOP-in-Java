@@ -160,15 +160,48 @@ public class EarthquakeCityMap extends PApplet {
 	 * It will display an earthquake and its threat circle of cities
 	 * Or if a city is clicked, it will display all the earthquakes 
 	 * where the city is in the threat circle
+	 * 
+	 * How it works:
+	 * 
 	 */
 	@Override
 	public void mouseClicked()
-	{
-		// TODO: Implement this method
-		// Hint: You probably want a helper method or two to keep this code
-		// from getting too long/disorganized
+	{	
+		// instantly saving the x and y coordinates of the click
+				float x = mouseX;
+				float y = mouseY;
+				
+				// lastClicked tells us if it was clicked before
+				if (lastClicked != null) {
+					lastClicked.setClicked(false);
+					lastClicked = null;
+					unhideMarkers();
+				}
+				
+				if (clickMarkerIfClicked(quakeMarkers, x, y) 
+				||	clickMarkerIfClicked(cityMarkers, x, y)){
+					hideSafeMarkers();
+				}
 	}
 	
+	// Helper method
+	private void hideSafeMarkers(){
+		lastClicked.showThreat(quakeMarkers, cityMarkers);
+	}
+	
+	// If there was a marker underneath the mouse when it was clicked 
+	// it's clicked property is set to true
+	// returns true if the marker was found underneath it
+	private boolean clickMarkerIfClicked(List<Marker> markers, float x, float y){
+		for (Marker marker: markers){
+			if (marker.isInside(map, x, y)){
+				lastClicked = (CommonMarker) marker;
+				lastClicked.setClicked(true);
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	// loop over and unhide all markers
 	private void unhideMarkers() {

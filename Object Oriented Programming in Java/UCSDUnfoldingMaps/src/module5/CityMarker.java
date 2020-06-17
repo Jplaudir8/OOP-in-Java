@@ -1,12 +1,14 @@
 package module5;
 
+import java.util.*;
+
 import de.fhpotsdam.unfolding.data.Feature;
 import de.fhpotsdam.unfolding.data.PointFeature;
 import de.fhpotsdam.unfolding.geo.Location;
 import de.fhpotsdam.unfolding.marker.SimplePointMarker;
 import processing.core.PConstants;
 import processing.core.PGraphics;
-
+import de.fhpotsdam.unfolding.marker.Marker;
 /** Implements a visual marker for cities on an earthquake map
  * 
  * @author UC San Diego Intermediate Software Development MOOC team
@@ -17,6 +19,9 @@ import processing.core.PGraphics;
 // in module 5 (i.e. CityMarker extends CommonMarker).  It will cause an error.
 // That's what's expected.
 public class CityMarker extends CommonMarker {
+	
+	public float accurateX;
+	public float accurateY;
 	
 	public static int TRI_SIZE = 5;  // The size of the triangle marker
 	
@@ -70,6 +75,30 @@ public class CityMarker extends CommonMarker {
 	
 	}
 	
+	/*
+	 * Shows the earthquakeMarker which can threat the clicked city
+	 * (non-Javadoc)
+	 * @see module5.CommonMarker#showThreat(java.util.List, java.util.List)
+	 */
+	@Override
+	public void showThreat(List<Marker> earthquakeMarkers, List<Marker> cityMarkers){
+		// Hiding all the cities except this
+		for (Marker cityMarker: cityMarkers){
+			if (!this.equals(cityMarker)){
+				cityMarker.setHidden(true);
+			}
+		}
+		
+		// Hiding the earthquakes which don't effect this cityMarker
+		// City not threatened by an earthquake
+		// if distance between earthquakeMarker and CityMarker > threatCircle()
+		for (Marker earthquakeMarker: earthquakeMarkers){
+			double threat = ((EarthquakeMarker) earthquakeMarker).threatCircle();
+			if (earthquakeMarker.getDistanceTo(this.getLocation()) > threat){
+				earthquakeMarker.setHidden(true);
+			}
+		}
+	}
 	
 	
 	/* Local getters for some city properties.  
