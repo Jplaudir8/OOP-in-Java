@@ -49,8 +49,25 @@ public class CityMarker extends CommonMarker {
 	/** Show the title of the city if this marker is selected */
 	public void showTitle(PGraphics pg, float x, float y)
 	{
+		int popupColor = pg.color(253, 237, 44);
+		int black = pg.color(0, 0, 0);
 		
-		// TODO: Implement this method
+		int fontSize = 12;
+		
+		String text = String.format("City: %s, Country: %s, Population: %.2f Million",
+				getCity(), getCountry(), getPopulation());
+		float textWidth = pg.textWidth(text);
+		
+		// Label Box
+		pg.fill(popupColor);
+		pg.rect(x + TRI_SIZE, (y + TRI_SIZE) - fontSize, textWidth + 2, 14);
+		
+		// Label
+		pg.fill(black);
+		pg.stroke(black);
+		pg.textSize(fontSize);
+		pg.text(text, x + TRI_SIZE, y + TRI_SIZE);
+	
 	}
 	
 	
