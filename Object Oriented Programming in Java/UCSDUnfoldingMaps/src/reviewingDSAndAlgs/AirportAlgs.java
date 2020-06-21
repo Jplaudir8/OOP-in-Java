@@ -6,14 +6,15 @@ public class AirportAlgs {
 
 
 
-	//toFind is a city name
+	// Performing a basic linear search to find airport code
 	public static String findAirportCode(String toFind, Airport[] airports) {
-		int i = 0;
-		while(i < airports.length){
-			if(airports[i].equals(toFind)) {
-				return airports[i].getCode();
+		int index = 0;
+		while(index < airports.length){
+			Airport a = airports[index];
+			if(toFind.equals(a.getCity())) {
+				return a.getCode();
 			}
-			i++;
+			index++;
 		}
 		
 		return "NOT FOUND";

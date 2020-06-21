@@ -3,20 +3,21 @@ package reviewingDSAndAlgs;
 public class Airport {
 	
 	
-	private String code;
+	private String code3;
 	private String city;
+	private String country;
 	
 	public String getCode() {
-		return this.code;
+		return this.code3;
 	}
 	
 	public String getCity() {
 		return this.city;
 	}
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
+	public String getCountry() {
+		return this.country;
 	}
+	
 
 }
