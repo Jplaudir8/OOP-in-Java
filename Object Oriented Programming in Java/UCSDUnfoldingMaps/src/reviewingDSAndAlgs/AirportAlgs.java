@@ -43,6 +43,31 @@ public class AirportAlgs {
 		return null;
 	}
 	
+	// Algorithm 3
+	// Implementing the selection sort algorithm. Ignore Airport stuff context.
+	public static void selectionSort(int[] vals) {
+		
+		int indexMin;
+		for(int i = 0; i < vals.length; i++) {
+			indexMin = i;
+			for(int j=i+1; j < vals.length; j++) {
+				if(vals[j] < vals[indexMin]) {
+					indexMin = j;
+				}
+			}
+			
+			
+		}
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
