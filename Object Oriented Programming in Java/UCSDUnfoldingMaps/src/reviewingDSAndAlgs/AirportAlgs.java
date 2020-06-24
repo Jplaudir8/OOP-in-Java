@@ -1,4 +1,5 @@
 package reviewingDSAndAlgs;
+import java.util.*;
 
 public class AirportAlgs {
 
@@ -89,8 +90,18 @@ public class AirportAlgs {
 	// an integer number will be returned depending on the comparison between the calling object and the object called
 	// in the parameter. (See table in readme markdown file.)
 	
-	
-	
+	// Example making use of the java's built-in merge-sort algorithm (uses java.util.*)
+	public static void builtInMergeSort() {
+		Random random = new Random();
+		List<Integer> numsToSort = new ArrayList();
+		
+		for(int i = 0; i < 5; i++) {
+			numsToSort.add(random.nextInt(100));
+		}
+		
+		Collections.sort(numsToSort);
+		System.out.println("New array after builtin method use: " + numsToSort.toString());
+	}
 	
 	
 	
