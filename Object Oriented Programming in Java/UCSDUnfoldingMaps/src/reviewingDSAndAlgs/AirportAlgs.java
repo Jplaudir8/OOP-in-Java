@@ -78,6 +78,32 @@ public class AirportAlgs {
 		}
 	}
 	
+	// There is a java built-in sort method and its an optimized version of the well-know 
+	// merge-sort algorithm.
+	// This algorithm's features are that it is fast for nearly sorted elements 
+	// and also for the worst case scenario. The main difference between the merge-sort algorithm
+	// and java's built-in sort method is that the latter performs less array copying.
+	// Notice that when we want to compare non integers, we will need to make use of the Comparable
+	// interface in order to help the sort method understand how to make comparisons between non integers.
+	// With the Comparable interface we will have to implement the compareTo method, in which
+	// an integer number will be returned depending on the comparison between the calling object and the object called
+	// in the parameter. (See table in readme markdown file.)
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }
