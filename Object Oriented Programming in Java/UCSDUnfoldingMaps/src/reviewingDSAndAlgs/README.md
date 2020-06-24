@@ -2,10 +2,4 @@ As mentioned in commenting lines of the code in this directory, when we are usin
 
 A good mnemonic to remember how the `compareTo()` method works is by simply imagine that we are subtracting the number on the left with the one on the right:
 
-
-![alt text][logo]
-
-[logo]: https://github.com/Jplaudir8/OOP-in-Java/blob/master/Object%20Oriented%20Programming%20in%20Java/UCSDUnfoldingMaps/src/reviewingDSAndAlgs/Table%201.png "Table extracted from coursera video"
-
-
-<img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Object%20Oriented%20Programming%20in%20Java/UCSDUnfoldingMaps/src/reviewingDSAndAlgs/Table%201.png" height="48" alt="Table extracted from coursera video">
+<img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Object%20Oriented%20Programming%20in%20Java/UCSDUnfoldingMaps/src/reviewingDSAndAlgs/Table%201.png" height="48" alt="Table extracted from coursera video" title="Table extracted from coursera video">
