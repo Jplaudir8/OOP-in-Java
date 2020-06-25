@@ -57,7 +57,9 @@ public class EarthquakeCityMap extends PApplet {
 	private List<Marker> cityMarkers;
 	// Markers for each earthquake
 	private List<Marker> quakeMarkers;
-
+	// Markers for each airport
+	private List<Marker> airportMarkers;
+	
 	// A List of country markers
 	private List<Marker> countryMarkers;
 	
@@ -114,6 +116,16 @@ public class EarthquakeCityMap extends PApplet {
 		    quakeMarkers.add(new OceanQuakeMarker(feature));
 		  }
 	    }
+	    
+	    // get features from airport data
+	 	List<PointFeature> features = ParseFeed.parseAirports(this, "airports.dat");
+	 	
+	 	airportMarkers = new ArrayList<Marker>();
+	 	
+	 	// create markers from features
+	 	for (PointFeature feature : features) {
+	 		airportMarkers.add(new AirportMarker(feature));
+	 	}
 
 	    // could be used for debugging
 	    printQuakes();
@@ -123,7 +135,9 @@ public class EarthquakeCityMap extends PApplet {
 	    //           for their geometric properties
 	    map.addMarkers(quakeMarkers);
 	    map.addMarkers(cityMarkers);
+	    map.addMarkers(airportMarkers);
 	    
+	    sortAndPrint(100);
 	    
 	}  // End setup
 	
@@ -135,10 +149,16 @@ public class EarthquakeCityMap extends PApplet {
 		
 	}
 	
+	private void sortAndPrint(int numToPrint) {
+		EarthquakeMarker[] earthquakes = new EarthquakeMarker[quakeMarkers.size()];
+		// Returning elements in the list earthquakes, as an array of objects.
+		quakeMarkers.toArray(earthquakes);
+		Arrays.sort(earthquakes);
+
+		for (int i = 0; i < numToPrint && i < earthquakes.length; i++)
+			System.out.println("Sorted: " + earthquakes[i]);
+	}
 	
-	// TODO: Add the method:
-	//   private void sortAndPrint(int numToPrint)
-	// and then call that method from setUp
 	
 	/** Event handler that gets called automatically when the 
 	 * mouse moves.
@@ -152,9 +172,23 @@ public class EarthquakeCityMap extends PApplet {
 			lastSelected = null;
 		
 		}
+		selectMarkerIfHover(airportMarkers);
 		selectMarkerIfHover(quakeMarkers);
 		selectMarkerIfHover(cityMarkers);
 		//loop();
+	}
+	
+	private void insertionSort(EarthquakeMarker[] array) {
+		int j;
+		for (int i = 1; i < array.length; i++) {
+			j = i;
+			while (j > 0 && array[j - 1].compareTo(array[j]) > 0) {
+				EarthquakeMarker temp = array[j];
+				array[j] = array[j - 1];
+				array[j - 1] = temp;
+				j--;
+			}
+		}
 	}
 	
 	// If there is a marker selected 
@@ -186,13 +220,27 @@ public class EarthquakeCityMap extends PApplet {
 	{
 		if (lastClicked != null) {
 			unhideMarkers();
+			for (Marker marker : airportMarkers)
+				marker.setHidden(true);
+
 			lastClicked = null;
-		}
-		else if (lastClicked == null) 
-		{
+		} else if (lastClicked == null) {
 			checkEarthquakesForClick();
 			if (lastClicked == null) {
 				checkCitiesForClick();
+			}
+		}
+	}
+	
+	private void showAirports(EarthquakeMarker markerSelected) {
+		Location location = markerSelected.getLocation();
+		double threatDistance = ((EarthquakeMarker) markerSelected).threatCircle();
+		for (Marker marker : airportMarkers) {
+			if (marker.getDistanceTo(location) > threatDistance) {
+				marker.setHidden(true);
+				marker.setSelected(false);
+			} else {
+				marker.setHidden(false);
 			}
 		}
 	}
@@ -246,6 +294,7 @@ public class EarthquakeCityMap extends PApplet {
 						mhide.setHidden(true);
 					}
 				}
+				showAirports(marker);
 				return;
 			}
 		}
@@ -314,6 +363,8 @@ public class EarthquakeCityMap extends PApplet {
 
 		text("Past hour", xbase+50, ybase+200);
 		
+		text("Airports", xbase + 50, ybase + 217);
+		
 		fill(255, 255, 255);
 		int centerx = xbase+35;
 		int centery = ybase+200;
@@ -323,7 +374,8 @@ public class EarthquakeCityMap extends PApplet {
 		line(centerx-8, centery-8, centerx+8, centery+8);
 		line(centerx-8, centery+8, centerx+8, centery-8);
 		
-		
+		fill(200, 240);
+		rect(xbase + 30, ybase + 215, 10, 10);
 	}
 
 	

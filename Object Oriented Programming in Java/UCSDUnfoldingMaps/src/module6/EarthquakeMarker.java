@@ -55,13 +55,11 @@ public abstract class EarthquakeMarker extends CommonMarker implements Comparabl
 		this.radius = 1.75f*getMagnitude();
 	}
 	
-	// TODO: Add the method:
-	// public int compareTo(EarthquakeMarker marker)
 	@Override
 	public int compareTo(EarthquakeMarker marker) {
 		float magnitude = this.getMagnitude();
 		float otherMagnitude = marker.getMagnitude();
-		// Sorting earthquakes in reverse order of magnitude. Descending.
+		// Sorting earthquakes in reverse order of magnitude. From highest to lowest.
 		return magnitude > otherMagnitude ? -1 : (magnitude == otherMagnitude ? 0 : 1);
 	}
 	
