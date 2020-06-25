@@ -59,11 +59,10 @@ public class AirportAlgs {
 			indexMin = i;
 			for(int j=i+1; j < vals.length; j++) {
 				if(vals[j] < vals[indexMin]) {
+					//swap elements
 					indexMin = j;
 				}
 			}
-			
-			
 		}
 	}
 	

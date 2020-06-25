@@ -43,6 +43,7 @@ public class Airport {
 public class Airport implements Comparable<Airport>{
     
     ...
+    
     // Method coming from Comparable interface.
     public int compareTo (Airport other){
         // Using compareTo method for String objects. Comparing based on the city.
