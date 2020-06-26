@@ -1,0 +1,1 @@
+This course will focus on some basic fundamental data structures including linked lists and trees, and go on to touch on more advanced structures like hashsets. And front and center throughout this course will be the subject of code and algorithm efficiency and correctness.
