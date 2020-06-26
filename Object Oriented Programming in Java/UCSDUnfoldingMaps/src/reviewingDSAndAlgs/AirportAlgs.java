@@ -50,8 +50,10 @@ public class AirportAlgs {
 	// inputs since it would become slower. Let's remember the use of any sorting or any other type of algorithms
 	// will be used upon the context provided. Therefore, we will decide if either caring more about
 	// space complexity or time complexity.
-	// This algorithm gets no benefit from sorting an already sorted array though. Its inner loop will
-	// still have to go through every element. We may be benefiting with this but in other algorithms.  
+	// This algorithm gets no benefit from sorting an already sorted array though. The two nested loops in 
+	// selection sort always execute to completion, no matter what the order of the underlying elements. The inner loop in 
+	// selection sort must find the smallest remaining element, it must search all the way through 
+	// the remaining elements to be sure it's found the smallest.
 	public static void selectionSort(int[] vals) {
 		
 		int indexMin;
@@ -67,6 +69,10 @@ public class AirportAlgs {
 	}
 	
 	// Algorithm 4 (Insertion Sort)
+	// It is worth noting that when the array is already sorted this algorithm will be faster. The 
+	// inner loop in insertion sort aborts as soon as it discovers that the element it is moving 
+	// is already in the correct relative position. If the array is already sorted, then the inner 
+	// loop will always abort after just one check.
 	public static void insertionSort(int[] vals) {
 		int currInd;
 		for(int pos = 1; pos < vals.length; pos++) {

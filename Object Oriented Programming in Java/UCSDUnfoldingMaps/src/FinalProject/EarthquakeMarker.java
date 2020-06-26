@@ -1,23 +1,21 @@
-package module5;
-
-import java.util.*;
+package FinalProject;
 
 import de.fhpotsdam.unfolding.data.PointFeature;
+import processing.core.PConstants;
 import processing.core.PGraphics;
-import de.fhpotsdam.unfolding.marker.Marker;
 
 /** Implements a visual marker for earthquakes on an earthquake map
  * 
  * @author UC San Diego Intermediate Software Development MOOC team
- * @author Your name here
  *
  */
-public abstract class EarthquakeMarker extends CommonMarker
+
+public abstract class EarthquakeMarker extends CommonMarker implements Comparable<EarthquakeMarker>
 {
 	
 	// Did the earthquake occur on land?  This will be set by the subclasses.
 	protected boolean isOnLand;
-
+	
 	// The radius of the Earthquake marker
 	// You will want to set this in the constructor, either
 	// using the thresholds below, or a continuous function
@@ -38,10 +36,8 @@ public abstract class EarthquakeMarker extends CommonMarker
 	/** Greater than or equal to this threshold is a deep depth */
 	public static final float THRESHOLD_DEEP = 300;
 
-	List<Marker> threatenedCityMarkers;
-	
-	// ADD constants for colors if you want
-	
+	// ADD constants for colors
+
 	
 	// abstract method implemented in derived classes
 	public abstract void drawEarthquake(PGraphics pg, float x, float y);
@@ -59,7 +55,13 @@ public abstract class EarthquakeMarker extends CommonMarker
 		this.radius = 1.75f*getMagnitude();
 	}
 	
-
+	@Override
+	public int compareTo(EarthquakeMarker marker) {
+		float otherMagnitude = marker.getMagnitude();
+		// Sorting earthquakes in reverse order of magnitude. From highest to lowest.
+		return this.getMagnitude() > otherMagnitude ? -1 : (this.getMagnitude() == otherMagnitude ? 0 : 1);
+	}
+	
 	// calls abstract method drawEarthquake and then checks age and draws X if needed
 	@Override
 	public void drawMarker(PGraphics pg, float x, float y) {
@@ -95,21 +97,24 @@ public abstract class EarthquakeMarker extends CommonMarker
 	}
 
 	/** Show the title of the earthquake if this marker is selected */
-	@Override
 	public void showTitle(PGraphics pg, float x, float y)
 	{
-		int lightBlueRGB = pg.color(20, 150, 200);
-		int black = pg.color(0, 0, 0);
-		int fontSize = 12;
+		String title = getTitle();
+		pg.pushStyle();
 		
-		// Label Box
-		pg.fill(lightBlueRGB);
-		pg.rect(x, (y + getRadius() * 2) - (fontSize), pg.textWidth(getTitle()), fontSize + 2);
+		pg.rectMode(PConstants.CORNER);
 		
-		// Label
-		pg.fill(black);
-		pg.textSize(fontSize);
-		pg.text(getTitle(), x, y + getRadius() * 2);
+		pg.stroke(110);
+		pg.fill(255,255,255);
+		pg.rect(x, y + 15, pg.textWidth(title) +6, 18, 5);
+		
+		pg.textAlign(PConstants.LEFT, PConstants.TOP);
+		pg.fill(0);
+		pg.text(title, x + 3 , y +18);
+		
+		
+		pg.popStyle();
+		
 	}
 
 	
@@ -142,58 +147,15 @@ public abstract class EarthquakeMarker extends CommonMarker
 		}
 	}
 	
-	@Override
-	public void showThreat(List<Marker> quakeMarkers, List<Marker> cityMarkers){
-		hideOtherQuakes(quakeMarkers);
-		showAndAddThreatenedCities(cityMarkers);
+	
+	/** toString
+	 * Returns an earthquake marker's string representation
+	 * @return the string representation of an earthquake marker.
+	 */
+	public String toString()
+	{
+		return getTitle();
 	}
-	
-	// hides all other quakeMarkers
-		private void hideOtherQuakes(List<Marker> quakeMarkers){
-			for (Marker marker: quakeMarkers){
-				if (marker != this){
-					marker.setHidden(true);
-				}
-			}
-		}
-		
-		
-		/*
-		 * hiding the cities which are not threatened
-		 * if the city is threatened
-		 * adds the threatened city
-		 */
-		private void showAndAddThreatenedCities(List<Marker> cityMarkers){
-			if (threatenedCityMarkers == null){
-				threatenedCityMarkers = new ArrayList<Marker>();	
-			}
-			
-			// threat circle in km
-			double threat = threatCircle();
-			
-			// Looping over all the cityMarker
-			// Adding the cities which are threatened by the earthquake
-			for (Marker marker: cityMarkers){
-				if ((marker).getDistanceTo(this.location) > threat){
-					marker.setHidden(true);
-				}
-				else {
-					// Not hiding marker means threatenedCities are already displayed
-					
-					addThreatenedCity(marker);
-				}
-			}
-		}
-		
-		// Adds the the threatened City if not in the list already
-		private void addThreatenedCity(Marker cityMarker){
-			System.out.println(cityMarker.getProperties().toString());
-			if (threatenedCityMarkers.indexOf(cityMarker) == -1) {
-				threatenedCityMarkers.add(cityMarker);	
-			}
-		}
-	
-	
 	/*
 	 * getters for earthquake properties
 	 */

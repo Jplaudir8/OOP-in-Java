@@ -1,4 +1,4 @@
-package module6;
+package FinalProject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
