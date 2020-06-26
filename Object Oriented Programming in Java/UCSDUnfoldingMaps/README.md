@@ -30,21 +30,21 @@ Switch Java Compiler to 1.6 if you get VM problems. (Processing should work with
 Images of the application.
 
 <p align="center">
-    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Object%20Oriented%20Programming%20in%20Java/UCSDUnfoldingMaps/map1.png" height="310" alt="Image extracted from own application" title="Map">
+    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Object%20Oriented%20Programming%20in%20Java/UCSDUnfoldingMaps/map1.png" height="510" alt="Image extracted from own application" title="Map">
 </p>
 
 <p align="center">
-    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Object%20Oriented%20Programming%20in%20Java/UCSDUnfoldingMaps/map2.png" height="210" alt="Image extracted from own application" title="Map">
+    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Object%20Oriented%20Programming%20in%20Java/UCSDUnfoldingMaps/map2.png" height="510" alt="Image extracted from own application" title="Map">
 </p>
 
 <p align="center">
-    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Object%20Oriented%20Programming%20in%20Java/UCSDUnfoldingMaps/map3.png" height="110" alt="Image extracted from own application" title="Map">
+    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Object%20Oriented%20Programming%20in%20Java/UCSDUnfoldingMaps/map3.png" height="510" alt="Image extracted from own application" title="Map">
 </p>
 
 <p align="center">
-    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Object%20Oriented%20Programming%20in%20Java/UCSDUnfoldingMaps/map4.png" height="110" alt="Image extracted from own application" title="Map">
+    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Object%20Oriented%20Programming%20in%20Java/UCSDUnfoldingMaps/map4.png" height="510" alt="Image extracted from own application" title="Map">
 </p>
 
 <p align="center">
-    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Object%20Oriented%20Programming%20in%20Java/UCSDUnfoldingMaps/map5.png" height="110" alt="Image extracted from own application" title="Map">
+    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Object%20Oriented%20Programming%20in%20Java/UCSDUnfoldingMaps/map5.png" height="510" alt="Image extracted from own application" title="Map">
 </p>
