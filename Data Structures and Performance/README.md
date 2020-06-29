@@ -21,3 +21,7 @@ Flesch Index Button: will allow the user determine the readability of text by di
 | 50 to 60  | 10th to 12th grade (high school) |
 | 30 to 50  | college                          |
 | 0 to 30   | college graduate                 |
+
+From the formula given, we can conclude that in order to reach a higher score (easy-to-read text) the text would require to have few words per sentence and few syllables per words. This basically means short sentences and short words. 
+
+In order to get a lower score, we would just need to have the opposite in our text, many words per sentence and many syllables per word.
