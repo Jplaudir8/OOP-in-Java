@@ -245,7 +245,7 @@ public class MainApp extends Application {
 			//controller.setDialogStage(dialogStage);
 			controller.setMainApp(this);
 			controller.setMTG(mtg);
-
+			
 			// Show the dialog and wait until the user closes it
 		    dialogStage.showAndWait();
 		    

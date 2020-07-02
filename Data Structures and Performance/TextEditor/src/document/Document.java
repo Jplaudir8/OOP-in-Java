@@ -63,29 +63,28 @@ public abstract class Document {
 	 *       You should consider y a vowel.
 	 */
 	protected static int countSyllables(String word) {
-
-		System.out.print("Counting syllables of " + "\"" + word + "\""+"... ");
 		
-		int numberSyllables = 0;
-		boolean flagNewSyllable = true;
+		System.out.print("Counting syllables of " + "\"" + word + "\""+"... => ");
+		int numSyllables = 0;
+		boolean numberSyllables = true;
 		String vowels = "aeiouy";
-		String lowerCaseWord = word.toLowerCase();
-		
-		for(int i = 0; i < word.length(); i++) {
-			if (i == word.length() - 1 && flagNewSyllable && 
-					lowerCaseWord.indexOf("e") > 0 && numberSyllables > 0) {
-				numberSyllables--;
-			} 
-			if (flagNewSyllable && vowels.indexOf(lowerCaseWord.charAt(i)) >= 0) {
-				flagNewSyllable = false;
-				numberSyllables++;
-			} else if (vowels.indexOf(lowerCaseWord.charAt(i)) < 0) {
-				flagNewSyllable = true;
+		char[] cArray = word.toCharArray();
+		for (int i = 0; i < cArray.length; i++)
+		{
+			if (i == cArray.length-1 && Character.toLowerCase(cArray[i]) == 'e' 
+					&& numberSyllables && numSyllables > 0) {
+				numSyllables--;
+			}
+			if (numberSyllables && vowels.indexOf(Character.toLowerCase(cArray[i])) >= 0) {
+				numberSyllables = false;
+				numSyllables++;
+			}
+			else if (vowels.indexOf(Character.toLowerCase(cArray[i])) < 0) {
+				numberSyllables = true;
 			}
 		}
-		
-		System.out.println("Found " + numberSyllables + "Syllables");
-	    return numberSyllables;
+		System.out.println("Found " + numberSyllables + " Syllables");
+		return numSyllables;
 	}
 	
 	/** A method for testing
@@ -146,10 +145,11 @@ public abstract class Document {
 	}
 	
 	/** return the Flesch readability score of this document */
-	public double getFleschScore()
-	{
-	 
-	    return text.length();
+	public double getFleschScore() {
+		double fleschScore = 206.835 - (1.015 * getNumWords()/getNumSentences()) - (84.6 * getNumSyllables()/getNumWords());
+		// System.out.println("Flesch Score formula: 206.835 - 1.015(" + getNumWords() + "/" + getNumSentences() +
+		//				  								") - 84.6(" + getNumSyllables() + "/" + getNumWords() + ")");
+	    return fleschScore;
 	}
 	
 	
