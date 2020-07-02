@@ -37,28 +37,35 @@ public class DocumentBenchmarking {
 		// TODO: Fill in the rest of this method so that it runs two loops
 		// and prints out timing results as described in the assignment 
 		// instructions and following the pseudocode below.
+		System.out.println("Size\tBasicDocument\tEfficientDocument");
 		for (int numToCheck = start; numToCheck < numSteps*increment + start; 
 				numToCheck += increment)
 		{
 			// numToCheck holds the number of characters that you should read from the 
 			// file to create both a BasicDocument and an EfficientDocument.  
 			
-			/* Each time through this loop you should:
-			 * 1. Print out numToCheck followed by a tab (\t) (NOT a newline)
-			 * 2. Read numToCheck characters from the file into a String
-			 *     Hint: use the helper method below.
-			 * 3. Time a loop that runs trials times (trials is the variable above) that:
-			 *     a. Creates a BasicDocument 
-			 *     b. Calls fleshScore on this document
-			 * 4. Print out the time it took to complete the loop in step 3 
-			 *      (on the same line as the first print statement) followed by a tab (\t)
-			 * 5. Time a loop that runs trials times (trials is the variable above) that:
-			 *     a. Creates an EfficientDocument 
-			 *     b. Calls fleshScore on this document
-			 * 6. Print out the time it took to complete the loop in step 5 
-			 *      (on the same line as the first print statement) followed by a newline (\n) 
-			 */  
-			 
+			
+			System.out.print(numToCheck+"\t");
+			
+			String trimmedDoc = getStringFromFile(textfile, numToCheck);
+			
+			BasicDocument basicDoc = new BasicDocument(trimmedDoc);
+			long basicDocStartTime = System.nanoTime();
+			for(int i = 0; i < trials; i++) {
+				double fleschScore = basicDoc.getFleschScore();
+			}
+			long basicDocEndTime = System.nanoTime();
+			
+			EfficientDocument efficientDoc = new EfficientDocument(trimmedDoc);
+			long efficientDocStartTime = System.nanoTime();
+			for(int i = 0; i < trials; i++) {
+				double fleschScore = efficientDoc.getFleschScore();
+			}
+			long efficientDocEndTime = System.nanoTime();
+			
+			// printing the conversion to seconds by dividing by 1*10^9.
+			System.out.print((basicDocEndTime - basicDocStartTime)/1000000000.0 + "\t");
+			System.out.println((efficientDocEndTime - efficientDocStartTime)/1000000000.0); 
 		}
 	
 	}

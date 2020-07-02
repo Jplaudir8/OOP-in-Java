@@ -64,7 +64,7 @@ public abstract class Document {
 	 */
 	protected static int countSyllables(String word) {
 		
-		System.out.print("Counting syllables of " + "\"" + word + "\""+"... => ");
+		//System.out.print("Counting syllables of " + "\"" + word + "\""+"... => ");
 		int numSyllables = 0;
 		boolean numberSyllables = true;
 		String vowels = "aeiouy";
@@ -83,7 +83,7 @@ public abstract class Document {
 				numberSyllables = true;
 			}
 		}
-		System.out.println("Found " + numberSyllables + " Syllables");
+		//System.out.println("Found " + numberSyllables + " Syllables");
 		return numSyllables;
 	}
 	
