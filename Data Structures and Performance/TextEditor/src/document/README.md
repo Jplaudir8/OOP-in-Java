@@ -28,11 +28,11 @@ Expressed in seconds:
 Some graphics of the previous data:
 
 <p align="center">
-    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Data%20Structures%20and%20Performance/TextEditor/src/document/Stats1.png" height="500" alt="graphic1" title="graphic1">
+    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Data%20Structures%20and%20Performance/TextEditor/src/document/Stats1.png" height="490" alt="graphic1" title="graphic1">
 </p>
 <p align="center">
-    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Data%20Structures%20and%20Performance/TextEditor/src/document/Stats2.png" height="500" alt="graphic2" title="graphic2">
+    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Data%20Structures%20and%20Performance/TextEditor/src/document/Stats2.png" height="490" alt="graphic2" title="graphic2">
 </p>
 <p align="center">
-    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Data%20Structures%20and%20Performance/TextEditor/src/document/Stats3.png" height="500" alt="graphic3" title="graphic3">
+    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Data%20Structures%20and%20Performance/TextEditor/src/document/Stats3.png" height="490" alt="graphic3" title="graphic3">
 </p>
