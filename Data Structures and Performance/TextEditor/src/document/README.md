@@ -23,16 +23,18 @@ Expressed in seconds:
 |410000	   |2.634.819.076  |2.562.307.055    |
 |430000	   |2.723.735.139  |2.738.352.834    |
 
+# Images
+
 Some graphics of the previous data:
 
 <p align="center">
-    <img src="https://github.com/Jplaudir8/OOP-in-Java/tree/master/Data%20Structures%20and%20Performance/TextEditor/src/document/Stats1.png" height="540">
+    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Data%20Structures%20and%20Performance/TextEditor/src/document/Stats1.png" height="540" alt="graphic1" title="graphic1">
 </p>
 
 <p align="center">
-    <img src="https://github.com/Jplaudir8/OOP-in-Java/tree/master/Data%20Structures%20and%20Performance/TextEditor/src/document/Stats2.png" height="540">
+    <img src="https://github.com/Jplaudir8/OOP-in-Java/tree/master/Data%20Structures%20and%20Performance/TextEditor/src/document/Stats2.png" height="540" alt="graphic2" title="graphic2">
 </p>
 
 <p align="center">
-    <img src="https://github.com/Jplaudir8/OOP-in-Java/tree/master/Data%20Structures%20and%20Performance/TextEditor/src/document/Stats3.png" height="540">
+    <img src="https://github.com/Jplaudir8/OOP-in-Java/tree/master/Data%20Structures%20and%20Performance/TextEditor/src/document/Stats3.png" height="540" alt="graphic3" title="graphic3">
 </p>
