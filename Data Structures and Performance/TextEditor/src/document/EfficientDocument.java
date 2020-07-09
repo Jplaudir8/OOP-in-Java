@@ -52,8 +52,19 @@ public class EfficientDocument extends Document {
 		// OF THIS METHOD.
 		List<String> tokens = getTokens("[!?.]+|[a-zA-Z]+");
 		
-		// TODO: Finish this method.  Remember the countSyllables method from 
+		// Finish this method.  Remember the countSyllables method from 
 		// Document.  That will come in handy here.  isWord defined above will also help.
+		for (String token : tokens) {
+			if(isWord(token)) {
+				// If token is word
+				numSyllables += countSyllables(token);
+				numWords++;
+			} else {
+				// If token is sentence-ending punctuation.
+				numSentences++;
+			}
+				
+		}
 	}
 
 	
@@ -72,8 +83,9 @@ public class EfficientDocument extends Document {
 	 */
 	@Override
 	public int getNumSentences() {
-		List<String> tokens = getTokens("[^!?.]+");
-	    return tokens.size();
+		//List<String> tokens = getTokens("[^!?.]+");
+	    //return tokens.size();
+		return 0;
 	}
 
 	
@@ -93,8 +105,9 @@ public class EfficientDocument extends Document {
 	 */
 	@Override
 	public int getNumWords() {
-		List<String> tokens = getTokens("[a-zA-z]+");
-	    return tokens.size();
+		//List<String> tokens = getTokens("[a-zA-z]+");
+	    //return tokens.size();
+	    return 0;
 	}
 
 
@@ -115,12 +128,13 @@ public class EfficientDocument extends Document {
 	 */
 	@Override
 	public int getNumSyllables() {
-		List<String> tokens = getTokens("[a-zA-Z]+");
-		int totalSyllables = 0;
-		for(String word : tokens) {
-			totalSyllables += countSyllables(word);
-		}
-        return totalSyllables;
+		//List<String> tokens = getTokens("[a-zA-Z]+");
+		//int totalSyllables = 0;
+		//for(String token : tokens) {
+		//	totalSyllables += countSyllables(token);
+		//}
+        //return totalSyllables;
+		return 0;
 	}
 	
 	// Can be used for testing

@@ -37,7 +37,7 @@ public class DocumentBenchmarking {
 		// TODO: Fill in the rest of this method so that it runs two loops
 		// and prints out timing results as described in the assignment 
 		// instructions and following the pseudocode below.
-		System.out.println("Size\tBasicDocument\tEfficientDocument");
+		System.out.println("NumberOfChars\tBasicTime\tEfficientTime");
 		for (int numToCheck = start; numToCheck < numSteps*increment + start; 
 				numToCheck += increment)
 		{
@@ -65,7 +65,7 @@ public class DocumentBenchmarking {
 			
 			// printing the conversion to seconds by dividing by 1*10^9.
 			System.out.print((basicDocEndTime - basicDocStartTime)/1000000000.0 + "\t");
-			System.out.println((efficientDocEndTime - efficientDocStartTime)/1000000000.0); 
+			System.out.println((efficientDocEndTime - efficientDocStartTime)/1000000.0); 
 		}
 	
 	}
