@@ -146,10 +146,10 @@ public abstract class Document {
 	
 	/** return the Flesch readability score of this document */
 	public double getFleschScore() {
-		double fleschScore = 206.835 - (1.015 * getNumWords()/getNumSentences()) - (84.6 * getNumSyllables()/getNumWords());
+		double wordCount = ((double)getNumWords());
+		return 206.835 - (1.015 * ((wordCount)/getNumSentences())) - (84.6 * (((double)getNumSyllables())/wordCount));
 		// System.out.println("Flesch Score formula: 206.835 - 1.015(" + getNumWords() + "/" + getNumSentences() +
 		//				  								") - 84.6(" + getNumSyllables() + "/" + getNumWords() + ")");
-	    return fleschScore;
 	}
 	
 	

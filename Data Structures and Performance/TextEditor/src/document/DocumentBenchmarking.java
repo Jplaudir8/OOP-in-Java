@@ -45,27 +45,29 @@ public class DocumentBenchmarking {
 			// file to create both a BasicDocument and an EfficientDocument.  
 			
 			
-			System.out.print(numToCheck+"\t");
+			System.out.print(numToCheck+"\t\t");
 			
 			String trimmedDoc = getStringFromFile(textfile, numToCheck);
 			
-			BasicDocument basicDoc = new BasicDocument(trimmedDoc);
+			
 			long basicDocStartTime = System.nanoTime();
 			for(int i = 0; i < trials; i++) {
+				BasicDocument basicDoc = new BasicDocument(trimmedDoc);
 				double fleschScore = basicDoc.getFleschScore();
 			}
 			long basicDocEndTime = System.nanoTime();
 			
-			EfficientDocument efficientDoc = new EfficientDocument(trimmedDoc);
+			
 			long efficientDocStartTime = System.nanoTime();
 			for(int i = 0; i < trials; i++) {
+				EfficientDocument efficientDoc = new EfficientDocument(trimmedDoc);
 				double fleschScore = efficientDoc.getFleschScore();
 			}
 			long efficientDocEndTime = System.nanoTime();
 			
 			// printing the conversion to seconds by dividing by 1*10^9.
 			System.out.print((basicDocEndTime - basicDocStartTime)/1000000000.0 + "\t");
-			System.out.println((efficientDocEndTime - efficientDocStartTime)/1000000.0); 
+			System.out.println((efficientDocEndTime - efficientDocStartTime)/1000000000.0); 
 		}
 	
 	}
