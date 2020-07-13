@@ -29,13 +29,13 @@ Comparing running time execution between BasicDocument.java and EfficientDocumen
 Plotting the Data:
 
 <p align="center">
-    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Data%20Structures%20and%20Performance/TextEditor/src/document/Stats1.png" height="420" alt="graphic1" title="graphic1">
+    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Data%20Structures%20and%20Performance/TextEditor/src/document/Stats1.png" height="400" alt="graphic1" title="graphic1">
 </p>
 <p align="center">
-    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Data%20Structures%20and%20Performance/TextEditor/src/document/Stats2.png" height="420" alt="graphic2" title="graphic2">
+    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Data%20Structures%20and%20Performance/TextEditor/src/document/Stats2.png" height="400" alt="graphic2" title="graphic2">
 </p>
 <p align="center">
-    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Data%20Structures%20and%20Performance/TextEditor/src/document/Stats3.png" height="420" alt="graphic3" title="graphic3">
+    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Data%20Structures%20and%20Performance/TextEditor/src/document/Stats3.png" height="400" alt="graphic3" title="graphic3">
 </p>
 
 We can conclude that our running time complexity is better in our EfficientDocument, since its tightest Big-O running time would be leaning to O(n), a linear growth in terms of time.
