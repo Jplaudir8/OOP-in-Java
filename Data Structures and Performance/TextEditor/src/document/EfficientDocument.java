@@ -63,7 +63,6 @@ public class EfficientDocument extends Document {
 				// If token is sentence-ending punctuation.
 				numSentences++;
 			}
-				
 		}
 	}
 
@@ -83,9 +82,8 @@ public class EfficientDocument extends Document {
 	 */
 	@Override
 	public int getNumSentences() {
-		//List<String> tokens = getTokens("[^!?.]+");
-	    //return tokens.size();
-		return 0;
+
+		return numSentences;
 	}
 
 	
@@ -105,9 +103,8 @@ public class EfficientDocument extends Document {
 	 */
 	@Override
 	public int getNumWords() {
-		//List<String> tokens = getTokens("[a-zA-z]+");
-	    //return tokens.size();
-	    return 0;
+
+	    return numWords;
 	}
 
 
@@ -128,13 +125,8 @@ public class EfficientDocument extends Document {
 	 */
 	@Override
 	public int getNumSyllables() {
-		//List<String> tokens = getTokens("[a-zA-Z]+");
-		//int totalSyllables = 0;
-		//for(String token : tokens) {
-		//	totalSyllables += countSyllables(token);
-		//}
-        //return totalSyllables;
-		return 0;
+
+		return numSyllables;
 	}
 	
 	// Can be used for testing

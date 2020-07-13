@@ -152,6 +152,4 @@ public abstract class Document {
 		//				  								") - 84.6(" + getNumSyllables() + "/" + getNumWords() + ")");
 	}
 	
-	
-	
 }
