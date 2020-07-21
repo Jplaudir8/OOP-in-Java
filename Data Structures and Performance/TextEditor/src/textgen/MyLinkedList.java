@@ -59,7 +59,7 @@ public class MyLinkedList<E> extends AbstractList<E> {
 		for(int i = 0; i < index; i++) {
 			currentNode = currentNode.next;
 		}
-		return currentNode;
+		return currentNode.data;
 	}
 
 	//UNTIL HERE, testGet() should work properly.
