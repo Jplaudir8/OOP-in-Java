@@ -160,7 +160,22 @@ public class MyLinkedListTester {
 	@Test
 	public void testSize()
 	{
+		// Testing current sizes
+		assertEquals("testSize: shortList", 2, shortList.size());
+		assertEquals("testSize: shortList", 0, emptyList.size());
+		assertEquals("testSize: shortList", 10, longerList.size());
+		assertEquals("testSize: shortList", 3, list1.size());
 		
+		// Testing size after adding an element
+		shortList.add("X");
+		emptyList.add(30);
+		longerList.add(999);
+		list1.add(222);
+		
+		assertEquals("testSize: shortList", 3, shortList.size());
+		assertEquals("testSize: shortList", 1, emptyList.size());
+		assertEquals("testSize: shortList", 11, longerList.size());
+		assertEquals("testSize: shortList", 4, list1.size());
 	}
 
 	/** Test adding an element into the list at a specified index,
