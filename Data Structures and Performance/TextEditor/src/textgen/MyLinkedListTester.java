@@ -200,7 +200,7 @@ public class MyLinkedListTester {
 		
 		// TESTING WITH shortList
 		// test adding at the beginning of the list
-		shortList.add(1, "Z");
+		shortList.add(0, "Z");
 		assertEquals("testAddAtIndex: shortList", "Z", shortList.get(0));
 		assertEquals("testAddAtIndex: shortList", "A", shortList.get(1));
 		assertEquals("testAddAtIndex: shortList", "B", shortList.get(2));
@@ -218,8 +218,8 @@ public class MyLinkedListTester {
 		shortList.add(4, "Y");
 	    assertEquals("testAddAtIndex: shortList", "Z", shortList.get(0));
 		assertEquals("testAddAtIndex: shortList", "A", shortList.get(1));
-		assertEquals("testAddAtIndex: shortList", "B", shortList.get(2));
-		assertEquals("testAddAtIndex: shortList", "H", shortList.get(3));
+		assertEquals("testAddAtIndex: shortList", "Y", shortList.get(2));
+		assertEquals("testAddAtIndex: shortList", "B", shortList.get(3));
 		assertEquals("testAddAtIndex: shortList", "Y", shortList.get(4));
 		assertEquals("testAddAtIndex: middle", 5, shortList.size());
 	}

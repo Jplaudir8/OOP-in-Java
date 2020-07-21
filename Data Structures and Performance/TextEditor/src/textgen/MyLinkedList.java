@@ -69,7 +69,27 @@ public class MyLinkedList<E> extends AbstractList<E> {
 	 */
 	public void add(int index, E element ) 
 	{
-		// TODO: Implement this method
+		if(element == null) {
+			throw new NullPointerException("Cannot insert a null value");
+		}
+		
+		if(index < 0 || index > size) {
+			throw new IndexOutOfBoundsException("Cannot insert at an index out of range");
+		}
+		
+		LLNode<E> newNode = new LLNode<E>(element);
+		LLNode<E> currentNode = head;
+		
+		for (int i = 0; i < index; i++) {
+			currentNode = currentNode.next;
+		}
+		
+		newNode.next = currentNode.next;
+		newNode.prev = currentNode;
+		newNode.next.prev = newNode;
+		currentNode.next = newNode;
+		
+		size++;
 	}
 
 
