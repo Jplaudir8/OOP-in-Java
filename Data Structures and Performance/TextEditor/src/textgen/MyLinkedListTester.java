@@ -16,7 +16,7 @@ import org.junit.Test;
  */
 public class MyLinkedListTester {
 
-	private static final int LONG_LIST_LENGTH =10; 
+	private static final int LONG_LIST_LENGTH = 10; 
 
 	MyLinkedList<String> shortList;
 	MyLinkedList<Integer> emptyList;
@@ -73,6 +73,7 @@ public class MyLinkedListTester {
 		catch (IndexOutOfBoundsException e) {
 		
 		}
+		
 		try {
 			shortList.get(2);
 			fail("Check out of bounds");
@@ -80,6 +81,7 @@ public class MyLinkedListTester {
 		catch (IndexOutOfBoundsException e) {
 		
 		}
+		
 		// test longer list contents
 		for(int i = 0; i<LONG_LIST_LENGTH; i++ ) {
 			assertEquals("Check "+i+ " element", (Integer)i, longerList.get(i));
@@ -93,6 +95,7 @@ public class MyLinkedListTester {
 		catch (IndexOutOfBoundsException e) {
 		
 		}
+		
 		try {
 			longerList.get(LONG_LIST_LENGTH);
 			fail("Check out of bounds");

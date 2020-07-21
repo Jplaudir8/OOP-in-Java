@@ -16,7 +16,11 @@ public class MyLinkedList<E> extends AbstractList<E> {
 
 	/** Create a new empty LinkedList */
 	public MyLinkedList() {
-		// TODO: Implement this method
+		size = 0;
+		head = new LLNode<E>(null);
+		tail = new LLNode<E>(null);
+		head.next = tail;
+		tail.prev = head;
 	}
 
 	/**
@@ -25,18 +29,42 @@ public class MyLinkedList<E> extends AbstractList<E> {
 	 */
 	public boolean add(E element ) 
 	{
-		// TODO: Implement this method
-		return false;
+		// Throw error if trying to add a null element.
+		if (element == null) 
+			throw new NullPointerException();
+		
+		// Creating new node
+		LLNode<E> newNode = new LLNode<E>(element);
+		
+		// Moving pointers to add new element
+		newNode.next = tail;
+		newNode.prev = tail.prev;
+		newNode.prev.next = newNode;
+		newNode.next.prev = newNode;
+		
+		// Now we update the size of the list
+		size++;
+		return true;
 	}
 
 	/** Get the element at position index 
 	 * @throws IndexOutOfBoundsException if the index is out of bounds. */
 	public E get(int index) 
 	{
-		// TODO: Implement this method.
-		return null;
+		// Throw error if trying to retrieve with an index that is out of bounds
+		if(index < 0 || index >= size || size == 0) 
+			throw new IndexOutOfBoundsException();
+		
+		LLNode<E> currentNode = head.next;
+		for(int i = 0; i < index; i++) {
+			currentNode = currentNode.next;
+		}
+		return currentNode;
 	}
 
+	//UNTIL HERE, testGet() should work properly.
+	
+	
 	/**
 	 * Add an element to the list at the specified index
 	 * @param The index where the element should be added
