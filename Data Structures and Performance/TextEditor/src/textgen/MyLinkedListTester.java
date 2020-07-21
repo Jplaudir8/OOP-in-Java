@@ -126,8 +126,34 @@ public class MyLinkedListTester {
 	@Test
 	public void testAddEnd()
 	{
-        // TODO: implement this test
+		// Adding a null value should throw an exception.
+		try {
+			new MyLinkedList<String>().add(null);
+			fail("Cannot add null element to list");
+		} catch (NullPointerException e) {
+		}
 		
+		// TEST ADDING TO AN EMPTY LIST
+		// test inserted element has been correctly added.
+        boolean addingFlag = emptyList.add(5);
+		assertEquals("testAddEnd: checking element is at the end of list", (Integer)5, emptyList.get(0));
+		assertEquals("testAddEnd: checking element has been successfully added", true, addingFlag);
+		assertEquals("testAddEnd: checking size has incremented", 1, emptyList.size);
+		
+		
+		// TEST ADDING TO A NON-EMPTY LIST
+		// test inserted element is at the end of the list.
+		addingFlag = shortList.add("H");
+		// creating array with expected values and comparing it to the actual current elements
+		String[] expectedValues = {"A", "B", "H"};
+		String[] actualCurrentValues = new String[expectedValues.length];
+		// inserting all elements that are in shortList to actualCurrentValues
+		for(int i = 0; i < actualCurrentValues.length; i++) {
+			actualCurrentValues[i] = shortList.get(i);
+		}
+		assertArrayEquals("testAddEnd: checking element is at the end of list", expectedValues, actualCurrentValues);
+		assertEquals("testAddEnd: checking element has been successfully added", true, addingFlag);
+		assertEquals("testAddEnd: checking size has incremented", 3, shortList.size);
 	}
 
 	

@@ -51,7 +51,7 @@ public class MyLinkedList<E> extends AbstractList<E> {
 	 * @throws IndexOutOfBoundsException if the index is out of bounds. */
 	public E get(int index) 
 	{
-		// Throw error if trying to retrieve with an index that is out of bounds
+		// Throw error if trying to retrieve an index that is out of bounds
 		if(index < 0 || index >= size || size == 0) 
 			throw new IndexOutOfBoundsException();
 		
@@ -60,10 +60,7 @@ public class MyLinkedList<E> extends AbstractList<E> {
 			currentNode = currentNode.next;
 		}
 		return currentNode.data;
-	}
-
-	//UNTIL HERE, testGet() should work properly.
-	
+	}	
 	
 	/**
 	 * Add an element to the list at the specified index
