@@ -255,10 +255,32 @@ public class MyLinkedListTester {
 	@Test
 	public void testSet()
 	{
+		// TESTING WITH shortList
+		// setting a null value should throw an exception.
+		try {
+			shortList.set(1, null);
+			fail("Cannot set null element to list");
+		} catch (NullPointerException e) {
+		}
 		
+		// setting an element into a negative index should throw an exception.
+		try {
+			shortList.set(-1, "I");
+			fail("Cannot insert a negative index");
+		} catch(IndexOutOfBoundsException e) {
+		}
+		
+		// setting an element into a negative index should throw an exception.
+		try {
+			shortList.set(shortList.size(), "K");
+			fail("Cannot insert at an index out of list's range");
+		} catch(IndexOutOfBoundsException e) {
+		}
+		
+		String oldValue = shortList.set(0, "G");
+		assertEquals("testSet", "A", oldValue);
+		assertEquals("testSet", "G", shortList.get(0));
 	}
 	
-	
-	// TODO: Optionally add more test methods.
-	
+		
 }
