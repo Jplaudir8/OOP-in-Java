@@ -10,9 +10,9 @@ import java.util.AbstractList;
  * @param <E> The type of the elements stored in the list
  */
 public class MyLinkedList<E> extends AbstractList<E> {
-	LLNode<E> head;
-	LLNode<E> tail;
-	int size;
+	private LLNode<E> head;
+	private LLNode<E> tail;
+	private int size;
 
 	/** Create a new empty LinkedList */
 	public MyLinkedList() {
@@ -76,8 +76,7 @@ public class MyLinkedList<E> extends AbstractList<E> {
 	/** Return the size of the list */
 	public int size() 
 	{
-		// TODO: Implement this method
-		return -1;
+		return size;
 	}
 
 	/** Remove a node at the specified index and return its data element.

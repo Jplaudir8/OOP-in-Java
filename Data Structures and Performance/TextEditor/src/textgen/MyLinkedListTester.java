@@ -138,7 +138,7 @@ public class MyLinkedListTester {
         boolean addingFlag = emptyList.add(5);
 		assertEquals("testAddEnd: checking element is at the end of list", (Integer)5, emptyList.get(0));
 		assertEquals("testAddEnd: checking element has been successfully added", true, addingFlag);
-		assertEquals("testAddEnd: checking size has incremented", 1, emptyList.size);
+		assertEquals("testAddEnd: checking size has incremented", 1, emptyList.size());
 		
 		
 		// TEST ADDING TO A NON-EMPTY LIST
@@ -153,19 +153,16 @@ public class MyLinkedListTester {
 		}
 		assertArrayEquals("testAddEnd: checking element is at the end of list", expectedValues, actualCurrentValues);
 		assertEquals("testAddEnd: checking element has been successfully added", true, addingFlag);
-		assertEquals("testAddEnd: checking size has incremented", 3, shortList.size);
+		assertEquals("testAddEnd: checking size has incremented", 3, shortList.size());
 	}
 
-	
 	/** Test the size of the list */
 	@Test
 	public void testSize()
 	{
-		// TODO: implement this test
+		
 	}
 
-	
-	
 	/** Test adding an element into the list at a specified index,
 	 * specifically:
 	 * public void add(int index, E element)
@@ -173,8 +170,58 @@ public class MyLinkedListTester {
 	@Test
 	public void testAddAtIndex()
 	{
-        // TODO: implement this test
+		// TESTING WITH longerList
+		// test adding a null value should throw an exception.
+		try {
+			longerList.add(1, null);
+			fail("Cannot add null element to list");
+		} catch (NullPointerException e) {
+		}
+				
+		// test adding an element into a negative index should throw an exception.
+		try {
+			longerList.add(-1, 28);
+			fail("Cannot insert a negative index");
+		} catch(IndexOutOfBoundsException e) {
+		}
 		
+		// test adding an element into an index that is out of range should throw an exception.
+		try {
+			longerList.add(longerList.size() + 1, 18);
+			fail("Cannot add element at an index greater than the size of the list");
+		} catch(IndexOutOfBoundsException e) {
+		}
+		
+		// TESTING WITH emptyList
+		// test adding at the beginning of emptyList
+		emptyList.add(0, 20);
+		assertEquals("testAddAtIndex: emptyList", (Integer)20, emptyList.get(0));
+		assertEquals("testAddAtIndex: size", 1, emptyList.size());
+		
+		// TESTING WITH shortList
+		// test adding at the beginning of the list
+		shortList.add(1, "Z");
+		assertEquals("testAddAtIndex: shortList", "Z", shortList.get(0));
+		assertEquals("testAddAtIndex: shortList", "A", shortList.get(1));
+		assertEquals("testAddAtIndex: shortList", "B", shortList.get(2));
+		assertEquals("testAddAtIndex: size", 3, shortList.size());
+		
+		// test adding at the middle of the list
+		shortList.add(2, "Y");
+		assertEquals("testAddAtIndex: shortList", "Z", shortList.get(0));
+		assertEquals("testAddAtIndex: shortList", "A", shortList.get(1));
+		assertEquals("testAddAtIndex: shortList", "Y", shortList.get(2));
+		assertEquals("testAddAtIndex: shortList", "B", shortList.get(3));
+		assertEquals("testAddAtIndex: size", 4, shortList.size());
+		
+		// test adding at the end of the list
+		shortList.add(4, "Y");
+	    assertEquals("testAddAtIndex: shortList", "Z", shortList.get(0));
+		assertEquals("testAddAtIndex: shortList", "A", shortList.get(1));
+		assertEquals("testAddAtIndex: shortList", "B", shortList.get(2));
+		assertEquals("testAddAtIndex: shortList", "H", shortList.get(3));
+		assertEquals("testAddAtIndex: shortList", "Y", shortList.get(4));
+		assertEquals("testAddAtIndex: middle", 5, shortList.size());
 	}
 	
 	/** Test setting an element in the list */
