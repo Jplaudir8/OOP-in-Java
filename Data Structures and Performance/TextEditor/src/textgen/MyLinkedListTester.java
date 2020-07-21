@@ -270,7 +270,7 @@ public class MyLinkedListTester {
 		} catch(IndexOutOfBoundsException e) {
 		}
 		
-		// setting an element into a negative index should throw an exception.
+		// setting an element into an index out of range should throw an exception.
 		try {
 			shortList.set(shortList.size(), "K");
 			fail("Cannot insert at an index out of list's range");
