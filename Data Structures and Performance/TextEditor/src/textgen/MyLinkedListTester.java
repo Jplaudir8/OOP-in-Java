@@ -10,8 +10,6 @@ import java.util.LinkedList;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.sun.glass.ui.Size;
-
 /**
  * @author UC San Diego MOOC team
  *
@@ -60,8 +58,7 @@ public class MyLinkedListTester {
 			emptyList.get(0);
 			fail("Check out of bounds");
 		}
-		catch (IndexOutOfBoundsException e) {
-			
+		catch (IndexOutOfBoundsException e) {	
 		}
 		
 		// test short list, first contents, then out of bounds
@@ -73,7 +70,6 @@ public class MyLinkedListTester {
 			fail("Check out of bounds");
 		}
 		catch (IndexOutOfBoundsException e) {
-		
 		}
 		
 		try {
@@ -81,7 +77,6 @@ public class MyLinkedListTester {
 			fail("Check out of bounds");
 		}
 		catch (IndexOutOfBoundsException e) {
-		
 		}
 		
 		// test longer list contents
@@ -95,7 +90,6 @@ public class MyLinkedListTester {
 			fail("Check out of bounds");
 		}
 		catch (IndexOutOfBoundsException e) {
-		
 		}
 		
 		try {

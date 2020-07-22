@@ -10,9 +10,9 @@ import java.util.AbstractList;
  * @param <E> The type of the elements stored in the list
  */
 public class MyLinkedList<E> extends AbstractList<E> {
-	private LLNode<E> head;
-	private LLNode<E> tail;
-	private int size;
+	LLNode<E> head;
+	LLNode<E> tail;
+	int size;
 
 	/** Create a new empty LinkedList */
 	public MyLinkedList() {
@@ -165,9 +165,6 @@ class LLNode<E>
 	LLNode<E> prev;
 	LLNode<E> next;
 	E data;
-
-	// TODO: Add any other methods you think are useful here
-	// E.g. you might want to add another constructor
 
 	public LLNode(E e) 
 	{
