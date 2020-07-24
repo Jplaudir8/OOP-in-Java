@@ -27,13 +27,42 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 		rnGenerator = generator;
 	}
 	
-	
 	/** Train the generator by adding the sourceText */
 	@Override
 	public void train(String sourceText)
 	{
-		// TODO: Implement this method
+		String[] sourceTextSplitted = sourceText.split("[\\s]+"); // Splitting by 1+ spaces.
+		starter = sourceTextSplitted[0];
+		String prevWord = starter;
+		
+		for(int i = 1; i < sourceTextSplitted.length; i++) {
+			// Checking if prevWord is already a node in wordList
+			ListNode lookingNode = findNode(prevWord);
+			lookingNode.addNextWord(sourceTextSplitted[i]);
+			prevWord = sourceTextSplitted[i];
+		}
+		// Adding first word to be the next word for last node in the list
+		String sourceTextLastWord = sourceTextSplitted[sourceTextSplitted.length-1];
+		ListNode lastNode = findNode(sourceTextLastWord);
+		lastNode.addNextWord(starter);
 	}
+	
+	/**
+	 * Helper method. Check if 'word' exists in list of nodes, 'wordList'
+	 * 
+	 * @param word word lookup
+	 * @return node of word (if found) or newly created node if not existent.
+	 */
+    private ListNode findNode(String word) {
+        for (ListNode node : wordList) {
+            if (node.getWord().equals(word)) {
+                return node;
+            }
+        }
+        ListNode node = new ListNode(word);
+        wordList.add(node);
+        return node; 
+    }
 	
 	/** 
 	 * Generate the number of words requested.
@@ -76,7 +105,8 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 	{
 		// feed the generator a fixed random value for repeatable behavior
 		MarkovTextGeneratorLoL gen = new MarkovTextGeneratorLoL(new Random(42));
-		String textString = "Hello.  Hello there.  This is a test.  Hello there.  Hello Bob.  Test again.";
+		//String textString = "Hello.  Hello there.  This is a test.  Hello there.  Hello Bob.  Test again.";
+		String textString = "hi there hi Leo";
 		System.out.println(textString);
 		gen.train(textString);
 		System.out.println(gen);
