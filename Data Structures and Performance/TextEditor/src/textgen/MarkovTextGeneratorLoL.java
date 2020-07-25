@@ -46,41 +46,6 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 		ListNode lastNode = findNode(sourceTextLastWord);
 		lastNode.addNextWord(starter);
 	}
-	
-	/**
-	 * Helper method. Check if 'word' exists in list of nodes, 'wordList'
-	 * 
-	 * @param word word lookup
-	 * @return node of word (if found) or newly created node if not existent.
-	 */
-    private ListNode findNode(String word) {
-        for (ListNode node : wordList) {
-            if (node.getWord().equals(word)) {
-                return node;
-            }
-        }
-        ListNode node = new ListNode(word);
-        wordList.add(node);
-        return node; 
-    }
-	
-//	/** 
-//	 * Generate the number of words requested.
-//	 */
-//	@Override
-//	public String generateText(int numWords) {
-//		String currWord = starter;
-//		String output = "";
-//		
-//		output = output + currWord;
-//		for (int i = 0; i < numWords; numWords++) {
-//			ListNode lookingNode = findNode(currWord);
-//			String randomWord = lookingNode.getRandomNextWord(rnGenerator);
-//			output += randomWord;
-//			currWord = randomWord;
-//		}
-//		return null;
-//	}
     
 	/** 
 	 * Generate the number of words requested.
@@ -117,11 +82,26 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 	@Override
 	public void retrain(String sourceText)
 	{
-		// TODO: Implement this method.
+		wordList.clear();
+		train(sourceText);
 	}
-	
-	// TODO: Add any private helper methods you need here.
-	
+		
+	/**
+	 * Helper method. Check if 'word' exists in list of nodes, 'wordList'
+	 * 
+	 * @param word word lookup
+	 * @return node of word (if found) or newly created node if not existent.
+	 */
+    private ListNode findNode(String word) {
+        for (ListNode node : wordList) {
+            if (node.getWord().equals(word)) {
+                return node;
+            }
+        }
+        ListNode node = new ListNode(word);
+        wordList.add(node);
+        return node; 
+    }
 	
 	/**
 	 * This is a minimal set of tests.  Note that it can be difficult
