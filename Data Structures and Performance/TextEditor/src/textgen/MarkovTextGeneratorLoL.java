@@ -31,6 +31,7 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 	@Override
 	public void train(String sourceText)
 	{
+		if (!wordList.isEmpty()) { return; } // This will help us avoid training again if calling this same method.
 		String[] sourceTextSplitted = sourceText.split("[\\s]+"); // Splitting by 1+ spaces.
 		starter = sourceTextSplitted[0];
 		String prevWord = starter;
@@ -55,6 +56,10 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
         String currWord = starter;
         String output = "";
         output += currWord;
+        
+        if (wordList.size() == 0 || numWords == 0) {
+            return "";
+        }
         
         // Here we iterate until numWords-1. It is -1 because we already added the first word('starter') manually to the output.
         for (int i = 0; i < numWords - 1; i++) {
