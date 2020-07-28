@@ -1,6 +1,5 @@
 # Benchmarking
-Comparing running time execution between BasicDocument.java and EfficientDocument.java. This comparison is measured by giving each of them a String of characters as their input:
-(Expressed in seconds)
+Comparing running time execution between BasicDocument.java and EfficientDocument.java. This comparison is measured by giving each of them a String of characters as their input, time is expressed in seconds:
 |Number of Chars|BasicDocument  |EfficientDocument|
 |:-------------:|:-------------:|:---------------:|
 |50000	        |0.318748415	|0.168371265      |
