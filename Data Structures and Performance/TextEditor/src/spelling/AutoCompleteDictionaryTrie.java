@@ -3,6 +3,8 @@ package spelling;
 import java.util.List;
 import java.util.Set;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -103,13 +105,14 @@ public class AutoCompleteDictionaryTrie implements  Dictionary, AutoComplete {
 		// dictionary.
 		return current.endsWord();
 	}
-
-	public static void main (String [] args) {
-		AutoCompleteDictionaryTrie at = new AutoCompleteDictionaryTrie();
-		DictionaryLoader.loadDictionary(at, "data/words.small.txt");
-		boolean iswordFlag = at.isWord("HEnce");
-		System.out.println(iswordFlag);
-	}
+	
+//  Just for debugging:
+//	public static void main (String [] args) {
+//		AutoCompleteDictionaryTrie at = new AutoCompleteDictionaryTrie();
+//		DictionaryLoader.loadDictionary(at, "data/words.small.txt");
+//		boolean iswordFlag = at.isWord("HEnce");
+//		System.out.println(iswordFlag);  
+//	}
 	
 	/** 
      * Return a list, in order of increasing (non-decreasing) word length,
@@ -134,22 +137,31 @@ public class AutoCompleteDictionaryTrie implements  Dictionary, AutoComplete {
      */@Override
      public List<String> predictCompletions(String prefix, int numCompletions) 
      {
-    	 // TODO: Implement this method
-    	 // This method should implement the following algorithm:
-    	 // 1. Find the stem in the trie.  If the stem does not appear in the trie, return an
-    	 //    empty list
-    	 // 2. Once the stem is found, perform a breadth first search to generate completions
-    	 //    using the following algorithm:
-    	 //    Create a queue (LinkedList) and add the node that completes the stem to the back
-    	 //       of the list.
-    	 //    Create a list of completions to return (initially empty)
-    	 //    While the queue is not empty and you don't have enough completions:
-    	 //       remove the first Node from the queue
-    	 //       If it is a word, add it to the completions list
-    	 //       Add all of its child nodes to the back of the queue
-    	 // Return the list of completions
+    	 prefix = prefix.toLowerCase();
+    	 TrieNode currentNode = root;
+    	 for (char letter : prefix.toCharArray()) {
+    		 currentNode = currentNode.getChild(letter);
+             if (currentNode == null) {
+                 return Collections.emptyList();
+             }   
+    	 }
     	 
-         return null;
+    	 Deque<TrieNode> que = new LinkedList<>();
+         que.add(currentNode);
+         List<String> completions = new LinkedList<>();
+
+         while (!que.isEmpty() && completions.size() < numCompletions) {
+             TrieNode node = que.getFirst();
+             for (Character letter: node.getValidNextCharacters()) {
+                 que.addLast(node.getChild(letter));
+             }
+             if (node.endsWord()) {
+                 completions.add(que.removeFirst().getText());
+             } else {
+                 que.removeFirst();
+             }
+         }
+         return completions;
      }
 
  	// For debugging
