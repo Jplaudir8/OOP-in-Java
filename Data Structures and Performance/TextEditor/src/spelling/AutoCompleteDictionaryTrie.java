@@ -145,7 +145,6 @@ public class AutoCompleteDictionaryTrie implements  Dictionary, AutoComplete {
                  return Collections.emptyList();
              }   
     	 }
-    	 
     	 Deque<TrieNode> que = new LinkedList<>();
          que.add(currentNode);
          List<String> completions = new LinkedList<>();
