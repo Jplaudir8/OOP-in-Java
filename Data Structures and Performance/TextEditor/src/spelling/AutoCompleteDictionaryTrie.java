@@ -37,20 +37,45 @@ public class AutoCompleteDictionaryTrie implements  Dictionary, AutoComplete {
 	 * @return true if the word was successfully added or false if it already exists
 	 * in the dictionary.
 	 */
-	public boolean addWord(String word)
-	{
-	    //TODO: Implement this method.
-	    return false;
-	}
+    public boolean addWord(String word) {
+    	word = word.toLowerCase();
+
+    	if (!isWord(word)) {
+
+    		TrieNode current = root;
+    		word = word.toLowerCase();
+
+    		// Traversing the trie and checking if the letter exists or not,
+    		// If it does not exist then it will add the letter as a new child node.
+    		for (char letter : word.toCharArray()) {
+    			if(current.getChild(letter) == null ) {
+    				current = current.insert(letter);
+    			} else {
+    				current = current.getChild(letter);
+    			}
+    		}
+
+    		// After iterating, 'current' will be either positioned in the last node of the trie,
+    		// or positioned in any child node that satisfies the word that has been looked up.
+    		// In order to make sure that it is a new node, we use endsWord(), if so then 
+    		// increment size and set setEndsWord() to true.
+    		if (current.endsWord() == false) {
+    			current.setEndsWord(true);
+    			this.size++;
+    		}
+    		return true;
+    	}
+
+    	return false;
+    }
 	
 	/** 
 	 * Return the number of words in the dictionary.  This is NOT necessarily the same
 	 * as the number of TrieNodes in the trie.
 	 */
 	public int size()
-	{
-	    //TODO: Implement this method
-	    return 0;
+	{		
+	    return this.size;
 	}
 	
 	
@@ -59,10 +84,33 @@ public class AutoCompleteDictionaryTrie implements  Dictionary, AutoComplete {
 	@Override
 	public boolean isWord(String s) 
 	{
-	    // TODO: Implement this method
-		return false;
+		s = s.toLowerCase();
+		
+		if (s.length() == 0) return false;
+		
+		TrieNode current = root;
+		for (char letter : s.toCharArray()) {
+			// If we find a getChild() to be null before finish iterating 
+			// with the string, then the word does not exist.
+			if(current.getChild(letter) == null) {
+				return false;
+			}
+			current = current.getChild(letter);
+		}
+		// with current.endsWord(); we check that after iterating the string,
+		// the node ends a word. We need to make this check because even if we
+		// finish iterating the string, the string may not be any word in the
+		// dictionary.
+		return current.endsWord();
 	}
 
+	public static void main (String [] args) {
+		AutoCompleteDictionaryTrie at = new AutoCompleteDictionaryTrie();
+		DictionaryLoader.loadDictionary(at, "data/words.small.txt");
+		boolean iswordFlag = at.isWord("HEnce");
+		System.out.println(iswordFlag);
+	}
+	
 	/** 
      * Return a list, in order of increasing (non-decreasing) word length,
      * containing the numCompletions shortest legal completions 
