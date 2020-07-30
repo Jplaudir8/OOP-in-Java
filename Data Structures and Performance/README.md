@@ -7,7 +7,7 @@ In order to develop this test editor application, I will focus on some basic fun
 Being more specific and with help of the images below, I will explain what are the actions that this application can do and the features it has:
 
 <p align="center">
-    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Data%20Structures%20and%20Performance/Screenshot1.png" height=40>
+    <img src="https://github.com/Jplaudir8/OOP-in-Java/blob/master/Data%20Structures%20and%20Performance/Screenshot1.png" height=200>
 </p>
 
 Flesch Index Button: will allow the user determine the Flesch readability score of text by displaying a number that is basically a measure that approximates how easy a piece of text is to read based on the number of sentences, words and syllables in that text. I am pretty sure you(reader) must be wondering how exactly this application is quantifying the difference between text that is hard to read and text that is easy to read. What is used under the hood here is a famous formula called the Flesch Reading Ease Formula, this formula is known for its accuracy to measure the readability of texts in english and has been developed by the author and writing consultant Rudolph Flesch. The formula and table to asses the ease of readability of texts are the following:
