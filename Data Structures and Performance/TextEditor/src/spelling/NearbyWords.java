@@ -4,9 +4,11 @@
 package spelling;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -76,9 +78,80 @@ public class NearbyWords implements SpellingSuggest {
 	 * @return
 	 */
 	public void insertions(String s, List<String> currentList, boolean wordsOnly ) {
-		// TODO: Implement this method  
+		for(int i = -1; i <= s.length(); ++i){
+			for(String insertion : getInsertionsWithCharacterAt(s, i, wordsOnly)){
+				if(!currentList.contains(insertion)){
+					currentList.add(insertion);
+				}
+			}
+		} 
 	}
+	
+	/** 
+	 * Helper Method
+	 */
+	private List<String> getInsertionsWithCharacterAt(String s, int k, boolean wordsOnly) {
+		Set<String> insertions = new HashSet<>();
 
+		char[] chars = s.toCharArray();
+		int length = s.length();
+		char[] result = new char[length + 1];
+
+		if (k == length) {
+			
+			for (int i = 0; i < length; ++i) {
+				result[i] = chars[i];
+			}
+			
+			for (char charCode = 'a'; charCode <= 'z'; ++charCode) {
+				result[length] = charCode;
+				addIfWordsOnly(insertions, new String(result), wordsOnly);
+			}
+			
+		} else if (k == -1) {
+			
+			for (int i = 1; i < length + 1; ++i) {
+				result[i] = chars[i - 1];
+			}
+			
+			for (char charCode = 'a'; charCode <= 'z'; ++charCode) {
+				result[0] = charCode;
+				addIfWordsOnly(insertions, new String(result), wordsOnly);
+			}
+			
+		} else {
+			
+			for(int i = 0;  i < length+1; ++i){
+				if(i < k){
+					result[i] = chars[i];
+				}else if (i > k){
+					result[i] = chars[i-1];
+				}
+			}
+			
+			for (char charCode = 'a'; charCode <= 'z'; ++charCode) {
+				result[k] = charCode;
+				addIfWordsOnly(insertions, new String(result), wordsOnly);
+			}
+			
+		}
+
+		return new ArrayList<String>(insertions);
+	}
+	
+	/** 
+	 * Helper Method
+	 */
+	private void addIfWordsOnly(Collection<String> words, String word, boolean wordsOnly) {
+		if (wordsOnly) {
+			if (dict.isWord(word)) {
+				words.add(word);
+			}
+		} else {
+			words.add(word);
+		}
+	}
+	
 	/** Add to the currentList Strings that are one character deletion away
 	 * from the input string.  
 	 * @param s The original String
@@ -87,9 +160,33 @@ public class NearbyWords implements SpellingSuggest {
 	 * @return
 	 */
 	public void deletions(String s, List<String> currentList, boolean wordsOnly ) {
-		// TODO: Implement this method
+		Set<String> deletions = new HashSet<>();
+
+		for (int i = 0; i < s.length(); ++i) {
+			String deletion = getStringWithoutCharAt(s, i);
+			addIfWordsOnly(deletions, deletion, wordsOnly);
+		}
+
+		currentList.addAll(deletions);
 	}
 
+	private String getStringWithoutCharAt(String s, int k) {
+		if ("".equals(s)) {
+			return s;
+		}
+
+		StringBuilder result = new StringBuilder(s.length() - 1);
+		int i = 0;
+
+		for (Character c : s.toCharArray()) {
+			if (i++ != k) {
+				result.append(c);
+			}
+		}
+
+		return result.toString();
+	}
+	
 	/** Add to the currentList Strings that are one character deletion away
 	 * from the input string.  
 	 * @param word The misspelled word
@@ -110,10 +207,25 @@ public class NearbyWords implements SpellingSuggest {
 		queue.add(word);
 		visited.add(word);
 					
-		// TODO: Implement the remainder of this method, see assignment for algorithm
-		
-		return retList;
+		while(!queue.isEmpty() && numSuggestions > 0){
+			for(String n:  distanceOne(((LinkedList<String>) queue).poll(), false)){
+				if(!visited.contains(n)){
+					visited.add(n);
+					((LinkedList<String>) queue).offer(n);
+					if(dict.isWord(n)){
+						retList.add(n);
+						--numSuggestions;
+					}
+				}
+				
+				if(visited.size() == THRESHOLD && retList.size() > 0){
+					break;
+				}
+				
+			}
+		}
 
+		return retList;
 	}	
 
    public static void main(String[] args) {
@@ -132,6 +244,7 @@ public class NearbyWords implements SpellingSuggest {
 	   System.out.println("Spelling Suggestions for \""+word+"\" are:");
 	   System.out.println(suggest);
 	   */
+	   
    }
 
 }
